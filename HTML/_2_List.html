@@ -1,0 +1,75 @@
+<!--we can create orderes list inside unordered list and vice versa-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+</head>
+<body>
+    <!-- ul stands for unordered list -->
+    <ul  type="circle" > <!--this will give circle points and we cn do it same with square any many-->
+        <li>home</li>
+        <li>about</li>
+        <li>services</li>
+        <li>contact</li>
+    </ul>
+    <!--ol stands fro ordered list-->
+    <!--in order list we did not need to write S.No it will be generate automatically-->
+    <ol>
+        <li>Home  <!--ol>li*3 rather tying it all-->
+            <ol>
+                <li>about </li>
+                <li>services</li>
+                <li>contact</li>
+            </ol> 
+        </li>
+    </ol>
+    <!-- the table tag is preferd to use in div tag to customize with css -->
+    <!-- tr=table row -->
+    <!-- td=table data -->
+    <!-- th=table header -->
+
+    <div>
+        <table border> <!--write border to create border-->
+            <caption>table heading</caption> <!--this is used to write heading for table-->
+            <colgroup>
+                <!--if we want to to replicate a single colour to all coloums then dont write span-->
+                <col span="1" style="background-color:blue" > <!--**it is color not colour--> <!--here the first col will change to blue colour -->
+                <col span="2" style="background-color:blueviolet" >
+                <col span="3" style="background-color:blue" >
+                <col span="4" style="background-color:blue" >
+            </colgroup>
+            <thead><!--this is used to write table head it not have any functionality but we can customize using it in css at one go-->
+                <tr> <!--write tr>tl*3 and press enter-->
+                    <th>S.no</th>
+                    <th >name</th>  <!--if we write <th colspan ="2">... then name hadin will have 2 rows in it-->
+                    <th>roll no</th>
+                    <th>marks</th>
+                </tr>
+            </thead>
+            <tbody><!--this is used to write table head it not have any functionality but we can customize using it in css at one go-->
+                <tr>
+                    <td>1</td>
+                    <td>sadiq</td>
+                    <td>47</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>sadiq1</td>
+                    <td>48</td>
+                    <td>101</td>
+                </tr>
+                <tr>
+                <td>3</td>
+                <td>sadiq2</td>
+                <td>49</td>
+                <td>102</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</body>
+</html>

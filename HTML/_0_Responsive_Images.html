@@ -1,0 +1,30 @@
+<!--we should use responsive images for two reasons:
+    1.fetch lower quality images on low resolution screens to load images faster
+    2.to tackle the art direction problem -misplace of images in phone and website when comapred-->
+<!--DPR - device pixel ratio
+    here we figgle with the different images to show for different phones or according to the type of resolution the phones have-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="C:\Users\Sadiq\Pictures\Screenshot (25).png" alt="error 404">
+    <!--here to upload more images and show them with respect to the internet connection and pixels of the device
+        here width =100% shows that the image will tke 100 % of the browser space-->
+    <!--here the images will shown in browser as the with respect to DPR of the device-->
+    <img  width="100%"
+    srcset="C:\Users\Sadiq\Pictures\Screenshot (25).png 1X  ,  C:\Users\Sadiq\Pictures\Screenshot (25).png 2X , C:\Users\Sadiq\Pictures\Screenshot (25).png 3x"
+    src="C:\Users\Sadiq\Pictures\Screenshot (25).png" alt="photo">
+    <!--different phones have different resolution to maintain the photo how much to be shown in every phone so we give many resolutions of phones so it will give resolutions as per phone-->
+    <!--here sizes block act as if else statement as if it is upto 100 then show 100px photo,if it is upto 200 then show 200px photo
+        if nothing of the both then show 300px image-->
+    <img  width="100%"
+    srcset="C:\Users\Sadiq\Pictures\Screenshot (25).png 100w ,  C:\Users\Sadiq\Pictures\Screenshot (25).png 200w , C:\Users\Sadiq\Pictures\Screenshot (25).png 300w "
+    sizes="(max-width:100px) 100px,(max-width:200px) 200px,300px" 
+    src="C:\Users\Sadiq\Pictures\Screenshot (25).png" alt="photo"> <!--this line will be shown on default-->
+</body>
+</html>
