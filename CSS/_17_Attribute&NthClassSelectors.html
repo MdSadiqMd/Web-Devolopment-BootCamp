@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: inline-block;
+            width: 233px;
+            margin: auto;
+        }
+        input{
+            display: block;
+        }
+        /*psuedo selector*/
+        input[type='text']{  /*it is used to select an particular input type and implement the personalized edit*/
+            padding: 23px;
+            border: red 2px solid;
+        }
+        a[target]{ /*customising using psuedo selector which has target defined and presentin anchor tag or we can even give a[target="_main"]*/
+            color: aliceblue;
+        }
+        /*nth child psudeo selector*/
+        li:nth-child(3){  /*this means it will select the 3rd element (item3) from li tags*/
+            color: black;
+        }
+        li:nth-child(2n+0){ /*this means this will select every element divisible by 2 and color it red*/
+            color: red;
+        }
+        li:nth-child(odd){ /*this customize the odd elements */
+            color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><a href="http://google.com" target="_main">go the google</a></h1>
+        <form action="" class="formcontrol">
+            <input type="text" placeholder="enter your name">
+            <input type="password" placeholder="enter your password">
+            <input type="submit" placeholder="submit">
+        </form>
+        <ul>
+            <li class="item" id="item1">item1</li>
+            <li class="item" id="item2">item2</li>
+            <li class="item" id="item3">item3</li>
+            <li class="item" id="item4">item4</li>
+            <li class="item" id="item5">item5</li>
+        </ul>
+    </div>
+</body>
+</html>

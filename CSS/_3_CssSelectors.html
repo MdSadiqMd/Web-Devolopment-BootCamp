@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{   /*he every h1 tag in the code will become red*/
+            color:red;
+        }
+        div{   /*the whole components in div will become black*/
+            background-color:black;
+        }
+        #red{   /*if we want to we can selct id and color it using #*/
+            color:white;
+            background-color: aqua;
+        }
+        .blue,h2{ /*if we want to we can selct class and color it using .*/
+                  /*we can use many sttributes in a single loop*/
+            color: black;
+            background-color: pink;
+        }
+        *{    /** is used to selct the whole website*/
+            margin: 0;
+            padding: 0;
+        }
+        div p{ /*it shows that the the all the p tags inside div will be get affected by this tag*/
+            color: aliceblue;
+        }
+        div > p{ /*this shows that the just after inside the div tag first p tag get affect*/
+            color: antiquewhite;
+        }
+        div + p{ /*it affect on the prevoius of the p tag of the p tag*/
+            color: aquamarine;
+        }
+        /*div li p{ /*this effect the p tag in li which is inside div tag
+            color:red;
+        }*/
+        
+    </style>
+</head>
+<body>
+    <div>
+        <h1>an selector page</h1>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, odio.</p>
+    </div>
+    <div id="red">
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+    <selction class="bgblue">
+        <p>Lorem ipsum dolor sit amet.</p>
+    </selction>
+</body>
+</html>

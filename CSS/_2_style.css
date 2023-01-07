@@ -1,0 +1,12 @@
+/*#first{      
+    background-color: red; 
+}
+.blue{
+    background-color:blue;
+    color: green;
+}*/
+.container{   /*if we want an image to be shown in a background then open it in file and select open with and select vs code*/
+    /*and write the file name here*/
+background-image: ("/Screenshot(25).png");
+background-size: cover;
+}

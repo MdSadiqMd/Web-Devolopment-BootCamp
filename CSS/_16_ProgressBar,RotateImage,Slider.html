@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            height: 122px;
+            background-color: black;
+        }
+        main{
+            height: 899px;
+            background-color: blue;
+        }
+        /*the animation for loading line above the website*/
+        .progress{
+            background-color: red;
+            height: 2px;
+            animation: loadingline 5s ease-in-out 2 ;
+        }
+        @keyframes loadingline {
+            0%{
+                width: 0;
+            }
+            50%{
+                width: 40vx;
+            }
+            100%{
+                width: 100vx;
+            }
+        }
+        /*program to rotate an image*/
+        img{
+            animation: rotate 1s ease-in-out  infinite ;
+        }
+        @keyframes rotate {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        /*program to slide the photos #phonpe ads*/
+        .slider{
+            background-color: white;
+            height: 523px;
+            overflow: hidden; /*it is used to hide the image which is overflowing from the box*/
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+        .img1{
+            transform: translate(0vw);
+        }
+        .img2{
+            transform: translate(0vw);
+        }
+        .img3{
+            transform: translate(0vw);
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <main>
+
+    </main>
+    <div class="progress"></div>
+    <div class="rotatephoto">
+        <img src="photo_4_.jpg" alt="">
+    </div>   
+    <div class="slider">
+        <img src="photo_4_.jpg" alt="" class="img1">
+        <img src="photo_4_.jpg" alt="" class="img2">
+        <img src="photo_4_.jpg" alt="" class="img3">
+    </div>
+</body>
+</html>

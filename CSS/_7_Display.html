@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .class{
+
+            height: 70px;
+            background-color: black;
+            color: white;
+        }
+        .class1{
+            background-color: red;
+            /*display:inline;*/ /*Takes only the space required by the element. No line breaks before and after. Setting width/height (or margin/padding) not allowed.*/
+            /*display: block; /*Takes full space available in width and leaves a newline before and after the element*/
+            /*display: none;    /*With display: none, the element is removed from the document flow. Its space is not blocked.*/
+            /*visibility: hidden; /*With display: none, the element is removed from the document flow. Its space is not blocked.*/
+            display: inline-block;  /*Similar to inline but setting height, width, margin, and padding is allowed. Elements can sit next to each other*/
+            width: 100vh;
+            height: 90vh;  /*vh shows vertical height*/
+        }
+        .class2{
+            background-color: green;
+            display: inline-block;
+            width: 100vh;
+            height: 90vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="class"></div>
+    <div class="class1"></div><div class="class2"></div> <!--if we write like this then the space between two colors will be vanished-->
+    <!--<div class="class1"></div>
+        <div class="class2"></div>-->
+</body>
+</html>

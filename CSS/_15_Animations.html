@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            height: 100vh;
+            width: 100w;
+            background-color: aqua;
+        }
+        .box{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            color: aliceblue;
+            animation-name: Animate; /*this is the name of the animate id you given in keyframes*/
+            animation-duration: 3s;
+            animation-delay: 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 5; /*it shows how many times an animation should be shown*/
+            animation-direction: alternate-reverse; /*it means the direction of the animation should take place*/
+        }
+        /*it block shows from where size to which size the animation shouls fluctuate*/
+        @keyframes Animate { /*inplace of animate we can give any name*/
+            from{       
+                width: 300px;
+                height: 500px;
+            }
+            to{
+                width: 1000px;
+                height: 900px;
+            }
+            /*0%{       
+                width: 300px; /*we can also write 0% or 20% in place of from and t0
+                height: 500px;
+            }
+            20%{
+                width: 1000px;
+                height: 900px;
+            }*/
+        }  
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet, officia!
+        </div>
+    </div>
+</body>
+</html>

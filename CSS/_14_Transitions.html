@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: red;
+            height: 455px;
+        }
+        .box{
+            border: 2px solid yellow;
+            display: inline-block;
+            transform: scale(0.5,0.5);
+        }
+        img{   /*******very important*/
+            width:500px;  /*here we are giving the initial width the final width is in img:hover block*/
+            transition-property: width;  /*the factor should vary during transition is width*/
+            transition-duration: 3s;  /*the duration of the transition to take place is 3sec*/
+            transition-timing-function: ease-in;   /*transition should done in ease in method means it should go in and out when we remove the hover*/
+            /*transition-delay: 3s;*/ /*it resembles that the it takes 3sec to execute transitions*/
+        }
+        img:hover{       /*if we hover the image the image size wil increase to 700px*/
+            width:700px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <img src="https://plus.unsplash.com/premium_photo-1661877737564-3dfd7282efcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZ3JhbW1pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="error 404">
+        </div>
+    </div>
+    
+</body>
+</html>

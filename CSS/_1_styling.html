@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--we had removed the below style tags but we can access them through another file using link attribute-->
+    <link rel="stylesheet" href="_2_style.css">
+    <!--we indicate id with hash # and class with . (point)-->
+    <!--****it is color not colour-->
+    <!--<style>
+        #first{      
+            background-color: red; 
+        }
+        .blue{
+            background-color:blue;
+            color: green;
+        }
+    </style>-->
+</head>
+<body>
+    <!--an element can be be in more than one class but the id should be only for an single element-->
+    <div id="first"> <!--write div#first to generate the code or #first-->
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+    <section class="red"> <!--type section.red to generate-->
+        <p>Lorem ipsum dolor sit amet.</p>
+    </section>
+    <section class="red blue"> <!--here the red class is present in this class with blue-->
+        <p>Lorem ipsum dolor sit amet.</p>
+    </section>
+</body>
+</html>

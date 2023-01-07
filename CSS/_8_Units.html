@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            font-size: 4px;
+        }
+        .box{
+            font-size: 12px;
+            /*font-size: 3em;*/   /*this means it is 3 times of the default html font size*/
+            /*font-size: 3rem;*/  /*it means it is 3 times the size of given text size*/
+        }
+        .box1{
+            /*we dont know which device our user is using and what are the user device dimensions so we di thid to det with the problem*/
+            background-color: aquamarine;
+            /*responsiveness*/
+            font-size: 10vw;  /*it is used when we increase anad decrease the tab it adapts with the tab size*/
+            width: 50vw; /*it means irrespective of the device the text should take 50% of the vertical width of the device*/
+            height: 50vh; /*it means irrespective of the device the text should take 50% of the vertical height of the device*/
+            min-width: 49vw;/*it shows even if we write another line of code and declare width less then 49vw then it will not change it will be set 49vw as dfault*/
+        }
+        li{
+            /*syntax:  list-style liststyletype liststyleposition url(listsyleimage);
+           /*list-style: circle;*/  /*it shoes that the list items shoe circle points*/
+           /*list-style: circle inside;*/  /*it tells that the circle dots are now under ul tag thet means they have an contribution in SEO*/ 
+           /*list-style: circle outside;*/  /*it tells that the circle dots are now not under ul tag thet means they dont have an contribution in SEO*/
+           list-style: url("photo_4_.jpg"); /*it shows that the points are in the form of an image*/
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>paragraph</p>
+        <div class="box">
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="box1">
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+    </div>
+    <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+    </ul>
+</body>
+</html>

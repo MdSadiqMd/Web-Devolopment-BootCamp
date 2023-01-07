@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            display: inline;
+            font-size: 4vw;
+            padding: 0;
+            margin: 0;
+        }
+        header{
+            padding: 25px;
+            background-color: black;
+            color: white;
+            /*position: sticky;  /*this makes the navigation bar sticky fit at top*/
+            /*top:0;  /*it  tells that the navigation bar is fixed at top of the website*/
+            position: relative; /*irt tells that the position is relative to scrolling of the user*/
+            z-index: 3; /*this makes the content to climb up the navigation bar when we scroll down*/
+        }
+        .container{
+            min-height: 2333px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>home</li>
+                <li>about</li>
+                <li>contact</li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio et optio sit ex tenetur recusandae aut corrupti maxime ab, nisi tempora in reiciendis qui harum dolorem! Iste ex placeat fuga id, similique dolorem quo a mollitia dicta laudantium natus debitis, adipisci nobis quibusdam quae aliquid commodi at possimus, eaque cupiditate.
+    </div>
+</body>
+</html>

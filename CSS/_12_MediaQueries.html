@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*media queries means if this happens then change to this */
+        .container{
+            background-color: red;
+            height: 20vh;
+        }
+        /*here we wrote the media wuery that says that if the screen size or more precisely the body size becomes 800px then change the color of the body to yellow and change the color to container color to aqua*/
+        @media screen and (max-width:800px) { /*here screeen resembles that take consideration of screen size of when it is upto 800px*/
+            body{
+                background-color: yellow;
+            }
+            .container{
+                background-color: aqua;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti expedita minus, aliquid, sint quaerat voluptas odio molestiae nobis eveniet, ad omnis beatae facilis mollitia doloribus. In accusantium ipsa rem fuga.
+    </div>
+</body>
+</html>

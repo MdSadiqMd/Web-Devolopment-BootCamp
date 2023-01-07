@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--<link rel="stylesheet" href="style.css">-->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{   /*if we want an image to be shown in a background then open it in file and select open with and select vs code*/
+                      /*and write the file name here and it should be only in .jpg*/
+            width: 344px; /*if we give only one of height and width it will adjust the other one*/
+            height: 1744px;
+            border: 2px solid red; /*border of 2px solid model snd of red color*/
+            background-image: url("photo_4_.jpg");
+            /*background-repeat:repeat-x;*/  /*if we want to repeat the image only in x direction*/ 
+            /*background-repeat:repeat-y;*/  /*if we want to repeat the image only in y direction*/
+            background-repeat:no-repeat;     /*the image will not repeat and use width and height tag to adjust image*/
+            /*background-repeat: space;*/    /*when we are repeating the image the image will get cut some part to avoid that we use background repeat tag which evenly distribute the excess part as space*/
+            /*background-position: center;*/ /*it is used to place the image in the box if the height or width are more than needed and can be adjusted into top-right,bottom-left,...*/
+            background-position: scroll;     /*we can scroll teh image if and only the height or width of the image are more than the image*/
+            background-attachment: fixed;    /*when we are scrolling the image lletters will be fixed*/ 
+        }
+        /*without writing the upper stuff we can write the like this*/
+        /*.container{
+            background:red url('yjDjLCDh_400x400.jpg') no-repeat ;
+        }*/
+        /*body{
+            
+            background-image: url("yjDjLCDh_400x400.jpg");
+            /*background-repeat:repeat-x;*/  /*if we want to repeat the image only in x direction*/ 
+            /*background-repeat:repeat-y;*/  /*if we want to repeat the image only in y direction*/
+            /*background-repeat:no-repeat;*/     /*the image will not repeat and use width and height tag to adjust image*/
+            /*background-repeat: space;*/    /*when we are repeating the image the image will get cut some part to avoid that we use background repeat tag which evenly distribute the excess part as space
+        }*/
+    </style>
+</head>
+<body>
+    <!--<div id="red">
+        Lorem ipsum dolor sit amet.
+    </div>
+    <div id="green">
+        Lorem ipsum dolor sit amet.
+    </div>-->
+    <div class="container">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, delectus.
+    </div>
+</body>
+</html>
