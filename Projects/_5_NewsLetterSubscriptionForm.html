@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: aqua;
+        }
+        .container{
+            text-align: center;
+            width: 300px;
+        }
+
+        h2{
+            color: goldenrod;
+        }
+        p{
+            color: #eee;
+        }
+        .box{
+            width: 300px;
+            height: 100px;
+            margin-top: 10px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        input{
+            width: 100%;
+            background: none;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid gray;
+        }
+        button{
+            border: none;
+            background-color: goldenrod;
+            width: 100px;
+            border-radius: 5px;
+            padding: 7px;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: green;
+            color: wheat;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>News Letter</h2>
+        <p>Subscribe to Join our News Letter</p>
+        <div class="box">
+            <input type="email" placeholder="email">
+            <button>subscribe</button>
+        </div>
+    </div>
+</body>
+</html>

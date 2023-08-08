@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRSEC Campus Internet</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            background-color: antiquewhite;
+        }
+        .container{
+            background-color: antiquewhite;
+            color: blue;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .class1{
+            color: red;
+            text-align: center;
+        }
+        .class2{
+            color: green;
+            text-align: center;
+        }
+        .loginbox{
+            height: 41px;
+            width: 345px;
+            background-color: antiquewhite;
+            justify-content: center;
+            background:red;
+            margin: 34px 8px 6px 548px ;
+            padding: 13px;
+            text-emphasis: inline;
+            border: 4px; 
+            border-radius: 9px ;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            
+        }
+        .loginbox2{
+            background-color: antiquewhite;
+            margin: -6px 8px 6px 548px;
+            padding: 13px;
+            width: 345px;
+            background: blue;
+            background-color: aliceblue;
+            color:blue;
+            display: inline-flex;
+        }
+        .loginbox3{
+            margin: -7px 617px 6px 548px;
+            padding: 13px;
+            background-color: aliceblue;
+            height: 266px;
+        }
+        input[type="text"]{
+            margin: 40px 31px 9px 58px;
+            border: 2px solid black;
+            justify-content: center;
+            text-align: center;
+            border-radius: 7%;
+            height: 20px;
+            width: 200px;
+        }
+        button{
+            border: none;
+            background-color: green;
+            width: 200px;
+            border-radius: 5px;
+            padding: 7px;
+            color: aliceblue;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 31px 9px 58px;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: rgb(23, 12, 143);
+            color: wheat;
+        }
+        form{
+            height: 200;
+        }
+        .loginbox3[p]{
+            color: blue;
+        }
+        .header2{
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header2[p]{
+            justify-content: center;
+            align-items: center;
+        }
+        .footer{
+            margin: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>VRSEC Campus Internet Autentication</h1>
+            <div class="class1">
+                <marquee  direction="left">
+                    <p>Click Here>>Change your Campus internet login password from Defualt through user portal</p>
+                </marquee>
+            </div>
+            <div class="class2">
+                <p>For Change of Password Type the following URL in Mozilla Firefox Browser To avoid difficulties</p>
+                <a href="https://192.168.2.253/userportal/webpages/myaccount/login.jsp" target="_main">https://192.168.2.253/userportal/webpages/myaccount/login.jsp</a>
+            </div>
+            <div class="class3">
+                <p>Default Credentials are Username : <b>EmployeeId/Student Roll NO.</b></p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="loginbox">
+           <a href="_1_VRSEC_LOGO.png"></a>
+        </div>
+        <div class="loginbox2">
+            <h2>VRSEC Campus Internet</h2>
+            <br>
+        </div>
+        <div class="loginbox3">
+            <header2>
+                <form action="form.php">
+                    <input type="text" placeholder="Enter EmployeeId/Student Roll NO. ">
+                    <br>
+                    <input type="text" placeholder="Password">
+                    <br>
+                    <br>
+                    <button>Sign In</button>
+                    <br>
+                    <br>
+                    <p><b>Access the User Portal</b></p>
+            </header2>
+        </div>
+    </main>
+    <footer>
+        <h4>If you Have any difficulties may contact at central server room [Ext No 305] for Technical support</h4>
+    </footer>
+</body>
+</html>
