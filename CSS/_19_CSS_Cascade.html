@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ol{
+            color: aqua;
+        }
+        .nothing{
+            color: bisque !important;
+        }
+        .nothing{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!--It's Usually mean that the if an element is applied more than one style then the bottom most style is reflected in the output-->
+    <!--Note : ID has more priority than class (# > .)-->
+    <!--If we use !inportant then whatever we put next it will not change the !important block-->
+    <ol>
+        <li>one</li>
+        <li class="nothing">two</li>
+        <li>three</li>
+    </ol>
+</body>
+</html>
