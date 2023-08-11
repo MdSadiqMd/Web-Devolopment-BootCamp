@@ -6,6 +6,6 @@ function test() {
     a = b;
     b = c;
     console.log("a is " + a);
-    console.log(b);
+    console.log("b is " + b);
 }
 test();
