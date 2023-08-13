@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        alert("Hello world"); // Console.log() for browse window
+        let a =prompt("Enter the Input : "); // Providing Input in browser
+        alert("You entered Input of type "+typeof(a));
+        a=Number.parseInt(a);
+        alert("You entered Input of type "+typeof(a));
+        let write=confirm("Do you want to write this on the page "); // confirm will act as conditional which return boolean value
+        if(write){
+            document.write(a);
+        }
+    </script>
+</body>
+</html>
