@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+    <script>
+        document.body.style.color = "blue";
+
+        // The <body> and <head> are siblings to each other and children of <html> tag
+        console.log(document.body.firstChild);
+        console.log(document.body.secondChild);
+        console.log(document.body.lastChild);
+        console.log(document.body.hasChildNodes);
+
+        // we can even acess the elements by array indexing
+        Element.childNodes[0] // which is element.firstChild
+        Element.childNodes[Element.childNodes.lenght-1] // which is element.lastChild
+    </script>
+</body>
+</html>
