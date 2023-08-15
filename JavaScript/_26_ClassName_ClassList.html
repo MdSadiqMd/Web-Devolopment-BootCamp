@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+        .red{
+            background-color: red;
+        }
+        .text-dark{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="first" class="red text-dark">
+        <span>Lorem ipsum dolor sit amet.</span>
+    </div>
+    <script>
+        let first = document.getElementById('first'); // Get the element by ID
+        first.className = 'yellow'; // Change the class of the element
+
+        first.classList.add("red");
+
+        // if it's red then it will change to yellow if it's yellow change it to red this same line will do reciprocal to present condition
+        first.classList.toggle("red");
+        first.classList.toggle("red");
+        first.classList.toggle("red");
+        first.classList.toggle("red");
+    </script>
+</body>
+</html>
