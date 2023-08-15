@@ -28,6 +28,14 @@
         a.before(div);
         a.after(div); // It append after div
         //a.replaceWith(div);
+
+        // Adjacent Insertion
+        a.insertAdjacentHTML('beforebegin','<div class="text">beforebegin</div>')
+        a.insertAdjacentHTML('afterbegin','<div class="text">afterbegin</div>')
+        a.insertAdjacentHTML('beforeend','<div class="text">beforeend</div>')
+        a.insertAdjacentHTML('afterend','<div class="text">afterend</div>')
+        // Removing the Node 
+        //a.remove();
     </script>
 </body>
 </html>
