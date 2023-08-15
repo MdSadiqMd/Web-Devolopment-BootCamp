@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Lorem ipsum dolor sit amet.</span>
+    <script>
+        console.log(document.getElementsByTagName('span')[0]); // Return Span Element
+        console.dir(document.getElementsByTagName('span')[0]); // Return Span element with Methods
+
+        // first.innerHTML --> Will return span tag
+        // we can also set the element's value Using Inner HTML
+        // first.innerHTML = <i> lorem5 </i> it will return the italian HTML line
+
+        // If in plaec of innerHTML we use Outer HTML it will return both InnerHTML and outerHTMl
+        
+        // ***This will copy the whole content of the Website
+        console.log(document.body.textContent)
+    </script>
+</body>
+</html>
