@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Alert "Hello" immediately
+        alert("Hello");
+
+        // Alert "Two seconds Over" after 2 seconds
+        setTimeout(function() {
+            alert("Two seconds Over");
+        }, 2000);
+
+        // Clear the previously scheduled timeout
+        let a = setTimeout(function() {
+            alert("Two seconds Over");
+        }, 2000);
+        clearTimeout(a);
+
+        // Use setTimeout with function arguments
+        const sum = (a, b) => {
+            console.log("Output of Sum Function: " + (a + b));
+        };
+        setTimeout(function() {
+            sum(1, 2);
+        }, 5000);
+
+        // Repeatedly display an alert every 2 seconds
+        setInterval(() => {
+            alert("setInterval");
+        }, 2000);
+        clearInterval(); //Stops set Interval
+    </script>
+</body>
+</html>
