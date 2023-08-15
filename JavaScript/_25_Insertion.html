@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Lorem ipsum dolor sit amet consectetur.(outer)
+    <div class="container">
+        Lorem ipsum dolor sit amet consectetur.(inner)
+        <div id="first">
+            Lorem ipsum dolor sit amet.
+        </div>
+        Lorem ipsum dolor sit amet consectetur.(inner)
+    </div>
+    Lorem ipsum dolor sit amet consectetur.(outer)
+    <script>
+        // Method - 1
+        let a=document.getElementsByTagName('div')[0];
+        a.innerHTML=a.innerHTML+ '<h1> Hello </h1>';
+
+        // Method - 2
+        let div=document.createElement('div'); // This cerates a div which appends the Code can use other than div
+        div.innerHTML='<h1> Hello </h1>';
+        a.append(div);
+        a.prepend(div); // It append before div
+        a.before(div);
+        a.after(div); // It append after div
+        //a.replaceWith(div);
+    </script>
+</body>
+</html>
