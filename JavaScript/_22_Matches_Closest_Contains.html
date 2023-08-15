@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box" id=id1">Lorem ipsum dolor sit <span class="spl">Lorem, ipsum.</span></div>
+    <div class="box" id="id2">Lorem ipsum dolor sit amet consectetur.</div>
+    <script>
+        let id1=document.getElementById("id1");
+        console.log(id1)
+        console.log(id1.matches(".class")) // A.matches("type B") return true if the element A is inside B
+        console.log(id1.matches(".box")) 
+
+        let spl=document.getElementById("spl");
+        console.log(spl.closest(spl)) // It retruns the nearest Neighbour
+
+        console.log(spl.contains(spl));
+    </script>
+</body>
+</html>
