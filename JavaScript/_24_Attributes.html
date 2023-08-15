@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="first" class="lorem" data-one="one" data-two="two">
+        Lorem ipsum dolor sit amet consectetur.
+    </div>
+    <script>
+        let element = document.getElementById("first");
+        let a = element.getAttribute("class");
+        console.log(a);
+
+        console.log(element.hasAttribute("class"));
+        console.log(element.hasAttribute("style"));
+
+        console.log(element.removeAttribute("class"));
+
+        // Creating Custom - Attributes
+        console.log(element.dataset.one);
+    </script>
+</body>
+</html>
