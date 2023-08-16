@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Click me</button>
+    <script>
+        let b = document.getElementById("btn");
+
+        function showMessage() {
+            alert("Hello World");
+        }
+
+        function showMessage1() {
+            alert("Hello World 1");
+        }
+
+        function showMessage2() {
+            alert("Hello World 2");
+        }
+
+        b.addEventListener('click', showMessage);
+        b.addEventListener('click', showMessage1);
+
+        const userInput = prompt("Enter Number:");
+
+        if (userInput === "2") {
+            b.removeEventListener('click', showMessage1);
+        }
+
+    </script>
+</body>
+</html>
