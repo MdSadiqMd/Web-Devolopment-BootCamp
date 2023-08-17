@@ -1,12 +1,16 @@
-function sum(a,b){
-    return Math.round(a/b);
+var x=1;
+a();
+b();
+console.log(x);
+
+function a(){
+    var x=10;
+    console.log(x);
 }
-let a=1;
-let b=2;
-let c=3;
-console.log(sum(a,b));
-console.log(sum(b,c));
-console.log(sum(c,a));
+function b(){
+    var x=20;
+    console.log(x);
+}
 
 // Arrow Function --> Prefer this over upper one
 const func=()=>{
