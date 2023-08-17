@@ -14,3 +14,13 @@ function a(){ // a is lexically inside Global Scope
     }
 }
 a();
+
+// Another Example
+const d=20;{
+    const d=100;{
+        const d=200;
+        console.log(d); //200
+    }
+    //console.log(d); //100
+}
+//console.log(d); //20
