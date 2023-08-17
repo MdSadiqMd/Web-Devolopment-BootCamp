@@ -27,8 +27,19 @@ const c=300;
 console.log(a); // 10 --> Block var shadows global variable var
 console.log(b); // 200 --> global let shadows block let
 console.log(c); // 300 --> global const shadows block const
-// Note : Same as in case of Function also
+// Note : Same as in case of Function and Arrow Function
 
 // Illegal Shadowing
 
+//This is Illegal shadowing we cannot scope let using var
+let a=20;
+{
+    var a=20; 
+}
+
+//This is *** not Illegal shadowing we can scope var using let
+var a=20;
+{
+    let a=20; 
+}
 
