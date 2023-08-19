@@ -23,3 +23,5 @@ var func3 = function() {
     func3(); // Without this line the code block will return error this is called Named Functions
 };
 func3();  // This will call the recursive function
+
+// ***First Class Functions (or) First Class Cititzens --> The ability of functions to be assigned as parameters in other functions , the Ability of functions to be assigned to variables this all collectively known as first class Functions
