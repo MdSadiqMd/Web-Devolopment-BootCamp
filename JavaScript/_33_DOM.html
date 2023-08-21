@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color: aqua;
+            height: 70px;
+        }
+    </style>
+</head>
+<body>
+    <!--DOM -> Document Object Model-->
+    <!--Probably Four Steps of DOM
+        1. Selection of Element
+        2. Changing HTML
+        3. Changing CSS
+        4. Event Listener
+    -->
+    <h1>Hello World</h1>
+    <script>
+        var a=document.querySelector("h1"); // Such as we select HTML Element in CSS here we selecting the same in Javascript
+                                            // .class,#Id,...... change as per use
+        console.log(a); // The selection of h1 in Browser Console
+        // Changing HTML
+        a.innerHTML="Changed Hello World";
+        // Changing CSS
+        a.style.color="red";
+        a.style.backgroundColor="black";
+        // Event Listener
+        a.addEventListener("click",function(){ // When h1 is clicked in Browser console "Event Listener Clicked" is printed
+            console.log("Event Listener Clicked");
+        });
+    </script>
+</body>
+</html>
