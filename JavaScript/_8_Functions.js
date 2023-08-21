@@ -46,3 +46,14 @@ var ans = (function() {
     };
 })();
   
+// Pure and Impure Functions 
+// Pure Function is which satisfy these two Conditions
+// 1. It should return same output for every same input
+// 2. It will never change or update global Variable
+var global=12;
+function abcd(a) {
+    global=13; // This changes the value of global function so it's an Impure Function
+    return Math.random();
+}
+var result=abcd(a); // This function called with same argumetns but give different output so Impure Function
+var result1=abcd(a);
