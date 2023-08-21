@@ -30,3 +30,19 @@ const func=()=>{
     console.log("Sadiq");
 }
 func(); 
+
+// iife --> Immediately invoked function Execution
+// Here this is used to create private Variables in the functions which can only accessed inside the function using getter and only manipulated inside the function using setter
+// Difference between const and iife is const variable can be accessed any where in the code
+var ans = (function() {
+    var privateval = 12;
+    return {
+      setter: function() {
+        privateval = 13;
+      },
+      getter: function() {
+        console.log(privateval);
+      }
+    };
+})();
+  
