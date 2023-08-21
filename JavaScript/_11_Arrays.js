@@ -1,3 +1,19 @@
+// Array is not an Array it is an "Object"
+let a=[1,2,3,4,];
+// But Javascript saves it like 
+let a1={
+    0:1,
+    1:2,
+    2:3,
+    3:4
+};
+// we dont have negetive index in "a" array but if we keep negetive index in the Array then we can see the real form of the array
+a[-1]=2; // THis proves that the array is an "object" in javascript
+console.log(typeof(a)); // Double confirmation that array is an "Object"
+console.log(a);
+console.log(a1);
+
+
 const readline = require("readline-sync");
 let array=[];
 for(let i=0;i<4;i++){
