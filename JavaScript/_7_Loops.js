@@ -3,6 +3,12 @@ for(let i=0;i<100;i++){ // ***If we used var here then it will be globally scope
     console.log(i);
 }
 
+// for-Each Loops
+let a=[1,2,3,4,5];
+a.forEach(function(val){
+    console.log(val+2);
+});
+
 // for-in Loops
 let obj={
     "Harry":true,
