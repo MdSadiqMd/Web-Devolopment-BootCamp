@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>First</h1>
+    <h1>Second</h1>
+    <h1>Third</h1>
+    <p id="something">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, ipsam.</p>
+    <script>
+        var a=document.querySelector("h1"); // This will select only first h1
+        // For selecting all h1 use
+        var a=document.querySelectorAll("h1");
+        a.forEach(function(e) {
+            console.log(e);
+        });
+        // for selecting a document using ID
+        var b=document.getElementById("box") // only box not #box
+        // have same for class name
+    </script>
+</body>
+</html>
