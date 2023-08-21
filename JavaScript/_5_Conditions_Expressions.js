@@ -1,3 +1,14 @@
+// Truthy vs Falsy
+// Falsy --> 0 ,false ,undefined ,null ,NaN(Not a Number) ,document.all 
+//       --> These values are called falsy values means when you convert them these will always convert into "false"
+// Other than these other all are truthy which returns true
+
+if(7){ // 7 is truthy means it refers to true
+    console.log("Hello");
+} else {
+    console.log("World");
+}
+
 // User Input in JavaScript
 
 //If we Use the Code in browser
