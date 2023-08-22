@@ -5,37 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        .container {
+            width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .dice {
+            text-align: center;
+            display: inline-block;
+            vertical-align: top; /* To align the top of the images */
+            margin: 0 10px; /* Add some spacing between dice */
+        }
+
+        body {
             background-color: #393E46;
         }
-        h1{
-            text-align: center;
-        }
-        .dice1 p{
-            text-align: center;
+
+        h1 {
+            margin: 30px;
+            font-family: 'Lobster', cursive;
+            text-shadow: 5px 0 #232931;
+            font-size: 8rem;
             color: #4ECCA3;
         }
-        .dice2 p{
-            text-align: center;
+
+        p {
+            font-size: 2rem;
             color: #4ECCA3;
+            font-family: 'Indie Flower', cursive;
         }
-        footer{
+
+        img {
+            width: 80%;
+        }
+
+        footer {
+            margin-top: 5%;
+            color: #EEEEEE;
             text-align: center;
-        }
-        button{
-            color: aqua;
+            font-family: 'Indie Flower', cursive;
         }
     </style>
 </head>
 <body>
-    <h1>Refresh Me</h1>
-    <div class="dice1">
-        <p>Player 1</p>
-        <img class="img1" src="./diceProperty/dice2.png" alt="">
-    </div>
-    <div class="dice2">
-        <p>Player 2</p>
-        <img class="img2" src="./diceProperty/dice6.png" alt="">
+    <div class="container">
+        <h1>Refresh Me</h1>
+        <div class="dice dice1">
+            <p>Player 1</p>
+            <img class="img1" src="./diceProperty/dice2.png" alt="">
+        </div>
+        <div class="dice dice2">
+            <p>Player 2</p>
+            <img class="img2" src="./diceProperty/dice6.png" alt="">
+        </div>
     </div>
     <button class="btn">
         <p>Play</p>
@@ -50,50 +73,50 @@
         const img2 = document.querySelector(".img2");
 
         var a=document.getElementsByClassName("btn")[0].addEventListener("click",function(){
-            switch (randomInt) {
-        case 1:
-            img1.src = "./diceProperty/dice1.png";
-            break;
-        case 2:
-            img1.src = "./diceProperty/dice2.png";
-            break;
-        case 3:
-            img1.src = "./diceProperty/dice3.png";
-            break;
-        case 4:
-            img1.src = "./diceProperty/dice4.png";
-            break;
-        case 5:
-            img1.src = "./diceProperty/dice5.png";
-            break;
-        case 6:
-            img1.src = "./diceProperty/dice6.png";
-            break;
-        default:
-            break;
-        }
+        switch (randomInt) {
+            case 1:
+                img1.src = "./diceProperty/dice1.png";
+                break;
+            case 2:
+                img1.src = "./diceProperty/dice2.png";
+               break;
+            case 3:
+                img1.src = "./diceProperty/dice3.png";
+                break;
+            case 4:
+                img1.src = "./diceProperty/dice4.png";
+                break;
+            case 5:
+                img1.src = "./diceProperty/dice5.png";
+                break;
+            case 6:
+                img1.src = "./diceProperty/dice6.png";
+                break;
+            default:
+                break;
+            }
         switch (randomInt1) {
-        case 1:
-            img2.src = "./diceProperty/dice1.png";
-            break;
-        case 2:
-            img2.src = "./diceProperty/dice2.png";
-            break;
-        case 3:
-            img2.src = "./diceProperty/dice3.png";
-            break;
-        case 4:
-            img2.src = "./diceProperty/dice4.png";
-            break;
-        case 5:
-            img2.src = "./diceProperty/dice5.png";
-            break;
-        case 6:
-            img2.src = "./diceProperty/dice6.png";
-            break;
-        default:
-            break;
-        }            
+            case 1:
+                img2.src = "./diceProperty/dice1.png";
+                break;
+            case 2:
+                img2.src = "./diceProperty/dice2.png";
+                break;
+            case 3:
+                img2.src = "./diceProperty/dice3.png";
+                break;
+            case 4:
+                img2.src = "./diceProperty/dice4.png";
+                break;
+            case 5:
+                img2.src = "./diceProperty/dice5.png";
+                break;
+            case 6:
+                img2.src = "./diceProperty/dice6.png";
+                break;
+            default:
+                break;
+            }            
         });
         if(randomInt>randomInt1){
             document.querySelector("h1").innerHTML="Player 1 Won "
