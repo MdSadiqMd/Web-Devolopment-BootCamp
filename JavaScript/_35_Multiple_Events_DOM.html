@@ -9,6 +9,7 @@
     <h1>First</h1>
     <h1>Second</h1>
     <h1>Third</h1>
+    <a href="https://google.com">A Link</a>
     <p id="something">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, ipsam.</p>
     <script>
         var a=document.querySelector("h1"); // This will select only first h1 
@@ -24,6 +25,12 @@
 
         // ***Heirarchial Selector 
         var c=document.getElementById("#list a"); // This selects the anchor tag inside the "list" ID element
+
+        // Manipulating Anchor Tag
+        document.querySelector("a");
+        document.querySelector("a").attributes;
+        document.querySelector("a").getAttribute("href");
+        document.querySelector("a").setAttribute("href","https://www.bing.com");
     </script>
 </body>
 </html>
