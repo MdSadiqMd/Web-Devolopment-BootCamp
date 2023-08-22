@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <h1>Refresh Me</h1>
+    <div class="dice 1">
+        <p>Player 1</p>
+        <img class="img1" src="" alt="">
+    </div>
+    <div class="dice 2">
+        <p>Player 2</p>
+        <img class="img2" src="" alt="">
+    </div>
+    <script>
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+        const randomInt = getRandomInt(1,6); // Generates a random integer between 1 (inclusive) and 6 (exclusive)
+        const randomInt1 = getRandomInt(1,6); // Generates a random integer between 1 (inclusive) and 6 (exclusive)
+        const img1 = document.querySelector(".img1");
+        const img2 = document.querySelector(".img2");
+
+        switch (randomInt) {
+        case 1:
+            img1.src = "https://picsum.photos/200";
+            break;
+        case 2:
+            img1.src = "https://picsum.photos/200";
+            break;
+        case 3:
+            img1.src = "https://picsum.photos/200";
+            break;
+        case 4:
+            img1.src = "https://picsum.photos/200";
+            break;
+        case 5:
+            img1.src = "https://picsum.photos/200";
+            break;
+        case 6:
+            img1.src = "https://picsum.photos/200";
+            break;
+        default:
+            break;
+        }
+        switch (randomInt1) {
+        case 1:
+            img1.src = "https://picsum.photos/200";
+            break;
+        case 2:
+            img1.src = "https://picsum.photos/200";
+            break;
+        case 3:
+            img1.src = "https://picsum.photos/200";
+            break;
+        case 4:
+            img1.src = "https://picsum.photos/200";
+            break;
+        case 5:
+            img1.src = "https://picsum.photos/200";
+            break;
+        case 6:
+            img1.src = "https://picsum.photos/200";
+            break;
+        default:
+            break;
+        }
+    </script>
+</body>
+</html>
