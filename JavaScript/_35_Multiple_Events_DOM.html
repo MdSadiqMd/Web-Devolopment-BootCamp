@@ -11,8 +11,9 @@
     <h1>Third</h1>
     <p id="something">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, ipsam.</p>
     <script>
-        var a=document.querySelector("h1"); // This will select only first h1
-        // For selecting all h1 use
+        var a=document.querySelector("h1"); // This will select only first h1 
+        var a=document.querySelector("h1")[1]; // This will select 2nd <h1> as the "same Type" elements is stored in array so we can access second element by 1 index
+        // For selecting all h1 use and to store thmn in list
         var a=document.querySelectorAll("h1");
         a.forEach(function(e) {
             console.log(e);
@@ -20,6 +21,9 @@
         // for selecting a document using ID
         var b=document.getElementById("box") // only box not #box
         // have same for class name
+
+        // ***Heirarchial Selector 
+        var c=document.getElementById("#list a"); // This selects the anchor tag inside the "list" ID element
     </script>
 </body>
 </html>
