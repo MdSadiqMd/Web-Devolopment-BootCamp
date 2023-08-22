@@ -6,20 +6,40 @@
     <title>Document</title>
     <style>
         *{
-            background-color: grey;
+            background-color: #393E46;
+        }
+        h1{
+            text-align: center;
+        }
+        .dice1 p{
+            text-align: center;
+            color: #4ECCA3;
+        }
+        .dice2 p{
+            text-align: center;
+            color: #4ECCA3;
+        }
+        footer{
+            text-align: center;
+        }
+        button{
+            color: aqua;
         }
     </style>
 </head>
 <body>
     <h1>Refresh Me</h1>
-    <div class="dice 1">
+    <div class="dice1">
         <p>Player 1</p>
-        <img class="img1" src="" alt="">
+        <img class="img1" src="./diceProperty/dice2.png" alt="">
     </div>
-    <div class="dice 2">
+    <div class="dice2">
         <p>Player 2</p>
-        <img class="img2" src="" alt="">
+        <img class="img2" src="./diceProperty/dice6.png" alt="">
     </div>
+    <button class="btn">
+        <p>Play</p>
+    </button>
     <script>
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min)) + min;
@@ -29,50 +49,62 @@
         const img1 = document.querySelector(".img1");
         const img2 = document.querySelector(".img2");
 
-        switch (randomInt) {
+        var a=document.getElementsByClassName("btn")[0].addEventListener("click",function(){
+            switch (randomInt) {
         case 1:
-            img1.src = "https://picsum.photos/200";
+            img1.src = "./diceProperty/dice1.png";
             break;
         case 2:
-            img1.src = "https://picsum.photos/200";
+            img1.src = "./diceProperty/dice2.png";
             break;
         case 3:
-            img1.src = "https://picsum.photos/200";
+            img1.src = "./diceProperty/dice3.png";
             break;
         case 4:
-            img1.src = "https://picsum.photos/200";
+            img1.src = "./diceProperty/dice4.png";
             break;
         case 5:
-            img1.src = "https://picsum.photos/200";
+            img1.src = "./diceProperty/dice5.png";
             break;
         case 6:
-            img1.src = "https://picsum.photos/200";
+            img1.src = "./diceProperty/dice6.png";
             break;
         default:
             break;
         }
         switch (randomInt1) {
         case 1:
-            img1.src = "https://picsum.photos/200";
+            img2.src = "./diceProperty/dice1.png";
             break;
         case 2:
-            img1.src = "https://picsum.photos/200";
+            img2.src = "./diceProperty/dice2.png";
             break;
         case 3:
-            img1.src = "https://picsum.photos/200";
+            img2.src = "./diceProperty/dice3.png";
             break;
         case 4:
-            img1.src = "https://picsum.photos/200";
+            img2.src = "./diceProperty/dice4.png";
             break;
         case 5:
-            img1.src = "https://picsum.photos/200";
+            img2.src = "./diceProperty/dice5.png";
             break;
         case 6:
-            img1.src = "https://picsum.photos/200";
+            img2.src = "./diceProperty/dice6.png";
             break;
         default:
             break;
+        }            
+        });
+        if(randomInt>randomInt1){
+            document.querySelector("h1").innerHTML="Player 1 Won "
+        } else if(randomInt===randomInt1) {
+            document.querySelector("h1").innerHTML="No One Won "
+        } else {
+            document.querySelector("h1").innerHTML="Player 2 Won "
         }
     </script>
+    <footer>
+        www 🎲 Mohammad Sadiq 🎲 com
+    </footer>
 </body>
 </html>
