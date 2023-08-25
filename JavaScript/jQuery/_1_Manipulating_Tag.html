@@ -38,6 +38,15 @@
 
         // Manipulating Attributrs Using jQuery
         $("a").attr("href","https://bing.com"); // we use attr() to change the attributes
+
+        // Adding Event Listener using jQuery
+        $("h1").click(function(){
+            $("h1").css("color","purple")
+        });
+        // ***This will select all the button elements unlike Traditional javascript for which we need to use for loop to select all buttons
+        $("button").click(function(){
+            $("button").css("color","purple")
+        });
     </script>
 </body>
 </html>
