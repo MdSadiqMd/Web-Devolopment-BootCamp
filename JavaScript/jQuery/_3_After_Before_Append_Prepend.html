@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulating DOM with jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>DOM Manipulation with jQuery</h1>
+
+    <div id="main">
+        <p>This is the main content.</p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Using 'after' to insert content after the selected element
+            $('#main').after('<p>This content is inserted after the main div.</p>');
+
+            // Using 'before' to insert content before the selected element
+            $('#main').before('<p>This content is inserted before the main div.</p>');
+
+            // Using 'append' to add content as the last child of the selected element
+            $('#main').append('<p>This content is appended as the last child of the main div.</p>');
+
+            // Using 'prepend' to add content as the first child of the selected element
+            $('#main').prepend('<p>This content is prepended as the first child of the main div.</p>');
+        });
+    </script>
+</body>
+</html>
