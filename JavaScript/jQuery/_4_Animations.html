@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Animations</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery Animations</h1>
+
+    <button id="moveButton">Move</button>
+    <button id="fadeButton">Fade</button>
+    <button id="toggleButton">Toggle</button>
+
+    <div class="box"></div>
+
+    <script>
+        $(document).ready(function() {
+            // Custom Animation Using animate()
+            $('#moveButton').click(function() {
+                $('.box').animate({ left: '+=100px' }, 'slow');
+            });
+
+            // In-Built Animation
+            
+            // Fade animation
+            $('#fadeButton').click(function() {
+                $('.box').fadeToggle('slow');
+            });
+
+            // Toggle animation
+            $('#toggleButton').click(function() {
+                $('.box').slideToggle('slow');
+            });
+        });
+    </script>
+</body>
+</html>
