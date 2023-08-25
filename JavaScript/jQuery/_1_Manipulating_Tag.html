@@ -25,12 +25,15 @@
         
         // This below function will run only when jQuery Library is Loaded
         $(document).ready(function(){
-            $("button").css("border-radius","50%")
+            $("button").css("color","green")
         })
 
         // Printing Property of CSS Using jQuery
         console.log($("h1").css("color")); // rgb(0, 0, 255) 
         console.log($("h1").css("font-size")); // 32px
+
+        // Manipulating Text Using jQuery
+        $("h1").text("Changed Hello World !")
     </script>
 </body>
 </html>
