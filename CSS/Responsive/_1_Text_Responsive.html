@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .one{
+            height: 100%;
+            width: 100%;
+            font-size: 60px;
+        }
+        .two{
+            height: 50vh;
+            width: 50vw;
+            font-size: 60px;
+        }
+        /*vmax --> First preference height next width*/
+        /*vmin --> First preference width next height*/
+        .three{
+            height: 50vmax;
+            width: 50vmin;
+            font-size: 60px;
+        }
+        /*em--> we will set an font size of parent element and then we will change the children size interma of Percentage of parent element size*/
+        /*rem--> this will take website size as a reference and vary accordingly*/
+        .parent{
+            font-size: 30px;
+        }
+        .four{
+            font-size: 1em; /*30px*/
+        }
+        .five{
+            font-size: 1rem; 
+        }
+    </style>
+</head>
+<body>
+    <h1 class="one">Manipulating with percentage (or) Pixels</h1>
+    <h1 class="two">Manipulating Using view port Height and view port Width</h1>
+    <h1 class="three">Manipulating Using view port Height max and view port Width max</h1>
+    <div class="parent">
+        <h1 class="four">Manipulating text Using em</h1>
+        <h1 class="five">Manipulating text Using rem</h1>
+    </div>
+</body>
+</html>
