@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--Remix Icon CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        .main{
+            height: 100%;
+            width: 100%;
+            position: relative;
+            background-color: aquamarine;
+        }
+        .nav {
+    height: 5vw;
+    width: 100%;
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between; /* Adjust alignment as needed */
+    align-items: center; /* Vertically center items */
+    font-weight: 700;
+    border-bottom: 2px solid black;
+    padding: 0 2vw; /* Add padding to the sides */
+}
+
+.innernav {
+    display: flex;
+    gap: 2vw; /* Reduce the gap between items */
+    align-items: center; /* Vertically center items */
+}
+
+        .innernav .i{
+            font-size: 1.6vw;
+            font-weight: 800;
+            display: none; /*This will hide display of the Icon and we will make is visible when screen size is less using media Queries*/
+        }
+
+/* Adjust font sizes for smaller screens */
+@media (max-width: 900px) {
+    .nav {
+        background-color: aqua;
+        color: white;
+        padding: 0 6vw;
+    }
+    .nav h2 {
+        font-size: 6vw;
+    }
+    .innernav h4 {
+        font-size: 3.5vw; /* Adjust font size */
+        display: none;
+    }
+    .nav i {
+        display: block;
+        font-size: 5vw;
+    }
+}
+
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="nav">
+            <h2>Logo</h2>
+            <div class="innernav">
+                <h4>Store</h4>
+                <h4>Courses</h4>
+                <h4>Carrer</h4>
+                <h4>Blog</h4>
+                <h4>Account</h4>
+                <h4><i class="ri-menu-3-fill"></i></h4>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
