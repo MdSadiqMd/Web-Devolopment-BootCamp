@@ -66,6 +66,18 @@
         <h5>Random Image</h5>
         <h4>Friends</h4>
         <button>Add Freind</button>
+        <script>
+            flag=0;
+            if(flag==0){
+                document.body.querySelector("button").addEventListener("click",function(){
+                    document.querySelector("h4").innerHTML("Not freinds");
+                });
+            } else {
+                document.body.querySelector("button").addEventListener("click",function(){
+                    document.querySelector("h4").innerHTML("freinds");
+                });
+            }
+        </script>
     </div>
 </body>
 </html>
