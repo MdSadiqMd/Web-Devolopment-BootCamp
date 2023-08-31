@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
         *{
             margin: 0;
@@ -30,13 +31,21 @@
             height: 100%;
             width: 100%;
             object-fit: cover;
-            
+        }
+        .container i{
+            color: aliceblue;
+            font-size: 75px; /*We can manipulate font size of remix icon */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%) scale(3); /*We can use transform only one time for a element so merge two properties into one*/
         }
     </style>
 </head>
 <body>
     <div class="container">
         <img src="https://picsum.photos/200" alt="">
+        <i class="ri-heart-3-fill"></i>
     </div>
 </body>
 </html>
