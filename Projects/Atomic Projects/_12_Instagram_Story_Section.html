@@ -28,6 +28,8 @@
             height: 30%;
             width: 100%;
             background-color: antiquewhite;
+            white-space: nowrap; /*This will prevent the wraping down of stories*/
+            overflow-x: auto; /*This will make the scroll bar in x-axis*/
         }
         .story{
             background-color: aqua;
@@ -36,6 +38,7 @@
             border-radius: 50%;
             overflow: hidden;
             border-radius: 2px black;
+            display: inline-block; /*This arranges the stories in single line*/
         }
         .story img{
             height: 100%;
@@ -50,6 +53,21 @@
             <div class="story">
                 <img src="https://picsum.photos/50" alt="">
             </div>
+            <div class="story">
+                <img src="https://picsum.photos/50" alt="">
+            </div>
+            <div class="story">
+                <img src="https://picsum.photos/50" alt="">
+            </div>  
+            <div class="story">
+                <img src="https://picsum.photos/50" alt="">
+            </div>
+            <div class="story">
+                <img src="https://picsum.photos/50" alt="">
+            </div>
+            <div class="story">
+                <img src="https://picsum.photos/50" alt="">
+            </div>                                                        
         </div>
     </div>
 </body>
