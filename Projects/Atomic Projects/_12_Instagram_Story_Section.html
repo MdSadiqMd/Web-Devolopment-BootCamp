@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        html,body{
+        html, body {
             height: 100%;
             width: 100%;
             box-sizing: border-box;
@@ -18,37 +18,49 @@
             align-items: center;
             justify-content: center;     
         }
-        .card{
+        .card {
             height: 400px;
             width: 350px;
             background-color: white;
             border-radius: 10px;
+            position: relative;
         }
-        .storyholder{
+        .storyholder {
             height: 30%;
             width: 100%;
             background-color: antiquewhite;
             white-space: nowrap; /*This will prevent the wraping down of stories*/
             overflow-x: auto; /*This will make the scroll bar in x-axis*/
         }
-        .story{
+        .storyholder::-webkit-scrollbar {
+            display: none; /*Removing scroll bar but it scrolls*/
+        }
+        .story {
             background-color: aqua;
             height: 80px;
             width: 80px;
             border-radius: 50%;
             overflow: hidden;
-            border-radius: 2px black;
             display: inline-block; /*This arranges the stories in single line*/
         }
-        .story img{
+        .story img {
             height: 100%;
             width: 100%;
             object-fit: cover;
+        }
+        .fullscreen {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            display: none;
+            background-size: cover;
+            background-position: center;
         }
     </style>
 </head>
 <body>
     <div class="card">
+        <div class="fullscreen"></div>
         <div class="storyholder">
             <div class="story">
                 <img src="https://picsum.photos/50" alt="">
@@ -70,5 +82,30 @@
             </div>                                                        
         </div>
     </div>
+    <script>
+        var storyholder = document.querySelector(".storyholder");
+        var arr = [
+            { dp: "https://picsum.photos/200", story: "https://picsum.photos/201" },
+            { dp: "https://picsum.photos/200", story: "https://picsum.photos/201" },
+            { dp: "https://picsum.photos/200", story: "https://picsum.photos/201" },
+            { dp: "https://picsum.photos/200", story: "https://picsum.photos/201" },
+            { dp: "https://picsum.photos/200", story: "https://picsum.photos/201" },
+            { dp: "https://picsum.photos/200", story: "https://picsum.photos/201" }
+        ];
+        var clutter = "";
+        arr.forEach(function(elem, idx) {
+            clutter += `<div class="story">
+                <img id="${idx}" src="${elem.dp}" alt="">
+            </div>`;
+        });
+        storyholder.innerHTML = clutter;
+        storyholder.addEventListener("click", function(dets) {
+            document.querySelector(".fullscreen").style.display = "block";
+            document.querySelector(".fullscreen").style.backgroundImage = `url(${arr[dets.target.id].story})`;
+            setTimeout(() => {
+                document.querySelector(".fullscreen").style.display = "none";               
+            }, 3000);
+        });
+    </script>
 </body>
 </html>
