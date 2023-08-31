@@ -38,7 +38,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%,-50%) scale(3); /*We can use transform only one time for a element so merge two properties into one*/
+            transform: translate(-50%,-50%) scale(0); /*We can use transform only one time for a element so merge two properties into one*/
         }
     </style>
 </head>
@@ -47,5 +47,12 @@
         <img src="https://picsum.photos/200" alt="">
         <i class="ri-heart-3-fill"></i>
     </div>
+    <script>
+        var con=document.querySelector(".container");
+        var icon=document.querySelector("i");
+        con.addEventListener("dblclick",function(){
+            icon.style.transform='translate(-50%,50%) scale(3)';
+        })
+    </script>
 </body>
 </html>
