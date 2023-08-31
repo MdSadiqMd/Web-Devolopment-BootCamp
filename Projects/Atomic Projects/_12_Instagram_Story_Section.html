@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: royalblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;     
+        }
+        .card{
+            height: 400px;
+            width: 350px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        .storyholder{
+            height: 30%;
+            width: 100%;
+            background-color: antiquewhite;
+        }
+        .story{
+            background-color: aqua;
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border-radius: 2px black;
+        }
+        .story img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="storyholder">
+            <div class="story">
+                <img src="https://picsum.photos/50" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
