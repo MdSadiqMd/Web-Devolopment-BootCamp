@@ -17,12 +17,20 @@
         .main{
             height: 100%;
             width: 100%;
-            background-color: aquamarine;
+            background-color:black ;
+            position: relative; /* Add this line to enable absolute positioning */
         }
         .cursor{
             height: 20px;
             width: 20px;
-            background-color: black;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute; /* Add this line to enable absolute positioning */
+        }
+        h1{
+            font-size: 9vw;
+            font-weight: 900;
+            color: aliceblue;
         }
     </style>
 </head>
@@ -31,5 +39,13 @@
         <div class="cursor"></div>
         <h1>Sadiq</h1>
     </div>
+    <script>
+        var main = document.querySelector(".main");
+        var crsr = document.querySelector(".cursor");
+        main.addEventListener("mousemove", function (dets) {
+            crsr.style.left = dets.clientX + "px"; // Use clientX for horizontal position
+            crsr.style.top = dets.clientY + "px"; // Use clientY for vertical position
+        });
+    </script>
 </body>
 </html>
