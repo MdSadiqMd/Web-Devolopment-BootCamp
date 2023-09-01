@@ -25,11 +25,15 @@ f1();    // This will log "Hello" only
 f1()();  // (or) f2(); // This will log "Hello" followed by "World"
 
 
-// Arrow Function --> Prefer this over upper one
-const func=()=>{
-    console.log("Sadiq");
-}
-func(); 
+// Arrow Function 
+// There are three types of Arrow Functions
+// 1.Basic Arrow Functions
+var a=()=>{}
+// 2.Fat Arrow Functions
+var b=(parameter)=>{}
+// 3.Fat Arrow Function with Implicit Return
+var c=()=>122;
+console.log(c()); // Prints 122
 
 // iife --> Immediately invoked function Execution
 // Here this is used to create private Variables in the functions which can only accessed inside the function using getter and only manipulated inside the function using setter
