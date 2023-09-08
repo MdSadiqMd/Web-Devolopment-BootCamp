@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="Enter City" id="input">
+        <button id="Search">Search</button>
+    </div>
+    <script>
+        const button=document.getElementById("Search");
+        const input=document.getElementById("input");
+
+        // Dynamically inserting the Location
+        button.addEventListener("click",()=>{
+            console.log(input.value);
+        });
+    </script>
+</body>
+</html>
