@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Example</title>
+</head>
+<body>
+    <h1>Local Storage Example</h1>
+
+    <p>Inspect > Applications </p>
+
+    <script>
+        // Check if Local Storage is available in the browser
+        if (typeof(Storage) !== "undefined") {
+            // Local Storage is supported
+
+            // Storing data in Local Storage
+            localStorage.setItem("username", "john_doe");
+            localStorage.setItem("age", "30");
+
+            // Retrieving data from Local Storage
+            const username = localStorage.getItem("username");
+            const age = localStorage.getItem("age");
+
+            console.log("Data stored in Local Storage:");
+            console.log(`Username: ${username}`);
+            console.log(`Age: ${age}`);
+
+            // Updating data in Local Storage
+            localStorage.setItem("age", "31");
+
+            console.log("\nData updated in Local Storage:");
+            console.log(`Updated Age: ${localStorage.getItem("age")}`);
+
+            // Removing a specific item from Local Storage
+            localStorage.removeItem("username");
+
+            console.log("\nAfter removing 'username' from Local Storage:");
+            console.log(`Username: ${localStorage.getItem("username")}`);
+
+            // Clearing all data from Local Storage
+            localStorage.clear();
+
+            console.log("\nAfter clearing Local Storage:");
+            console.log(`Username: ${localStorage.getItem("username")}`);
+            console.log(`Age: ${localStorage.getItem("age")}`);
+        } else {
+            // Local Storage is not supported in this browser
+            console.log("Local Storage is not supported in this browser.");
+        }
+    </script>
+</body>
+</html>
