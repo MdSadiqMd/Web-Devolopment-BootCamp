@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" onkeyup="FunctionCall()"/> <!-- Use FunctionCall as the event handler -->
+    <script>
+        let count = 0;
+        // We are Building the Search Functionality in E-Commerence 
+        // Ex: If we type laptop API calls are made of laptop under 20,000 ;laptop under 30,000 ;...
+        //     If we type schoolbags without space we get some less and specific recommendations to be clear some less API's are called
+        // Now, Our target to Design the Function of Search bar in E-Commerence Website which generate new Recommendations ***when the User stops tying for that we create a timer which caluclates the amount of time user stopped tying if it reach an amount it fetches API calls 
+        // The stopping of API Calls for a particular time Frame is called Debouncing the timeDifference "Class" do the work of debouncing
+        const getData = () => {
+            console.log("Fetching Recommendations" + " " + count++);
+        }
+
+        // Create a function that delays the execution of getData
+        const timeDifference = (fn, d) => {
+            let timer;
+            return function () {
+                let context = this,
+                args = arguments;
+                clearTimeout(timer); 
+                timer = setTimeout(() => {
+                    fn.apply(context, args);
+                }, d);
+            }
+        }
+
+        let FunctionCall = timeDifference(getData, 1000); // Set the delay to 1000ms (1 second)
+    </script>
+</body>
+</html>
