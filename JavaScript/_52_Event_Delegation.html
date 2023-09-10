@@ -6,6 +6,25 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <!--Let us Consider an E-Commerence Website and if we search Laptop it will take us to url/Laptops ,if we search Cameras it will take us to url/cameras 
+        For every item we need to create an EventHandler to take to the particular url 
+        Rather, we can Create a parent div(categeory) for every Item and create an Event Delegator for that parent div
+        ***This Event delegation is based on the Event Bubbling-->
+    <div>
+        <ul id="categeory">
+            <li id="laptops">Laptops</li>
+            <li id="cameras">Cameras</li>
+            <li id="shoes">Shoes</li>
+        </ul>
+    </div>
+    <script>
+        document.querySelector("#categeory").addEventListener("click",(e)=>{
+            console.log(e.target); // .target.id "method" selects the element ID clicked upon 
+            // It's Not advisable to use Event Delegation on ul (or) ol elements so just check it the element is li
+            if(e.target.tagName=="LI"){
+                window.location.href="./"+e.target.id;
+            }
+        });
+    </script>
 </body>
 </html>
