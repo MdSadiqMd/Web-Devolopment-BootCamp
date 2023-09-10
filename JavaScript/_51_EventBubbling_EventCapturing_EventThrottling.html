@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            min-width: 100px;
+            min-height: 100px;
+            padding: 30px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <!--Event Bubbling -> Traverse in to out-->
+    <h1>Event Bubbling</h1>
+    <div id="grandParent">
+        <div id="parent">
+            <div id="child"></div>
+        </div>
+    </div>
+
+    <!--Event Capturing (or) Event throttling -> Traverse out to in-->
+    <h1>Event Capturing</h1>
+    <div id="grandParent1">
+        <div id="parent1">
+            <div id="child1"></div>
+        </div>
+    </div>    
+
+    <!--Stop propagation method stops the propagation of the Event Capturing or Bubbling let us consider the Example for Event Capturing-->
+    <h1>Stop Propagation</h1>
+    <div id="grandParent2">
+        <div id="parent2">
+            <div id="child2"></div>
+        </div>
+    </div>
+
+    <!--Random for testing-->
+    <h1>Random One</h1>
+    <div id="grandParent3">
+        <div id="parent3">
+            <div id="child3"></div>
+        </div>
+    </div>  
+    <script>
+        // Event Bubbling
+       document.querySelector("#grandParent").addEventListener("click", () => {
+        console.log("GrandParent")
+       }); // Grandparent
+       document.querySelector("#parent").addEventListener("click", () => {
+        console.log("Parent")
+       }); // Parent -> Grand Parent
+       document.querySelector("#child").addEventListener("click", () => {
+        console.log("Child")
+       }); // Child -> Parent -> GrandParent
+
+       // Event Capturing
+       document.querySelector("#grandParent1").addEventListener("click", () => {
+        console.log("GrandParent1")
+       },true); // Grandparent1
+       document.querySelector("#parent1").addEventListener("click", () => {
+        console.log("Parent1")
+       },true); // GrandParent1 -> parent1
+       document.querySelector("#child1").addEventListener("click", () => {
+        console.log("Child1")
+       },true); // GrandParent1 -> parent1 -> Child1  
+
+       // Stop Propagation 
+       document.querySelector("#grandParent2").addEventListener("click", (e) => {
+        console.log("GrandParent2");
+        e.stopPropagation();
+       },true); // Grandparent2
+       document.querySelector("#parent2").addEventListener("click", (e) => {
+        console.log("Parent2");
+       },true); // GrandParent2 
+       document.querySelector("#child2").addEventListener("click", (e) => {
+        console.log("Child2");
+       },true); // GrandParent2 
+       
+       // *** When we mix both First Event Capturing happen then Bubbling happens
+       document.querySelector("#grandParent3").addEventListener("click", () => {
+        console.log("GrandParent3")
+       },true); // Capturing // Grandparent3
+       document.querySelector("#parent3").addEventListener("click", () => {
+        console.log("Parent3")
+       },false); // Bubbling // Grandparent3 -> Parent3
+       document.querySelector("#child3").addEventListener("click", () => {
+        console.log("Child3")
+       },true); // Capturing // Grandparent3 -> child3 -> parent3
+    </script>
+</body>
+</html>
