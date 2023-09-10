@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--HTML Parsing (Encounters Script Tag) -> Fetches Script Tag (HTML Parsing Stopped) -> Loads Script Tag on Browser -> Continues HTML Parsing  -->
+    <script src=""></script>
+    <!--HTML Parsing (Encounters Script Tag) -> Fetches Script Tag **(simultaneously of HTML Parsing) -> Loads Script Tag on Browser ***(HTML Parsing Stopped) -> Continues HTML Parsing -->
+    <!--If we have a Single External Script Prefer Async
+        *** WHen we have Multiple Scripts to be Loaded The Async will not Guarentee the Order of Execution-->
+    <script async src=""></script>
+    <!--HTML Parsing (Encounters Script Tag) -> Fetches Script Tag **(simultaneously of HTML Parsing) -> Continues HTML Parsing (HTML Parsing Completes) -> Loads Script Tag on Browser-->
+    <!--When we have Multiple Scripts to be used we prefer Defer as it guarentees the Order of Execution-->
+    <script defer src=""></script>
+</body>
+</html>
