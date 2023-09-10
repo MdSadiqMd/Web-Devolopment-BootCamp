@@ -20,3 +20,14 @@ printFullName.apply(name1,["G","H"]);
 let printName=printFullName.bind(name1,"C","D"); // This copies the arguments in printFullName Method in the form of Function
 console.log(printName); // Invoked Function
 printName(); // Returns the Function Invoked Value
+
+// *** Polyfill for Bind (Creating Own Bind Method)
+Function.prototype.mybind=function(...args){ // Used Prototypal Inheritance to inherit Function that can be used later on
+    let obj=this,
+    params=args.slice(1); // Sliced first item in args as the first is "name" that we need to give manually
+    return function (args1) {
+        obj.apply(args[0],[...params,...args1]); // Used apply() as need to give multiple arguments
+    }
+}
+let printName1=printFullName.mybind(name,"C");
+printName1("D"); 
