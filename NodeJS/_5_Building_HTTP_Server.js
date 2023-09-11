@@ -33,3 +33,6 @@ const myServer = http.createServer((req, res) => {
 myServer.listen(8000, () => {
     console.log("Server is running on port 8000");
 });
+// Test Cases --> Manipulate the URL
+//            1. http://localhost:8000/?name=sadiq
+//            2. http://localhost:8000/about
