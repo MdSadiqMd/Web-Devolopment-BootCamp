@@ -10,4 +10,26 @@ const myServer=http.createServer((req,res)=>{  // This Arrow function is respons
 
 //myServer.listen(8000,()=> console.log("Server Started"));
 
-// Now let's Create a HTTP Server Which logs the 
+// Now let's Create a HTTP Server Which logs the date, Time and IP Address of the User who visited the Website 
+const http = require("http");
+const fs = require("fs");
+fs.writeFile("./_5_log.txt", "Log File", (err) => {});
+const myServer = http.createServer((req, res) => {
+    const log = `${new Date().toISOString()}: ${req.url} New Request Received`;
+    fs.appendFile("./_5_log.txt", log + "\n", (err, data) => {
+        switch (req.url) { // Fix the variable name to req.url
+            case '/':
+                res.end("Home Page");
+                break;
+            case '/about':
+                res.end("About Page");
+                break;
+            default:
+                res.end("404 Not found");
+                break;
+        }
+    });
+});
+myServer.listen(8000, () => {
+    console.log("Server is running on port 8000");
+});
