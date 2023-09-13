@@ -1,126 +1,82 @@
 const express = require("express");
-const users = require("./_8_MOCK_DATA.json");
-const fs = require("fs");
-const mongoose=require("mongoose");
+const mongoose = require("mongoose");
 const app = express();
 const PORT = 8000;
 
-// In mongoose Database we follow these three steps 
-// --> Schema -Define a Structure
-// --> Schema -Model
-// --> Using Model we do CRUD Operations
+// Connect to MongoDB (make sure to replace the connection string)
+mongoose.connect('mongodb://127.0.0.1:27017/FirstMongodB', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.error("Error connecting to MongoDB:", err));
 
-// Connceting MongoDB --> type "mongosh" in cmd and get the localhost mongoDB server and "/" and give the name to your Database
-mongoose.connect('mongodb://127.0.0.1:27017');
-
-// Schema 
-const userSchema=new mongoose.Schema({
-    firstName:{
-        type: String,
-        required:true // It means that user should compulsary Enter his first name
-    },
-    lastName:{
-        type:String,
-    },
-    email:{
-        type:String,
-        required:true,
-        unique:true, // It should be unique you cannot Signup with same email
-    },
-    jobTitle:{
-        type:String,
-    },
-    gender:{
-        type:String,
-    }
+// Define the user schema
+const userSchema = new mongoose.Schema({
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: String,
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  jobTitle: String,
+  gender: String,
+  {timestamps:true} //It will  return teh user created Time
 });
 
-// Schema Model
-const user=mongoose.model("user",userSchema); // here we connect userSchema variable contents into "user"
+// Create a user model
+const User = mongoose.model("User", userSchema);
 
-// Middleware (represented as plugin) --> These Middleware act as an authentication check between request and response cycle the response block will not be executed until the Middleware had run
-// For more Information on Middlewares visit "https://expressjs.com/en/guide/using-middleware.html"
-app.use(express.urlencoded({ extended: false })); // This middleware will encode the data comming from url and parse the data and forward the execution to next Middleware
-app.use((req,res,next)=>{
-  console.log("Hi from Middle ware");
+// Middleware for JSON request parsing
+app.use(express.json());
+
+// Middleware for logging
+app.use((req, res, next) => {
+  console.log("Hi from Middleware");
   console.log(`${Date.now()} : ${req.ip} : ${req.method} : ${req.path}`);
-  next(); // ***If we not write next() the remaining code will not run
+  next();
 });
 
-// General HTML Rendering
-app.get("/users", (req, res) => {
-  const html = `
-    <ul>
-        ${users.map((user) => `<li>${user.first_name}</li>`).join("")}
-    </ul>
-    `;
-  res.send(html);
-});
+// API Routes
 
-// RESTful API --> JSON Rendering
-app.get("/api/users", (req, res) => {
-  return res.json(users);
-});
-
-// Dynamic URL rendering
-app.get("/api/users/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const user = users.find((user) => user.id === id);
-  if (user) {
-    return res.json(user);
-  } else {
-    return res.status(404).json({ error: "User not found" });
+// Get all users
+app.get("/api/users", async (req, res) => {
+  const allDbUsers=await User.find({}); // Empty parenthesis means return all users
+  try {
+    
+  } catch (err) {
+    console.error("Error fetching users:", err);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
 // Create a new user
-app.post("/api/users", (req, res) => {
-  const body = req.body;
-  const newUserId = users.length + 1;
-  const newUser = { ...body, id: newUserId };
-  
-  users.push(newUser);
+app.post("/api/users", async (req, res) => {
+  try {
+    const { firstName, lastName, email, jobTitle, gender } = req.body;
 
-  fs.writeFile("./_8_MOCK_DATA.json", JSON.stringify(users), (err) => {
-    if (err) {
-      return res.status(500).json({ error: "Error saving user data" });
-    }
-    return res.status(201).json({ status: "success", id: newUserId });
-  });
-});
-
-// Update user by ID (you can modify this part as needed)
-app.patch("/api/users/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const updatedUserData = req.body;
-  const userIndex = users.findIndex((user) => user.id === id);
-  if (userIndex !== -1) {
-    users[userIndex] = { ...users[userIndex], ...updatedUserData };
-    fs.writeFile("./_8_MOCK_DATA.json", JSON.stringify(users), (err) => {
-      if (err) {
-        return res.status(500).json({ error: "Error saving user data" });
-      }
-      return res.json({ status: "success" });
+    const newUser = new User({
+      firstName,
+      lastName,
+      email,
+      jobTitle,
+      gender,
     });
-  } else {
-    return res.status(404).json({ error: "User not found" });
+
+    await newUser.save();
+
+    // Log the user data in the terminal
+    console.log("User created:", newUser);
+
+    return res.status(201).json({ msg: "User created successfully" });
+  } catch (err) {
+    console.error("Error creating user:", err);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-// Delete user by ID (you can modify this part as needed)
-app.delete("/api/users/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const userIndex = users.findIndex((user) => user.id === id);
-  if (userIndex !== -1) {
-    const deletedUser = users.splice(userIndex, 1)[0];
-    fs.writeFile("./_8_MOCK_DATA.json", JSON.stringify(users), (err) => {
-      if (err) {
-        return res.status(500).json({ error: "Error saving user data" });
-      }
-      return res.json({ status: "success", user: deletedUser });
-    });
-  } else {
-    return res.status(404).json({ error: "User not found" });
-  }
-});
-app.listen(PORT,()=>console.log(`Server Started at ${PORT}`));
+app.listen(PORT, () => console.log(`Server Started at ${PORT}`));
