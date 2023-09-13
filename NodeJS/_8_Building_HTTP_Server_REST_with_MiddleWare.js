@@ -9,7 +9,7 @@ const PORT = 8000;
 
 // Middleware (represented as plugin) --> These Middleware act as an authentication check between request and response cycle the response block will not be executed until the Middleware had run
 // For more Information on Middlewares visit "https://expressjs.com/en/guide/using-middleware.html"
-app.use(express.urlencoded({ extended: false })); // This middleware parse the data and forward the execution to next Middleware
+app.use(express.urlencoded({ extended: false })); // This middleware will encode the data comming from url and parse the data and forward the execution to next Middleware
 app.use((req,res,next)=>{
   console.log("Hi from Middle ware");
   console.log(`${Date.now()} : ${req.ip} : ${req.method} : ${req.path}`);
