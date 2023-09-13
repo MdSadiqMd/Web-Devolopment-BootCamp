@@ -5,6 +5,39 @@ const mongoose=require("mongoose");
 const app = express();
 const PORT = 8000;
 
+// In mongoose Database we follow these three steps 
+// --> Schema -Define a Structure
+// --> Schema -Model
+// --> Using Model we do CRUD Operations
+
+// Connceting MongoDB --> type "mongosh" in cmd and get the localhost mongoDB server and "/" and give the name to your Database
+mongoose.connect('mongodb://127.0.0.1:27017');
+
+// Schema 
+const userSchema=new mongoose.Schema({
+    firstName:{
+        type: String,
+        required:true // It means that user should compulsary Enter his first name
+    },
+    lastName:{
+        type:String,
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true, // It should be unique you cannot Signup with same email
+    },
+    jobTitle:{
+        type:String,
+    },
+    gender:{
+        type:String,
+    }
+});
+
+// Schema Model
+const user=mongoose.model("user",userSchema); // here we connect userSchema variable contents into "user"
+
 // Middleware (represented as plugin) --> These Middleware act as an authentication check between request and response cycle the response block will not be executed until the Middleware had run
 // For more Information on Middlewares visit "https://expressjs.com/en/guide/using-middleware.html"
 app.use(express.urlencoded({ extended: false })); // This middleware will encode the data comming from url and parse the data and forward the execution to next Middleware
