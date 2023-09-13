@@ -25,8 +25,7 @@ const userSchema = new mongoose.Schema({
   },
   jobTitle: String,
   gender: String,
-  {timestamps:true} //It will  return teh user created Time
-});
+},{timestamps:true}); //It will  return teh user created Time
 
 // Create a user model
 const User = mongoose.model("User", userSchema);
@@ -47,7 +46,12 @@ app.use((req, res, next) => {
 app.get("/api/users", async (req, res) => {
   const allDbUsers=await User.find({}); // Empty parenthesis means return all users
   try {
-    
+    const html=`
+    <ul>
+      ${allDbUsers.map((user)=> `<li>${user.firstName} - ${user.email}</li>`).join("")}
+    </ul>
+    `
+    res.send(html);
   } catch (err) {
     console.error("Error fetching users:", err);
     return res.status(500).json({ error: "Internal Server Error" });
