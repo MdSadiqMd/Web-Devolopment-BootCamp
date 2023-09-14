@@ -1,0 +1,1 @@
+// The MVC Pattern Stands for Model View Controller
