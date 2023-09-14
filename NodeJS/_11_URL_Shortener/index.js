@@ -1,6 +1,7 @@
 const express=require("express");
-const {connectToMongoDB}=require("../_11_URL_Shortener/connection")
-const urlRoute=require("./routes/url")
+const connectToMongoDB=require("./connection");
+const urlRoute=require("./routes/url");
+const handleGenerateNewShortURL=require("./controllers/url");
 const app=express();
 const PORT=8001;
 
