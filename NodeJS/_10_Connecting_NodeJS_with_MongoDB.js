@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = 8000;
 
-// Connecting to MongoDB
 mongoose.connect("mongodb://127.0.0.1:27017/MongoDataBase", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -11,7 +10,6 @@ mongoose.connect("mongodb://127.0.0.1:27017/MongoDataBase", {
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log("MongoDB error", err));
 
-// Define the user schema
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -25,19 +23,18 @@ const userSchema = new mongoose.Schema({
   },
   jobTitle: String,
   gender: String,
-}, { timestamps: true }); // It will store the user creation time
+}, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);
 
-app.use(express.json()); // Parse JSON requests
+app.use(express.json());
 
 app.use((req, res, next) => {
   console.log("Hi from Middleware");
   console.log(`${Date.now()} : ${req.ip} : ${req.method} : ${req.path}`);
-  next(); // If we don't call next(), the remaining code will not run
+  next();
 });
 
-// General HTML Rendering
 app.get("/users", async (req, res) => {
   const users = await User.find();
   const html = `
@@ -48,23 +45,55 @@ app.get("/users", async (req, res) => {
   res.send(html);
 });
 
-// RESTful API --> JSON Rendering
 app.get("/api/users", async (req, res) => {
-  const users = await User.find();
-  res.json(users);
+  const allDbUsers = await User.find({});
+  res.json(allDbUsers);
 });
 
-// Dynamic URL rendering
-app.get("/api/users/:id", async (req, res) => {
-  const id = req.params.id;
-  const user = await User.findById(id);
-  if (user) {
-    return res.json(user);
-  } else {
-    return res.status(404).json({ error: "User not found" });
-  }
-});
+app
+  .route("/api/users")
+  .get(async (req, res) => {
+    const allDbUsers = await User.find({});
+    res.json(allDbUsers);
+  })
+  .patch(async (req, res) => {
+    const userId = req.body.userId;
+    const updatedUserData = req.body.updatedData;
 
+    if (!userId || !updatedUserData) {
+      return res.status(400).json({ msg: "userId and updatedData are required" });
+    }
+
+    try {
+      const user = await User.findByIdAndUpdate(userId, updatedUserData, { new: true });
+      if (!user) {
+        return res.status(404).json({ msg: "User not found" });
+      }
+      res.json({ msg: "User updated successfully", user });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ msg: "Internal Server Error" });
+    }
+  })
+  .delete(async (req, res) => {
+    const userId = req.body.userId;
+
+    if (!userId) {
+      return res.status(400).json({ msg: "userId is required" });
+    }
+
+    try {
+      const user = await User.findByIdAndRemove(userId);
+      if (!user) {
+        return res.status(404).json({ msg: "User not found" });
+      }
+      res.json({ msg: "User deleted successfully", user });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ msg: "Internal Server Error" });
+    }
+  });
+  
 // Create a new user
 app.post("/api/users", async (req, res) => {
   const body = req.body;
