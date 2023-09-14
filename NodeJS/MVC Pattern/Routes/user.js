@@ -1,35 +1,29 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const app = express();
-const PORT = 8000;
+ 
+const router=express.Router();
 
-mongoose.connect("mongodb://127.0.0.1:27017/MongoDataBase", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log("MongoDB error", err));
+router.use((req, res, next) => {
+  console.log("Hi from Middleware");
+  console.log(`${Date.now()} : ${req.ip} : ${req.method} : ${req.path}`);
+  next();
+});
 
-const userSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: String,
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  jobTitle: String,
-  gender: String,
-}, { timestamps: true });
+router.get("/users", async (req, res) => {
+  const users = await User.find();
+  const html = `
+    <ul>
+      ${users.map(user => `<li>${user.firstName}</li>`).join("")}
+    </ul>
+  `;
+  res.send(html);
+});
 
-const User = mongoose.model("User", userSchema);
+router.get("/api/users", async (req, res) => {
+  const allDbUsers = await User.find({});
+  res.json(allDbUsers);
+});
 
-app.use(express.json());
-
-app
+router
   .route("/api/users")
   .get(async (req, res) => {
     const allDbUsers = await User.find({});
@@ -72,9 +66,10 @@ app
       res.status(500).json({ msg: "Internal Server Error" });
     }
   });
+  
 
 // Create a new user
-app.post("/api/users", async (req, res) => {
+router.post("/api/users", async (req, res) => {
   const body = req.body;
   if (
     !body ||
@@ -96,4 +91,4 @@ app.post("/api/users", async (req, res) => {
   return res.status(201).json({ msg: "success", user: result }); // Return the created user object
 });
 
-app.listen(PORT, () => console.log(`Server Started at ${PORT}`));
+module.exports=router;
