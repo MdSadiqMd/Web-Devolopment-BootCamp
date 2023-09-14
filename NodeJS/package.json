@@ -5,8 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.18.2",
-    "readline-sync": "^1.4.10",
-    "mongoose": "^7.5.1"
+    "mongoose": "^7.5.1",
+    "nanoid": "^5.0.1",
+    "readline-sync": "^1.4.10"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
