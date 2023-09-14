@@ -19,8 +19,8 @@ const logRequest = require("./Middlewares/Index"); // Import the middleware
 
 app.use(logRequest); // Use the middleware
 
-const userRoutes = require("./routes/userRoutes");
-app.use("/", userRoutes);
+const userRoutes = require("./Routes/user");
+app.use("/api/user", userRoutes);
 
 app.listen(PORT, () => console.log(`Server Started at ${PORT}`));
 
