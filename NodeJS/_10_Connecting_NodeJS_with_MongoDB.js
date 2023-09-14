@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
   },
   jobTitle: String,
   gender: String,
-},{timestamps:true}); //It will  return teh user created Time
+},{timestamps:true}); //It will the user created Time
 
 // Create a user model
 const User = mongoose.model("User", userSchema);
