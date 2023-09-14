@@ -1,13 +1,8 @@
 const express = require("express");
- 
-const router=express.Router();
+const router = express.Router();
+const User = require("../models/User");
 
-router.use((req, res, next) => {
-  console.log("Hi from Middleware");
-  console.log(`${Date.now()} : ${req.ip} : ${req.method} : ${req.path}`);
-  next();
-});
-
+// General HTML Rendering
 router.get("/users", async (req, res) => {
   const users = await User.find();
   const html = `
@@ -18,6 +13,7 @@ router.get("/users", async (req, res) => {
   res.send(html);
 });
 
+// RESTful API --> JSON Rendering
 router.get("/api/users", async (req, res) => {
   const allDbUsers = await User.find({});
   res.json(allDbUsers);
@@ -66,29 +62,5 @@ router
       res.status(500).json({ msg: "Internal Server Error" });
     }
   });
-  
 
-// Create a new user
-router.post("/api/users", async (req, res) => {
-  const body = req.body;
-  if (
-    !body ||
-    !body.firstName ||
-    !body.lastName ||
-    !body.email ||
-    !body.jobTitle
-  ) {
-    return res.status(400).json({ msg: "All fields are required" });
-  }
-
-  const result = await User.create({
-    firstName: body.firstName,
-    lastName: body.lastName,
-    email: body.email,
-    gender: body.gender,
-    jobTitle: body.jobTitle,
-  });
-  return res.status(201).json({ msg: "success", user: result }); // Return the created user object
-});
-
-module.exports=router;
+module.exports = router;
