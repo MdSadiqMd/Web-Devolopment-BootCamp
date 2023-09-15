@@ -1,16 +1,18 @@
-const express=require("express");
-const connectToMongoDB=require("./connection");
-const urlRoute=require("./routes/url");
-const handleGenerateNewShortURL=require("./controllers/url");
-const app=express();
-const PORT=8001;
+const express = require("express");
+const connectToMongoDB = require("./connection"); // Correct import
+const { router } = require("./routes/url");
 
-connectToMongoDB("mongodb://localhost:27017/short-url").then(()=>{
+const app = express();
+const PORT = 8001;
+
+connectToMongoDB("mongodb://localhost:27017/short-url").then(() => {
     console.log("MongoDB Connected");
-})
+}).catch((error) => {
+    console.error("MongoDB Connection Error:", error);
+});
 
-app.use("/url",urlRoute);
+app.use("/url", router);
 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`Server Started at :${PORT}`);
 });
