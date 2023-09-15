@@ -1,17 +1,11 @@
 const mongoose = require("mongoose");
-
-mongoose.set("strictQuery", true);
-
-async function connectToMongoDB(url) {
-    try {
-        await mongoose.connect(url, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log("MongoDB Connected");
-    } catch (error) {
-        console.error("MongoDB Connection Error:", error);
-    }
+const uri="mongodb://127.0.0.1:27017";
+function connectToMongoDB(uri) {
+  return mongoose
+    .connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 }
 
-module.exports = { connectToMongoDB };
+module.exports = connectToMongoDB;

@@ -1,18 +1,56 @@
 const shortid = require("shortid");
 const URL = require("../models/url");
 
-async function handleGenerateNewShortURL(req, res) {
-    const body = req.body;
-    if (!body.url) {
-        return res.status(400).json({ error: "url is required" });
+const generateShortURL = async (url) => {
+    const shortId = shortid.generate();
+  
+    try {
+      await URL.create({
+        shortId,
+        redirectURL: url,
+      });
+  
+      // Assuming PORT is defined in your module scope
+      const shortUrl = `http://localhost:${PORT}/${shortId}`;
+  
+      return shortUrl;
+    } catch (error) {
+      console.error("Error creating short URL:", error);
+      throw new Error("Internal Server Error");
     }
-    const newShortId = shortid.generate();
-    await URL.create({
-        shortId: newShortId,
-        redirectURL: body.url,
-        visitHistory: [],
-    });
-    return res.json({ id: newShortId });
+  };
+  
+
+async function redirectToOriginalURL(req, res) {
+  const { shortId } = req.params;
+
+  try {
+    const url = await URL.findOne({ shortId });
+
+    if (!url) {
+      return res.status(404).json({ error: "Short URL not found" });
+    }
+
+    await URL.findByIdAndUpdate(
+      url._id,
+      {
+        $push: {
+          visitHistory: {
+            timestamp: Date.now(),
+          },
+        },
+      },
+      { new: true }
+    );
+
+    return res.redirect(url.redirectURL);
+  } catch (error) {
+    console.error("Error redirecting:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
 }
 
-module.exports = { handleGenerateNewShortURL };
+module.exports = {
+  generateShortURL,
+  redirectToOriginalURL,
+};
