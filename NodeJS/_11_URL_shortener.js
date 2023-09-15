@@ -6,6 +6,15 @@ Body --> raw --> JSON --> {
 }
 Send
 */
+/*
+To check the click count and click history
+Open terminal
+mongosh 
+db.urls.findOne(
+  { shortId: "your-short-id" },
+  { clickCount: 1, clickHistory: 1, _id: 0 }
+)
+*/ 
 const express = require("express");
 const mongoose = require("mongoose");
 const shortid = require("shortid");
@@ -37,7 +46,11 @@ const urlSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  visitHistory: [
+  clickCount: {
+    type: Number,
+    default: 0,
+  },
+  clickHistory: [
     {
       timestamp: {
         type: Date,
@@ -85,17 +98,14 @@ app.get("/:shortId", async (req, res) => {
       return res.status(404).json({ error: "Short URL not found" });
     }
 
-    await URL.findByIdAndUpdate(
-      url._id,
-      {
-        $push: {
-          visitHistory: {
-            timestamp: Date.now(),
-          },
-        },
-      },
-      { new: true }
-    );
+    // Increment the click count
+    url.clickCount += 1;
+
+    // Record the timestamp of the click
+    const clickTimestamp = new Date();
+    url.clickHistory.push({ timestamp: clickTimestamp });
+
+    await url.save();
 
     return res.redirect(url.redirectURL);
   } catch (error) {
