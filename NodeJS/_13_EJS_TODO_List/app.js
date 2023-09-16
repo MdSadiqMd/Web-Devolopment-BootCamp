@@ -1,7 +1,9 @@
 const express=require("express");
 const bosyParser=require("body-parser");
+const ejs=require("ejs");
 
 const app=express();
+app.set('view engine','ejs');
 app.use(bosyParser.urlencoded({extended:true}));
 
 app.get("/",(req,res)=>{
