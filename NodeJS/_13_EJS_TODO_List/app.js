@@ -5,9 +5,11 @@ const app=express();
 app.use(bosyParser.urlencoded({extended:true}));
 
 app.get("/",(req,res)=>{
-    res.send("Hello World");
-    let today=new Date().getDate();
-    console.log(today);
+    let options={weekday:'long',year:'numeric',month:'long',day:'numeric'};
+    let today=new Date();
+    let day=today.toLocaleDateString("en-US",options);
+    res.send(day);
+    
 });
 
 app.listen(8000,()=>{console.log("Server Started at 8000")})
