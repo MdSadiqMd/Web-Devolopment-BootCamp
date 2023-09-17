@@ -21,7 +21,8 @@
       "default",
       {
         "ignore": [
-          "iframe[allow]"
+          "iframe[allow]",
+          "meta[name=theme-color]"
         ]
       }
     ],
