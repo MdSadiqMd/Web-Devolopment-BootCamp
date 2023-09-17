@@ -3,12 +3,13 @@ import React from "react";
 const TodoItem=()=>{
     return(
         <div>
-            <li>
-                <input type="checkbox" />
-                <p>Eat</p>
-                <p>Namaz</p>
+            <li className="todo-item">
+                <span>
+                    <input type="checkbox" />
+                    <span className="todo-item-text">Namaz</span>
+                </span>
             </li>
-
+            <p>...</p>
         </div>
     );
 };
