@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Statistics</title>
+</head>
+<body>
+    <h1>URL Statistics</h1>
+
+    <h2>Shortened URL: <%= shortUrl %></h2>
+    <p>Original URL: <%= longUrl %></p>
+    <p>Number of Clicks: <%= clicks %></p>
+
+    <h3>Click Details</h3>
+    <ul>
+        <% for (const click of clickDetails) { %>
+            <li>
+                <p>Click Date: <%= click.date %></p>
+                <p>IP Address: <%= click.ip %></p>
+                <p>User Agent: <%= click.userAgent %></p>
+            </li>
+        <% } %>
+    </ul>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
