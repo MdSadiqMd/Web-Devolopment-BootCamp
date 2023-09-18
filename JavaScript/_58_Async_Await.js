@@ -63,7 +63,8 @@ AgetData(); */
 
 
 // Resolving two ***Different Promises with different Timeout's
-const p=new Promise((resolve,reject)=>{
+// Case -1 
+/*const p=new Promise((resolve,reject)=>{
     setTimeout(() => {
         resolve("Promise Resolved");
     }, 5000);
@@ -72,18 +73,51 @@ const p1=new Promise((resolve,reject)=>{
     setTimeout(() => {
         resolve("Promise 1 Resolved");
     }, 10000);
+});*/
+// Case -2
+const p=new Promise((resolve,reject)=>{
+    setTimeout(() => {
+        resolve("Promise Resolved");
+    }, 10000);
 });
-async function AgetData(){
+const p1=new Promise((resolve,reject)=>{
+    setTimeout(() => {
+        resolve("Promise 1 Resolved");
+    }, 5000);
+});
+//***Working of async Function 
+// Case -1
+// First AgetData() will go into call stack and "Execution started" will be executed
+// Next line the JS engine encounters a promise and as the resolving of timer is of 5sec it will leave that promise and go to next line encounters another promise of time 10 sec and as JS waits for none it throws the AgetData() from the call stack 
+// After 5 sec the AgetData() will enter again in call stack and print "With async Function","Promise Resolved"
+// After 5 sec (10sec - 5sec) the AgetData() will enter again in call stack and print "With async Function","Promise Resolved"
+// Case -2
+// First AgetData() will go into call stack and "Execution started" will be executed
+// Next line the JS engine encounters a promise and as the resolving of timer is of 10sec it will leave that promise and go to next line encounters another promise of time 5 sec and as JS waits for none it throws the AgetData() from the call stack 
+// After 5 sec the AgetData() will enter again in call stack and print "With async Function","Promise 1 Resolved"
+// After 5 sec the AgetData() will enter again in call stack and print "With async Function","Promise Resolved"
+async function AgetData(){ 
+    console.log("Execution Starts");
     const val=await p;
     console.log("With async Function");
     console.log(val); 
     const val1=await p1;
     console.log("With async Function");
-    console.log(val1); // (wait for 5 sec for the promise to be resolved)
+    console.log(val1); // Case -1
+                       // Execution Started
+                       // (wait for 5 sec for the promise to be resolved)
                        // With async Function
                        // Promise Resolved
                        // (wait for another 5 sec for the promise to be resolved)
                        // With async Function
                        // Promise 1 Resolved
+                       // Case -2
+                       // Execution Started
+                       // (wait for 10 sec for the promise to be resolved)
+                       // With async Function
+                       // Promise 1 Resolved
+                       // With async Function
+                       // Promise Resolved                       
+
 }
 AgetData();
