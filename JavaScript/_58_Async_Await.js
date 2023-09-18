@@ -121,3 +121,6 @@ async function AgetData(){
 
 }
 AgetData();
+// async/await ((vs)) promise.then()/catch()
+// *** async/await is only an syntactical sugar over promise.then()/catch() it means the javascript internally takes promise.then()/.catch() even if we use async/await
+// async/await makes more sense when there occurs an .then() promise hell
