@@ -8,7 +8,7 @@ console.log(data); // Promise { 'Sadiq' }
 // For Converting the promise into the value we use then keyword
 data.then((res)=> console.log(res)); // This line will return the res when result is encountered */
 
-const p=new Promise((resolve,reject)=>{
+/*const p=new Promise((resolve,reject)=>{
     resolve("Promise Resolved");
 });
 // Without async Function
@@ -20,5 +20,27 @@ getData();
 async function AgetData(){
     const val=await p; // await is a keyword which can be only be used inside a async function and written before a promise which to be resolved
     console.log(val);
+}
+AgetData();*/
+
+// Stopping the Execution of Promise
+const p=new Promise((resolve,reject)=>{
+    setTimeout(() => {
+        resolve("Promise Resolved");
+    }, 5000);
+});
+// Without async Function
+function getData() {
+    p.then((res)=>console.log(res));
+    console.log("Without async Function"); //Without async Function (after 5sec )
+                                           // Promise Resolved
+}
+getData();
+async function AgetData(){
+    const val=await p;
+    console.log("With async Function");
+    console.log(val); // (wait for 5 sec for the promise to be resolved)
+                      // With async Function
+                      // Promise Resolved
 }
 AgetData();
