@@ -7,12 +7,12 @@ import "./3_style.css";
 const App = () => {
   return (
     <div className="Container">
-      <Header />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      <Header title="Todie-App"/>
+      <TodoItem text="Namaz"/>
+      <TodoItem rext="Eat"/>
+      <TodoItem text="Drink"/>
+      <TodoItem text="Study"/>
+      <TodoItem text="Sleep"/>
       <Button />
     </div>
   );
