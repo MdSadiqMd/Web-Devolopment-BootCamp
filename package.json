@@ -4,5 +4,8 @@
     "jsx": "^0.9.89",
     "mongoose": "^7.5.2",
     "shortid": "^2.2.16"
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
   }
 }
