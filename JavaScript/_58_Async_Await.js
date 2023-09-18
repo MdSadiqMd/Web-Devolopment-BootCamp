@@ -23,14 +23,15 @@ async function AgetData(){
 }
 AgetData();*/
 
-// Stopping the Execution of Promise
-const p=new Promise((resolve,reject)=>{
+
+/*const p=new Promise((resolve,reject)=>{
     setTimeout(() => {
         resolve("Promise Resolved");
     }, 5000);
-});
+});*/
+// Stopping the Execution of Promise
 // Without async Function
-function getData() {
+/*function getData() {
     p.then((res)=>console.log(res));
     console.log("Without async Function"); //Without async Function (after 5sec )
                                            // Promise Resolved
@@ -42,5 +43,47 @@ async function AgetData(){
     console.log(val); // (wait for 5 sec for the promise to be resolved)
                       // With async Function
                       // Promise Resolved
+}
+AgetData();*/
+
+// Resolving two ***same Promises
+/*async function AgetData(){
+    const val=await p;
+    console.log("With async Function");
+    console.log(val); 
+    const val1=await p;
+    console.log("With async Function");
+    console.log(val1); // (wait for 5 sec for the promise to be resolved)
+                       // With async Function
+                       // Promise Resolved
+                       // With async Function
+                       // Promise Resolved
+}
+AgetData(); */
+
+
+// Resolving two ***Different Promises with different Timeout's
+const p=new Promise((resolve,reject)=>{
+    setTimeout(() => {
+        resolve("Promise Resolved");
+    }, 5000);
+});
+const p1=new Promise((resolve,reject)=>{
+    setTimeout(() => {
+        resolve("Promise 1 Resolved");
+    }, 10000);
+});
+async function AgetData(){
+    const val=await p;
+    console.log("With async Function");
+    console.log(val); 
+    const val1=await p1;
+    console.log("With async Function");
+    console.log(val1); // (wait for 5 sec for the promise to be resolved)
+                       // With async Function
+                       // Promise Resolved
+                       // (wait for another 5 sec for the promise to be resolved)
+                       // With async Function
+                       // Promise 1 Resolved
 }
 AgetData();
