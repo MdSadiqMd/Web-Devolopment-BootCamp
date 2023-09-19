@@ -38,3 +38,77 @@ function App() {
 }
 
 export default App;
+
+// UseEffect hook --> Used to Introduce effects at N different places in the website
+/*
+import React, { useState, useEffect } from "react";
+
+function DataFetching() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.example.com/data")
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  }, []); // The empty dependency array means this effect runs once on component mount.
+
+  return (
+    <ul>
+      {data.map((item) => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  );
+}
+*/
+
+// useContext -->It allows access to the context created by React.createContext, providing a way to share values across the component tree
+/*
+import React, { useContext } from "react";
+
+const MyContext = React.createContext();
+
+function ParentComponent() {
+  return (
+    <MyContext.Provider value="Hello from Context">
+      <ChildComponent />
+    </MyContext.Provider>
+  );
+}
+
+function ChildComponent() {
+  const contextValue = useContext(MyContext);
+
+  return <div>{contextValue}</div>;
+}
+*/
+
+// useReducer --> Alternate to useState where more logics are handled use Switch case Statements
+/*
+import React, { useReducer } from "react";
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: "increment" })}>Increment</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>Decrement</button>
+    </div>
+  );
+}
+*/
