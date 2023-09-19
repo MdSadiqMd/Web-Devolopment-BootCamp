@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
+import Card from "./5_components/card";
 
 function App() {
   useEffect(() => {
-    // Create a <link> element
     const link = document.createElement("link");
     link.href = "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css";
     link.rel = "stylesheet";
@@ -17,9 +17,10 @@ function App() {
   }, []); // The empty dependency array ensures this effect runs only once
 
   return (
-    <>
-      <h1 className="bg-green-400">Tailwind test</h1>
-    </>
+    <div className="bg-gray-100 min-h-screen p-4">
+      <Card channel="Sadiq" /> {/*The channel is the props which is going to pass in the Card() Function */}
+      <Card channel="Mohammad" />
+    </div>
   );
 }
 
