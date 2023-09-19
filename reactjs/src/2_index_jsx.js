@@ -13,7 +13,7 @@ function MyComponent() {
 
   // For returning Multiple Components
   return (
-    <>
+    <> {/*Comment lines in / * * / and close in {} */ /*This is called fragmentation we need to return the html in a div or if we not want to we can return in empty brackets called fragmentation */}
       <h2>Hello {name}</h2>
       <h3>Hello {2 + 3}</h3>
       <a href={link}>Click me</a>;
