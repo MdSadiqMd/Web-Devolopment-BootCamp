@@ -9,7 +9,7 @@ const App = () => {
     <div className="Container">
       <Header title="Todie-App"/>
       <TodoItem text="Namaz"/>
-      <TodoItem rext="Eat"/>
+      <TodoItem text="Eat"/>
       <TodoItem text="Drink"/>
       <TodoItem text="Study"/>
       <TodoItem text="Sleep"/>
