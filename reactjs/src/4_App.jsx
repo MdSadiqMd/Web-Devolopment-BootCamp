@@ -10,6 +10,18 @@ function App() {
         //(or)
         //counter=counter+1;
         //setCounter(counter);
+
+        // Interview Question
+        // If assume we have multiple counters like
+        /*setCounter(counter + 1); 
+        setCounter(counter + 1); 
+        setCounter(counter + 1);*/ // The output will be same as all the methods are calling the same counter
+
+        // For updating the counter value with same function we create a series/bundle of callbacks
+        /*setCounter(counter => counter+1);
+        setCounter(counter => counter+1);
+        setCounter(counter => counter+1);
+        setCounter(counter => counter+1);*/
     } else {
         alert("Exceeded the counter Limit");
     }
