@@ -13,7 +13,15 @@ let b="-1";
 let isBoolean=Boolean(b);
 console.log(isBoolean);
 
-// Test Cases --> 
+console.log(+true); // 1 --> it changes true to int
+console.log(+""); // 0 --> changes from ""--> false --> 0
+
+let c="1"+2+3;
+//let c=1+2+"3";
+console.log(c);
+console.log(typeof c);
+
+// Test Cases
 // ___ to Integer 
 // "47" => 47 (integer)
 // "47abc" => NaN (integer) where the NaN means not an number 
@@ -21,5 +29,10 @@ console.log(isBoolean);
 // "true" => NaN (integer) 
 
 // ___ to boolean 
-// "123" (any number other than zero even negetive) => true
+// "123" (any number other than zero even if it is negetive) => true
 // "abc" => true
+// "" => false
+
+// ___ to string 
+// "1"+2+3 => 123
+// 1+2+"3" => 33
