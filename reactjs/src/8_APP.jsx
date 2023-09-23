@@ -1,7 +1,10 @@
 import React from "react";
 import { ReactDOM } from "react-dom";
+import InputBox from "./8_Components/input";
+import useCurrencyInfo from "./8_hooks/useCurrencyInfo"
 
 function App() {
+    
     return (
         <div
             className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
