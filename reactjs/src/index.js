@@ -1,9 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+// Creating a router
+const router=createBrowserRouter([
+    {
+        path: '/',
+        element: <App />,
+        children: [
+            {
+                path: "",
+                element:<Home />
+                
+            }
+        ]
+    }
+])
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
