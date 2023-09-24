@@ -5,11 +5,14 @@ function Github() {
     useEffect(() => {
       fetch('https://github.api.com/users/mdsadiqmd')
       .then(Response => Response.json())
-      .then(data =>{})
+      .then(data =>{
+        console.log(data);
+        setData(data)
+      })
     }, [])
     
   return (
-    <div>Github</div>
+    <div>Githubvfollowers :{data.followers}</div>
   )
 }
 
