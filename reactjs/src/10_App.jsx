@@ -1,5 +1,5 @@
 import React from "react";
-import { useTable, useSortBy,usePagination } from "react-table";
+import { useTable, useSortBy, usePagination } from "react-table";
 
 const data = [
     {
@@ -38,19 +38,20 @@ const columns = [
 ];
 
 function App() {
-    // Add 'useSortBy' to the 'useTable' hook options to enable sorting
+    // Add 'useSortBy' and 'usePagination' to the 'useTable' hook options to enable sorting and pagination
     const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        rows,
+        page, // Use 'page' instead of 'rows' for paginated data
         prepareRow,
     } = useTable(
         {
             columns,
             data,
         },
-        useSortBy // Enable sorting by adding 'useSortBy' hook
+        useSortBy, // Enable sorting by adding 'useSortBy' hook
+        usePagination // Enable pagination by adding 'usePagination' hook
     );
 
     return (
@@ -86,7 +87,7 @@ function App() {
                     ))}
                 </thead>
                 <tbody {...getTableBodyProps()}>
-                    {rows.map((row) => {
+                    {page.map((row) => {
                         prepareRow(row);
                         return (
                             <tr {...row.getRowProps()}>
@@ -100,6 +101,22 @@ function App() {
                     })}
                 </tbody>
             </table>
+
+            {/* Pagination controls */}
+            <div className="pagination">
+                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+                    Previous
+                </button>
+                <span>
+                    Page{" "}
+                    <strong>
+                        {pageIndex + 1} of {pageOptions.length}
+                    </strong>
+                </span>
+                <button onClick={() => nextPage()} disabled={!canNextPage}>
+                    Next
+                </button>
+            </div>
         </div>
     );
 }
