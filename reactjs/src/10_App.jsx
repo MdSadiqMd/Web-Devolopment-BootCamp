@@ -1,4 +1,6 @@
 import React from "react";
+import ReactDOM from "react-dom";
+
 
 const data=[
     {
@@ -18,16 +20,40 @@ const data=[
     }
 ]
 
+const coloumns=[
+    { 
+        Header:"ID", // Header is which display in UI
+        accessor:"id", // Accessor is which we use to manipulate values in UI
+    },
+    {
+        Header:"Gender",
+        accessor:"gender",
+    },
+    {
+        Header:"Salary",
+        accessor:"salary",
+    },
+]
+
 function App(){
+    const {getTableProps,getTableBodyProps,headerGroups,rows,prepareRow}=useTable({
+        coloumns,
+        data,
+    });
+
     return (
         <div className="container">
-            <table>
+            <table {...getTableProps()} >
                 <thead>
-                    <tr>
+                    {headerGroups.map((hg)=>(
+                        <tr {hg.getHeaderProps()}></tr>
+                    ))}
+
+                    /*<tr>
                         <th>Id</th>
                         <th>Gender</th>
                         <th>Salary</th>
-                    </tr>
+                    </tr>*/
                 </thead>
                 <tbody>
                     {data.map((i)=>{
