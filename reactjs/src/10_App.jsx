@@ -1,5 +1,5 @@
 import React from "react";
-import { useTable } from "react-table";
+import { useTable, useSortBy,usePagination } from "react-table";
 
 const data = [
     {
@@ -31,14 +31,27 @@ const columns = [
     {
         Header: "Salary",
         accessor: "salary",
+        // Enable sorting for this column by adding the 'accessor' property
+        // and 'useSortBy' to the table options
+        sortType: "basic", // Specify the sorting type for this column
     },
 ];
 
 function App() {
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
-        columns,
-        data,
-    });
+    // Add 'useSortBy' to the 'useTable' hook options to enable sorting
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow,
+    } = useTable(
+        {
+            columns,
+            data,
+        },
+        useSortBy // Enable sorting by adding 'useSortBy' hook
+    );
 
     return (
         <div className="container">
@@ -47,7 +60,27 @@ function App() {
                     {headerGroups.map((headerGroup) => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
-                                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                                <th
+                                    {...column.getHeaderProps(
+                                        // Enable sorting by adding 'getSortByToggleProps'
+                                        column.getSortByToggleProps()
+                                    )}
+                                >
+                                    {/* Render the column header */}
+                                    {column.render("Header")}
+                                    {/* Display sorting indicators */}
+                                    <span>
+                                        {column.isSorted ? (
+                                            column.isSortedDesc ? (
+                                                <span>&darr;</span>
+                                            ) : (
+                                                <span>&uarr;</span>
+                                            )
+                                        ) : (
+                                            ""
+                                        )}
+                                    </span>
+                                </th>
                             ))}
                         </tr>
                     ))}
