@@ -1,5 +1,5 @@
 import React from "react";
-import { useTable, useSortBy, usePagination } from "react-table";
+import { useTable, useSortBy, usePagination } from "react-table"; // pagination means displaying only a particular amount of rows in a page
 
 const data = [
   {
@@ -105,6 +105,7 @@ function App() {
     headerGroups,
     page, // Instead of 'rows', use 'page' for paginated data
     prepareRow,
+    // Pagination variables
     canPreviousPage,
     canNextPage,
     pageOptions,
@@ -118,7 +119,7 @@ function App() {
       columns,
       data,
     },
-    useSortBy,
+    useSortBy, // import the useMethods() here 
     usePagination
   );
 
@@ -127,7 +128,7 @@ function App() {
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <tr {...headerGroup.getHeaderGroupProps()}> {/*Use the created prop here in the form of method */}
               {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps(
@@ -138,12 +139,13 @@ function App() {
                   {/* Render the column header */}
                   {column.render("Header")}
                   {/* Display sorting indicators */}
-                  <span>
+                  <span> {/*write the sorting logic in span tag*/}
+                  {/*checking if the coloums are sorted or not and sort accordingly*/}
                     {column.isSorted ? (
                       column.isSortedDesc ? (
-                        <span>&darr;</span>
+                        <span>&darr;</span> //desending order sorting &darr;
                       ) : (
-                        <span>&uarr;</span>
+                        <span>&uarr;</span> //acsending order sorting &uarr;
                       )
                     ) : (
                       ""
@@ -154,13 +156,21 @@ function App() {
             </tr>
           ))}
         </thead>
+        {/* 
+           The following code is responsible for rendering the body of the table,
+           including the rows and cells.
+        */}
         <tbody {...getTableBodyProps()}>
           {page.map((row) => {
+            // Prepare the current row for rendering
             prepareRow(row);
+    
             return (
+              // Render a table row and apply the row's properties
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
+                    // Render a table cell and apply the cell's properties
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
                 })}
@@ -168,6 +178,7 @@ function App() {
             );
           })}
         </tbody>
+
       </table>
 
       {/* Pagination controls */}
