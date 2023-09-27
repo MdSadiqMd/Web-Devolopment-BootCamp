@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import UserContextProvider from "./11_Context/UserContextProvider";
 import Login from "./11_Components/Login";
 import Profile from "./11_Components/Profile";
