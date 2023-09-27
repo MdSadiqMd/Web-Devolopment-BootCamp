@@ -8,7 +8,7 @@ function Login() {
     const {setUser} = useContext(UserContext)
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault() // To no send the value to any url when we enter the data
         setUser({username, password})
     }
   return (
