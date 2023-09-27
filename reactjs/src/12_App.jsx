@@ -12,6 +12,11 @@ function App() {
         setThemeMode("dark")
     }
 
+    useEffect(() => {
+        document.querySelector('html').classList.remove("light", "dark") // remove any theme light or dark that is present
+        document.querySelector('html').classList.add(themeMode)
+      }, [themeMode])
+
     return (
         <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
           <div className="flex flex-wrap min-h-screen items-center">
