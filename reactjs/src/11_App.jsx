@@ -1,12 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import UserContextProvider from "./11_Context/UserContextProvider";
+import Login from "./11_Components/Login";
+import Profile from "./11_Components/Profile";
 
 function App(){
     return(
-        <>
-        <h1>Hello World</h1>
-        </>
+        <UserContextProvider>
+            <h1>Hello World</h1>
+            <Login />
+            <Profile />
+        </UserContextProvider>
     )
 }
 export default App
