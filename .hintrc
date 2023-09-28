@@ -36,6 +36,12 @@
       }
     ],
     "button-type": "off",
-    "highest-available-document-mode": "off"
+    "highest-available-document-mode": "off",
+    "axe/parsing": [
+      "default",
+      {
+        "marquee": "off"
+      }
+    ]
   }
 }
