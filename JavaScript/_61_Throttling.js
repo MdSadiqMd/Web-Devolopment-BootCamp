@@ -16,4 +16,42 @@
 
 // Other Example can be of scroll bar tracking
 
-// Making our Own Throttling Function
+// Making our Own Throttling Function for window resize() problem
+
+// Define a function to throttle the window resize event
+function throttle(callback, delay) {
+    let timeoutId;
+  
+    return function () {
+      // Clear the previous timeout
+      clearTimeout(timeoutId);
+  
+      // Set a new timeout
+      timeoutId = setTimeout(() => {
+        callback.apply(null, arguments);
+      }, delay);
+
+      /*
+      const now = new Date().getTime();
+
+      if (now - lastCall >= delay) {
+        lastCall = now;
+        callback.apply(null, arguments);
+    }
+      */
+    };
+  }
+  
+  // Usage example:
+  function handleResize() {
+    // Your resize event handler logic goes here
+    console.log('Window was resized!');
+  }
+  
+  // Throttle the resize event to a specific delay (e.g., 200 milliseconds)
+  const throttledResize = throttle(handleResize, 200);
+  
+  // Attach the throttled event handler to the window's resize event
+  window.addEventListener('resize', throttledResize);
+  
+  
