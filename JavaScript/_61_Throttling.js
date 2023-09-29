@@ -15,3 +15,5 @@
 // Throttling can be a good solution such that it will give access to the player only after a certain time not before and not after 
 
 // Other Example can be of scroll bar tracking
+
+// Making our Own Throttling Function
