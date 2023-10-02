@@ -1,8 +1,11 @@
 import React from 'react'
+import Board from './15_Components/Board'
 
 function App() {
   return (
-    <div>App</div>
+    <div className='App'>
+        <Board />
+    </div>
   )
 }
 
