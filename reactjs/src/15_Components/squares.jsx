@@ -1,6 +1,6 @@
 import React from "react";
 
-const Square = () => {
+const Square = (props) => {
   return (
     <div
       style={{
@@ -12,7 +12,7 @@ const Square = () => {
         alignItems: "center",
       }}
       className="square">
-      <h5>null</h5>
+      <h5>{props.value}</h5>
     </div>
   );
 };
