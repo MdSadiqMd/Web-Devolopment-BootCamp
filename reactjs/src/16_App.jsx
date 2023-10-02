@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { getPosts } from './index';
+import { getPosts } from './16_index_API_Fetching';
+import PostCard from './16_Components/PostCard';
 
 function App() {
-  const [data,setData]=useState(null);
+  const [data, setData] = useState(null);
 
-  useEffect(()=>{
-    getPosts().then((posts)=>console.log(posts))
-  },[]);
+  useEffect(() => {
+    getPosts().then((posts) => {
+      setData(posts); 
+    });
+  }, []);
 
   return (
     <div className='App'>
-        {
-            data ? data.map((e)=><li>{e.title}</li>) :<p>No data</p>
-        }
+      {data ? (
+        <ul>
+          {data.map((e) => (
+            <PostCard title={e.title} body={e.body} />
+          ))}
+        </ul>
+      ) : (
+        <p>No data</p>
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
