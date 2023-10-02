@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Square from './Square';
+import Square from './squares';
 
 function Board() {
   const [state, setState] = useState(Array(9).fill(null));
@@ -19,7 +19,7 @@ function Board() {
   const checkWinner = () => {
     for (const logic of winnerLogic) {
       const [a, b, c] = logic;
-      if (state[a] && state[a] === state[b] && state[a] === state[c]) {
+      if (state[a] !== null && state[a] === state[b] && state[a] === state[c]) {
         return state[a];
       }
     }
@@ -27,6 +27,9 @@ function Board() {
   };
 
   const handleClick = (index) => {
+    if(state[index]!==null){ // This if block is used to not re-write the X/O
+      return;
+    }
     const copyState = [...state];
     if (copyState[index] || checkWinner()) {
       return;
@@ -36,34 +39,40 @@ function Board() {
     setX(!isX);
   };
 
-  const winner = checkWinner();
-  let status;
+  const handlereset = () => {
+    setState(Array(9).fill(null));
+    setX(true);
+  };
 
-  if (winner) {
-    status = 'Winner: ' + winner;
-  } else if (state.every((square) => square)) {
-    status = 'It\'s a draw!';
-  } else {
-    status = 'Next player: ' + (isX ? 'X' : 'O');
-  }
+  const winner = checkWinner();
 
   return (
     <div className='board-container' style={{ margin: "20px" }}>
-      <div className='board-row' style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-        <Square onClick={() => handleClick(0)} value={state[0]} />
-        <Square onClick={() => handleClick(1)} value={state[1]} />
-        <Square onClick={() => handleClick(2)} value={state[2]} />
-      </div>
-      <div className='board-row' style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-        <Square onClick={() => handleClick(3)} value={state[3]} />
-        <Square onClick={() => handleClick(4)} value={state[4]} />
-        <Square onClick={() => handleClick(5)} value={state[5]} />
-      </div>
-      <div className='board-row' style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-        <Square onClick={() => handleClick(6)} value={state[6]} />
-        <Square onClick={() => handleClick(7)} value={state[7]} />
-        <Square onClick={() => handleClick(8)} value={state[8]} />
-      </div>
+      {winner ? (
+        <>
+          {winner} won the game {" "}
+          <button onClick={handlereset} style={{border: "2px solid black"}}>Play again</button>
+        </>
+      ) : (
+        <>
+          <h4>Player {isX ? "X" : "O"} turn</h4>
+          <div className='board-row' style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+            <Square onClick={() => handleClick(0)} value={state[0]} />
+            <Square onClick={() => handleClick(1)} value={state[1]} />
+            <Square onClick={() => handleClick(2)} value={state[2]} />
+          </div>
+          <div className='board-row' style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+            <Square onClick={() => handleClick(3)} value={state[3]} />
+            <Square onClick={() => handleClick(4)} value={state[4]} />
+            <Square onClick={() => handleClick(5)} value={state[5]} />
+          </div>
+          <div className='board-row' style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+            <Square onClick={() => handleClick(6)} value={state[6]} />
+            <Square onClick={() => handleClick(7)} value={state[7]} />
+            <Square onClick={() => handleClick(8)} value={state[8]} />
+          </div>
+        </>
+      )}
     </div>
   );
 }
