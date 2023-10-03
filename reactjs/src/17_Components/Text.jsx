@@ -8,7 +8,7 @@ const Text=()=>{
     return(
         <Draggable>
             {
-                editMode ? (<input onDoubleClick={e=>setEditMode(false)} value={val} onChange={(e)=>setVal(e.target.value)} /> 
+                editMode ? (<input onDoubleClick={e=>setEditMode(false)} value={val} onChange={(e)=>setVal(e.target.value)} />  // Give an input feild when we click on edit text and double click on it
                 ):(
                 <h1 onDoubleClick={e=>setEditMode(true)}>{val}</h1>)
             }
