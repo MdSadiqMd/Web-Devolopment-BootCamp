@@ -1,15 +1,12 @@
 import React from "react";
-import UserContextProvider from "./11_Context/UserContextProvider";
-import Login from "./11_Components/Login";
-import Profile from "./11_Components/Profile";
+import counter from "./11_Components/counter";
 
+// Context API --> Rather than passing a value or a variable through props we create a folder of context and keep values in it (as the name suggests Context API) and use it from it rather falling in prop hell
 function App(){
     return(
-        <UserContextProvider>
-            <h1>Hello World</h1>
-            <Login />
-            <Profile />
-        </UserContextProvider>
+        <div>
+            <h1>Context API</h1>
+        </div>
     )
 }
 export default App
