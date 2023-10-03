@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import Text from "../17_Components/Text";
+import {exportComponentAsJPEG} from "react-component-export-image";
 
 const EditPage = () => {
     const [params] = useSearchParams();
@@ -10,10 +11,12 @@ const EditPage = () => {
         setCount(count + 1);
     }
 
+    const memeref=createRef();
+
     return (
         <div>
             <div>
-                <img src={params.get("url")} width="250px" alt="meme" />
+                <img ref={memeref} src={params.get("url")} width="250px" alt="meme" />
                 {
                     Array(count).fill(0).map((e, index) => (
                         <Text key={index} />
@@ -21,6 +24,7 @@ const EditPage = () => {
                 }
             </div>
             <button onClick={addText}>Add Text</button>
+            <button onClick={(e)=>{exportComponentAsJPEG(memeref)}}>Save</button>
         </div>
     )
 }
