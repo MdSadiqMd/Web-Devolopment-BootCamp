@@ -5,4 +5,19 @@
 // To solve this problem we can use setTimeout() method but as we don't know in how much time the state will change setTimeout() is not an optimized/correct Approach
 // *** To Solve this issue we use flag(Boolean values) 
 
-let  
+let state = null;
+let flag = false;
+
+async function A() {
+    if (!flag) {
+        flag = true;
+        state = 'A';
+    }
+}
+
+async function B() {
+    if (flag) {
+        flag = false;
+        state = 'B';
+    }
+}
