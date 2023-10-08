@@ -17,7 +17,7 @@ function App() {
                 console.error('Error creating authorized user:', error);
             });
     };
-
+    
     return (
         <div className="App">
             <Signup />
