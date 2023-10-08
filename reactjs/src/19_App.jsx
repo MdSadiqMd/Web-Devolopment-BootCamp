@@ -11,8 +11,8 @@ function App() {
       id:1,
       name:"sadiq",
       age:21,
-    })
-  }
+    });
+  };
 
   return (
     <div className='App'>
