@@ -21,6 +21,7 @@ function Signup() {
 
     return (
         <div className="signupPage">
+            <h1>Signup Page</h1>
             <label htmlFor="email">Email</label>
             <input onChange={(e) => setEmail(e.target.value)} type="email" required placeholder="Enter your email" />
             <label htmlFor="password">Password</label>

@@ -2,6 +2,7 @@ import React from 'react';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { app } from './20_firebase';
 import Signup from './20_pages/signup';
+import Signin from './20_pages/signin';
 
 const auth = getAuth(app);
 
@@ -20,6 +21,7 @@ function App() {
     return (
         <div className="App">
             <Signup />
+            <Signin />
             <button onClick={createAuthorizedUser}>Create Authorized User</button>
         </div>
     );
