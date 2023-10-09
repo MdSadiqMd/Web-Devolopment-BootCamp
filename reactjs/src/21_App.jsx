@@ -2,7 +2,9 @@ import React from 'react'
 
 function App() {
   return (
-    <div>App</div>
+    <div className="App">
+        <h1>Firebase</h1>
+    </div>
   )
 }
 

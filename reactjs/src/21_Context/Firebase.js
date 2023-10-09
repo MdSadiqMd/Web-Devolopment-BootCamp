@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database"; // Import database functions
@@ -14,9 +14,13 @@ const firebaseConfig = {
 };
 
 // This connects our web app with Firebase
-export const FirebaseApp = initializeApp(firebaseConfig);
-export const firebaseAuth = getAuth(FirebaseApp);
-export const database = getDatabase(FirebaseApp);
+const FirebaseApp = initializeApp(firebaseConfig);
+const firebaseAuth = getAuth(FirebaseApp);
+const database = getDatabase(FirebaseApp);
+
+export const useFirebase=()=>{
+    useContext(FirebaseContext);
+}
 
 const FirebaseContext = createContext(null);
 
