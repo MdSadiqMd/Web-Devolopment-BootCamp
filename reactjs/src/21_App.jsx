@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useFirebase } from './21_Context/firebase';
+// Uncomment this line to run
+//import { useFirebase } from './21_Context/firebase';
 
 function App() {
   const Firebase = useFirebase(); // Custom hook providing Firebase functions
