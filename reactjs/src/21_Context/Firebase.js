@@ -18,11 +18,11 @@ const FirebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(FirebaseApp);
 const database = getDatabase(FirebaseApp);
 
-export const useFirebase=()=>{
-    useContext(FirebaseContext);
-}
-
 const FirebaseContext = createContext(null);
+
+export const useFirebase = () => {
+  return useContext(FirebaseContext); // Return the context value
+};
 
 export const FirebaseProvider = (props) => {
   const signupUserWithEmailandPassword = (email, password) => {

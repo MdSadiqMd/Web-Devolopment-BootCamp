@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
-import { useFirebase } from './21_Context/Firebase';
+import React, { useState } from 'react';
+import { useFirebase } from './21_Context/firebase';
 
 function App() {
-  const Firebase = useFirebase(); // Custom Firebase context hook
+  const Firebase = useFirebase(); // Custom hook providing Firebase functions
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -30,18 +30,8 @@ function App() {
   return (
     <div className="App">
       <h1>Firebase</h1>
-      <input
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
-        type="email"
-        placeholder="Enter Email"
-      />
-      <input
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-        type="password"
-        placeholder="Enter Password"
-      />
+      <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder='Enter Email' />
+      <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder='Enter Password' />
       <button onClick={handleSignUp}>SignUp</button>
     </div>
   );
