@@ -1,7 +1,7 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database"; // Import database functions
+import { getDatabase, ref, set ,get, onValue} from "firebase/database"; // Import database functions
 
 const firebaseConfig = {
     apiKey: "AIzaSyAGBSTMiNYZbSqTg_9W61cZtOYKVlF7WW0",
@@ -32,6 +32,18 @@ export const FirebaseProvider = (props) => {
   const putData = (key, data) => {
     set(ref(database, key), data);
   };
+
+  // Reading Data
+  get(b(ref(database),'root/a/b')).then((snapShot)=>{
+    alert(snapShot.val())
+  });
+
+  const [name,setName]=useState("");
+  useEffect(()=>{
+    onValue(ref(database,"root/a/b"),(snapShot)=>{
+      setName(snapShot.val().id)
+    })
+  })
 
   const contextValue = {
     signupUserWithEmailandPassword,
