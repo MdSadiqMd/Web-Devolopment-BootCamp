@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-// Uncomment this line to run
-//import { useFirebase } from './21_Context/firebase';
+import { useFirebase } from './21_Context/firebase';
 
 function App() {
   const Firebase = useFirebase(); // Custom hook providing Firebase functions
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // This will create a Object in the tree format Given
+  const putnewData=()=>{
+    Firebase.putData("root/a/b",{id:1});
+  }
 
   const handleSignUp = async () => {
     try {
@@ -32,8 +36,12 @@ function App() {
     <div className="App">
       <h1>Firebase</h1>
       <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder='Enter Email' />
+      <br />
       <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder='Enter Password' />
+      <br />
       <button onClick={handleSignUp}>SignUp</button>
+      <br />
+      <button onClick={putnewData}>Trigger New Data</button>
     </div>
   );
 }
