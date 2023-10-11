@@ -15,16 +15,17 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const FirebaseApp = initializeApp(firebaseConfig);
-const firebaseAuth=getAuth(FirebaseApp);
+const firebaseAuth = getAuth(FirebaseApp);
 
 export const useFirebase = () => useContext(FirebaseContext);
 
 export const FirebaseProvider = (props) => {
-    const signUpUserWithEmailandPassword=(email,password)=>{
-        createUserWithEmailAndPassword(firebaseAuth,email,password)
-    }
+  const signupUserWithEmailandPassword = (email, password) => {
+    return createUserWithEmailAndPassword(firebaseAuth, email, password); // Return the promise here
+  };
+
   return (
-    <FirebaseContext.Provider value={signUpUserWithEmailandPassword}>
+    <FirebaseContext.Provider value={signupUserWithEmailandPassword}>
       {props.children}
     </FirebaseContext.Provider>
   );

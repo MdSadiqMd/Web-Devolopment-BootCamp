@@ -4,13 +4,18 @@ import Form from 'react-bootstrap/Form';
 import { useFirebase } from '../23_Context/Firebase';
 
 const RegisterPage = () => {
-  const firebase = useFirebase();
+  const signupUserWithEmailandPassword = useFirebase();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent Page from reloading
-    await firebase.signupUserWithEmailandPassword(email, password);
+    e.preventDefault();
+    try {
+      const result = await signupUserWithEmailandPassword(email, password);
+      alert(result);
+    } catch (error) {
+      console.error('Error signing up:', error.message);
+    }
   };
 
   return (
