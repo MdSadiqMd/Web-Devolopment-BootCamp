@@ -1,6 +1,6 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
 const FirebaseContext = createContext(null);
 
@@ -16,10 +16,24 @@ const firebaseConfig = {
 // Initialize Firebase
 const FirebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(FirebaseApp);
+const googleProvider=new GoogleAuthProvider();
 
 export const useFirebase = () => useContext(FirebaseContext);
 
 export const FirebaseProvider = (props) => {
+
+  const [user,setUser]=useState(null);
+
+  useEffect(()=>{
+    onAuthStateChanged(firebaseAuth,(user)=>{
+      if(user){
+      setUser(user)
+      } else{
+      setUser(null)
+      }
+      })
+  },[])
+
   const signupUserWithEmailandPassword = (email, password) => {
     return createUserWithEmailAndPassword(firebaseAuth, email, password); // Return the promise here
   };
@@ -28,7 +42,15 @@ export const FirebaseProvider = (props) => {
     return signInWithEmailAndPassword(firebaseAuth, email, password); // Return the promise here
   };
 
+  const signinWithGoogle=()=>{
+    signInWithPopup(firebaseAuth,googleProvider)
+  }
+
+  const isLoggedIn=user?true:false;
+
   const firebaseFunctions = {
+    isLoggedIn,
+    signinWithGoogle,
     signupUserWithEmailandPassword,
     signinUserWithEmailandPassword,
   };

@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useFirebase } from '../23_Context/Firebase';
+import { Navigate } from 'react-router-dom';
 
 const RegisterPage = () => {
-  const signupUserWithEmailandPassword = useFirebase();
+  const firebaseFunctions = useFirebase(); // Use the useFirebase hook
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // If the User is already Signed In then navigate him to Home
+  useEffect(() => {
+    if (firebaseFunctions.isLoggedIn) {
+      return Navigate('/'); // Use Navigate to navigate to the home page
+    }
+  }, [firebaseFunctions]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await signupUserWithEmailandPassword(email, password);
+      const result = await firebaseFunctions.signupUserWithEmailandPassword(email, password); // Use the correct function name
       alert(result);
     } catch (error) {
       console.error('Error signing up:', error.message);
