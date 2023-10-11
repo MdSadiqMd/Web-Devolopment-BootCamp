@@ -1,8 +1,9 @@
 import { createContext, useContext } from "react";
-
-const FirebaseContext=createContext(null);
-
 import { initializeApp } from "firebase/app";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+
+const FirebaseContext = createContext(null);
+
 const firebaseConfig = {
   apiKey: "AIzaSyBFqoOEK_UXw2k9abTypbYDBIGchMPXfTE",
   authDomain: "bookify-a6420.firebaseapp.com",
@@ -13,14 +14,18 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const FireabaseApp = initializeApp(firebaseConfig);
+const FirebaseApp = initializeApp(firebaseConfig);
+const firebaseAuth=getAuth(FirebaseApp);
 
-export const useFirebase=()=>useContext(FirebaseContext);
+export const useFirebase = () => useContext(FirebaseContext);
 
-export const FirebaseProvider=(props)=>{
-    return(
-        <FirebaseProvider>
-            {props.children}
-        </FirebaseProvider>
-    )
+export const FirebaseProvider = (props) => {
+    const signUpUserWithEmailandPassword=(email,password)=>{
+        createUserWithEmailAndPassword(firebaseAuth,email,password)
+    }
+  return (
+    <FirebaseContext.Provider value={signUpUserWithEmailandPassword}>
+      {props.children}
+    </FirebaseContext.Provider>
+  );
 };
