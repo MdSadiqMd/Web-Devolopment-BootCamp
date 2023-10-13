@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useFirebase } from '../23_Context/Firebase';
+import { useFirebase } from '../23_Context/Firebase'; 
 
 const ListingPage = () => {
   const [name, setName] = useState('');
@@ -9,15 +9,21 @@ const ListingPage = () => {
   const [price, setPrice] = useState('');
   const [coverPic, setCoverPic] = useState(null);
 
-  const handleSubmit = (e) => {
+  const { handleCreateNewListing } = useFirebase(); // Use the handleCreateNewListing function
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    FirebaseError.handleCreateNewListing(name,isbnNumber,price,coverPic)
+    try {
+      await handleCreateNewListing(name, isbnNumber, price, coverPic);
+    } catch (error) {
+      console.error('Error creating a new listing:', error);
+    }
   };
 
   return (
     <div>
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Enter Book Name</Form.Label>
           <Form.Control
             type="text"
@@ -54,7 +60,6 @@ const ListingPage = () => {
             onChange={(e) => setCoverPic(e.target.files[0])}
           />
         </Form.Group>
-
         <Button variant="primary" type="submit">
           Add Listing
         </Button>
