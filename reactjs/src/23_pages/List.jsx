@@ -1,33 +1,56 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 const ListingPage = () => {
-    const [name , setName ] = useState('');
-    const [isbnNumber,setIsbnNumber]=useState('');
-    const [price,setPrice]=useState('');
-    const [coverPic,setCoverPic]=useState('');
+  const [name, setName] = useState('');
+  const [isbnNumber, setIsbnNumber] = useState('');
+  const [price, setPrice] = useState('');
+  const [coverPic, setCoverPic] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div>
-        <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Enter Book Name</Form.Label>
-          <Form.Control onChange={(e) => setName(e.target.value)} type="text" placeholder="Enter Book Name" />
+          <Form.Control
+            type="text"
+            placeholder="Enter Book Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>isbnNumber</Form.Label>
-          <Form.Control onChange={(e) => setIsbnNumber(e.target.value)} type="text" placeholder="Type isbnNumber" />
+          <Form.Label>ISBN Number</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Type ISBN Number"
+            value={isbnNumber}
+            onChange={(e) => setIsbnNumber(e.target.value)}
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Price</Form.Label>
-          <Form.Control onChange={(e) => setPrice(e.target.value)} type="number" placeholder="Type Price" />
+          <Form.Control
+            type="number"
+            placeholder="Type Price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>CoverPic</Form.Label>
-          <Form.Control onChange={(e) => setCoverPic(e.target.file[0])} type="file" />
+          <Form.Control
+            type="file"
+            onChange={(e) => setCoverPic(e.target.files[0])}
+          />
         </Form.Group>
 
         <Button variant="primary" type="submit">
@@ -35,7 +58,7 @@ const ListingPage = () => {
         </Button>
       </Form>
     </div>
-  )
-}
+  );
+};
 
-export default ListingPage
+export default ListingPage;
