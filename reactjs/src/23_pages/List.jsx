@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useFirebase } from '../23_Context/Firebase';
 
 const ListingPage = () => {
   const [name, setName] = useState('');
@@ -10,6 +11,7 @@ const ListingPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    FirebaseError.handleCreateNewListing(name,isbnNumber,price,coverPic)
   };
 
   return (

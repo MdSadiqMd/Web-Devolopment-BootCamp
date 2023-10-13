@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { getFirestore,collection,addDoc} from "firebase/firestore";
+import { getStorage,ref,uploadBytes } from "firebase/storage";
 
 const FirebaseContext = createContext(null);
 
@@ -16,6 +18,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const FirebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(FirebaseApp);
+const firestore=getFirestore(FirebaseApp);
+const storage=getStorage(FirebaseApp);
 const googleProvider=new GoogleAuthProvider();
 
 export const useFirebase = () => useContext(FirebaseContext);
@@ -48,11 +52,28 @@ export const FirebaseProvider = (props) => {
 
   const isLoggedIn=user?true:false;
 
+  // Listing Books in the Website
+  const handleCreateNewListing = async (name,isbn,price,cover) =>{
+    const imageRef = ref(storage,`uploads/images/${Date.now()} - ${cover.name}`); // Added Date.now() to generate a unique path for every other image
+    const uploadResult=await uploadBytes(imageRef,cover);
+    return await addDoc(collection(firestore,'books'),{
+      name,
+      isbn,
+      price,
+      imageURL: uploadResult.ref.fullPath,
+      userID: user.uid,
+      userEmail: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+    })
+  }
+
   const firebaseFunctions = {
     isLoggedIn,
     signinWithGoogle,
     signupUserWithEmailandPassword,
     signinUserWithEmailandPassword,
+    handleCreateNewListing,
   };
 
   return (
