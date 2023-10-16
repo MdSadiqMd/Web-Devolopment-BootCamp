@@ -1,5 +1,6 @@
 import React from 'react'
 import ImageCarousel from './24_Components/ImageCarousel'
+import "./App.css"
 
 const App = () => {
   return (
