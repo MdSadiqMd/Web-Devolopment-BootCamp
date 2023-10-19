@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useFirebase } from '../23_Context/Firebase'
+import BookCard from '../23_Components/Card';
 
 function HomePage() {
     const firebase=useFirebase();
@@ -11,7 +12,7 @@ function HomePage() {
     },[])
   return (
     <div className="container">
-        {(books.map(book => <li>{}</li>))}
+        {<BookCard {...books.data()}/>}
     </div>
   )
 }
