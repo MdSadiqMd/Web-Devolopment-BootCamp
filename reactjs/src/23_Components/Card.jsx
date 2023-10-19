@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useFirebase } from '../23_Context/Firebase';
 
 function BookCard(props) {
+    const Firebase=useFirebase();
+    const [url,setURL]=useState(null);
+    useEffect(()=>{
+        Firebase.getImageURl(props.imageURL).then((url)=>setURL(url))
+    })
+    
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Img variant="top" src={url} />
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>
