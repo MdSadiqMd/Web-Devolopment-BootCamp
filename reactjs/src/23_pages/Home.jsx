@@ -1,20 +1,22 @@
-import React, { useEffect } from 'react'
-import { useFirebase } from '../23_Context/Firebase'
+import React, { useEffect, useState } from 'react';
+import { useFirebase } from '../23_Context/Firebase';
 import BookCard from '../23_Components/Card';
 
 function HomePage() {
-    const firebase=useFirebase();
+  const firebase = useFirebase();
+  const [books, setBooks] = useState([]);
 
-    const [books, setBooks] = useState([])
+  useEffect(() => {
+    firebase.listAllBooks().then((books) => setBooks(books.docs));
+  }, []);
 
-    useEffect(()=>{
-        firebase.listAllBooks().then((books)=>setBooks(books.docs))
-    },[])
   return (
     <div className="container">
-        {<BookCard {...books.data()}/>}
+      {books.map((book) => (
+        <BookCard key={book.id} {...book.data()} />
+      ))}
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
