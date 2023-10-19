@@ -73,7 +73,7 @@ export const FirebaseProvider = (props) => {
   }
 
   const getImageURL=(path)=>{
-    return getDownloadURL(ref,(storage,path));
+    return getDownloadURL(ref(storage,path));
   }
 
   const firebaseFunctions = {
