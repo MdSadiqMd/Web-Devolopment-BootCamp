@@ -1,5 +1,5 @@
 /*
-
+Settled Promise Means the Promise is resolved (success) and Returned the Result
 The Example of the Promise API where the Fecthing of Data is Done from three Random API's P1 in 3sec,P2 in 1 sec and P3 in 2sec
 
                                     If all are Successful               If Any one Fails
@@ -28,5 +28,41 @@ const p2=new Promise((resolve,reject)=>{
 });
 
 const p3=new Promise((resolve,reject)=>{
-    setTimeout(()=>resolve("P3 Success"),2000)
+    setTimeout(()=>resolve("P3 Success"),2000) 
+    //setTimeout(()=>reject("P3 Fail"),2000) // If Wanted to Fail a Promise
 });
+
+/*Promise.all([p1,p2,p3])
+.then((res)=>{
+    console.log(res);   // [ 'P1 Success', 'P2 Success', 'P3 Success' ]
+})
+.catch((err)=>{
+    console.log(err);   // P3 Fail
+});
+
+Promise.allSettled([p1,p2,p3])
+.then((res)=>{
+    console.log(res);   // [ { status: 'fulfilled', value: 'P1 Success' },{ status: 'fulfilled', value: 'P2 Success' },{ status: 'fulfilled', value: 'P3 Success' } ]
+})
+.catch((err)=>{
+    console.log(err);   // [ { status: 'fulfilled', value: 'P1 Success' },{ status: 'fulfilled', value: 'P2 Success' },{ status: 'rejected', reason: 'P3 Fail' } ]
+}); 
+
+// Returns First Failed (or) Suceede Promise
+Promise.race([p1,p2,p3])
+.then((res)=>{
+    console.log(res);   // P2 Success
+})
+.catch((err)=>{
+    console.log(err);   // P2 Success
+}); */
+
+// Returns the First Suceeded Promise
+// *** If All Promises fails then it will return an Aggregrated Error (change the P2 to 5000)
+Promise.any([p1,p2,p3])
+.then((res)=>{
+    console.log(res);   // P2 Success
+})
+.catch((err)=>{
+    console.log(err);   // P2 Success
+}); 
