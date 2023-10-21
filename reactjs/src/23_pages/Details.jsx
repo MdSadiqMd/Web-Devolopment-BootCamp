@@ -34,7 +34,8 @@ function DetailsPage() {
     }
 
     const placeOrder = async () => {
-        return await firebase.placeOrder(params.bookId, qty); 
+        const result= await firebase.placeOrder(params.bookId, qty); 
+        console.log(result);
     };
 
     return (
