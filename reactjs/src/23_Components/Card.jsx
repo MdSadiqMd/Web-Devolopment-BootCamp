@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useNavigate } from 'react-router-dom'
 import { useFirebase } from '../23_Context/Firebase';
 
 function BookCard(props) {
@@ -9,6 +10,8 @@ function BookCard(props) {
     useEffect(()=>{
         Firebase.getImageURL(props.imageURL).then((url)=>setURL(url))
     })
+
+    const Navigate=useNavigate();
     
   return (
     <Card style={{ width: '18rem' }}>
@@ -19,7 +22,7 @@ function BookCard(props) {
             Lorem ipsum,{props.name} dolor sit amet consectetur adipisicing{props.diaplayName}.
             Lorem ipsum dolor sit {props.price} amet.
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button onClick={(e)=>Navigate('/book/view/${props.id}')} variant="primary">View</Button>
       </Card.Body>
     </Card>
   )

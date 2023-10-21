@@ -13,7 +13,7 @@ function HomePage() {
   return (
     <div className="container">
       {books.map((book) => (
-        <BookCard key={book.id} {...book.data()} />
+        <BookCard key={book.id} id={book.id} {...book.data()} />
       ))}
     </div>
   );
