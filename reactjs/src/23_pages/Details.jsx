@@ -30,6 +30,10 @@ function detailsPage() {
             <h1>Loading...</h1>
         )
     }
+    const placeOrder=async()=>{
+        const result=await firebase.placeOrder(params.bookId);
+
+    }
   return (
     <div className="conatiner mt-5">
         <h1>{data.name}</h1>
@@ -44,7 +48,7 @@ function detailsPage() {
           <Form.Label>Quantity</Form.Label>
           <Form.Control onChange={(e) => setQty(e.target.value)} type="Number" placeholder="Enter Qty" />
         </Form.Group>
-        <Button variant='success'>Buy Now</Button>
+        <Button onClick={placeOrder} variant='success'>Buy Now</Button>
     </div>
   )
 }

@@ -91,6 +91,7 @@ export const FirebaseProvider = (props) => {
       photoURL:user.photoURL,
       qty,
     });
+    return result;
   }
 
   const firebaseFunctions = {
