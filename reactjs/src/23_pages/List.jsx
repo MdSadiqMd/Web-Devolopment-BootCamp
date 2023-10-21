@@ -4,64 +4,61 @@ import Form from 'react-bootstrap/Form';
 import { useFirebase } from '../23_Context/Firebase'; 
 
 const ListingPage = () => {
-  const [name, setName] = useState('');
-  const [isbnNumber, setIsbnNumber] = useState('');
-  const [price, setPrice] = useState('');
-  const [coverPic, setCoverPic] = useState(null);
+  const firebase = useFirebase();
 
-  const { handleCreateNewListing } = useFirebase(); // Use the handleCreateNewListing function
+  const [name, setName] = useState("");
+  const [isbnNumber, setIsbnNumber] = useState("");
+  const [price, setPrice] = useState("");
+  const [coverPic, setCoverPic] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await handleCreateNewListing(name, isbnNumber, price, coverPic);
-    } catch (error) {
-      console.error('Error creating a new listing:', error);
-    }
+    await firebase.handleCreateNewListing(name, isbnNumber, price, coverPic);
   };
 
   return (
-    <div>
+    <div className="container mt-5">
       <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Enter Book Name</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Enter Book Name"
-            value={name}
             onChange={(e) => setName(e.target.value)}
+            value={name}
+            type="text"
+            placeholder="Book name"
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>ISBN Number</Form.Label>
+          <Form.Label>ISBN</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Type ISBN Number"
-            value={isbnNumber}
             onChange={(e) => setIsbnNumber(e.target.value)}
+            value={isbnNumber}
+            type="text"
+            placeholder="ISBN Number"
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Price</Form.Label>
           <Form.Control
-            type="number"
-            placeholder="Type Price"
-            value={price}
             onChange={(e) => setPrice(e.target.value)}
+            value={price}
+            type="text"
+            placeholder="Enter Price"
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>CoverPic</Form.Label>
+          <Form.Label>Cover Pic</Form.Label>
           <Form.Control
-            type="file"
             onChange={(e) => setCoverPic(e.target.files[0])}
+            type="file"
           />
         </Form.Group>
+
         <Button variant="primary" type="submit">
-          Add Listing
+          Create
         </Button>
       </Form>
     </div>
