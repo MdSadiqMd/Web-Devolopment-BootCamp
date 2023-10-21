@@ -72,7 +72,7 @@ export const FirebaseProvider = (props) => {
     return getDocs(collection(firestore,'books'));
   }
 
-  const getAllBooks=async()=>{
+  const getBookById=async()=>{
     const docRef=doc(firestore,"books",id);
     const result=await getDoc(docRef);
     return result;
@@ -90,6 +90,7 @@ export const FirebaseProvider = (props) => {
     handleCreateNewListing,
     listAllBooks,
     getImageURL,
+    getBookById,
   };
 
   return (
