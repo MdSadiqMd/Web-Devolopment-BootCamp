@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { getFirestore,collection,addDoc,getDocs } from "firebase/firestore";
+import { getFirestore,collection,addDoc,getDocs, getDoc } from "firebase/firestore";
 import { getStorage,ref,uploadBytes,getDownloadURL } from "firebase/storage";
 
 const FirebaseContext = createContext(null);
@@ -70,6 +70,12 @@ export const FirebaseProvider = (props) => {
 
   const listAllBooks=()=>{
     return getDocs(collection(firestore,'books'));
+  }
+
+  const getAllBooks=async()=>{
+    const docRef=doc(firestore,"books",id);
+    const result=await getDoc(docRef);
+    return result;
   }
 
   const getImageURL=(path)=>{

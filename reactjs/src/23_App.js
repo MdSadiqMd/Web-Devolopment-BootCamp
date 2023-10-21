@@ -6,6 +6,7 @@ import LoginPage from './23_pages/Login';
 import MyNavbar from './23_Components/Navbar';
 import ListingPage from './23_pages/List';
 import HomePage from './23_pages/Home';
+import detailsPage from './23_pages/Details';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/book/list' element={<ListingPage />} />
+        <Route path='/book/view/:bookId' element={<detailsPage />} />
       </Routes>
     </div>
   )
