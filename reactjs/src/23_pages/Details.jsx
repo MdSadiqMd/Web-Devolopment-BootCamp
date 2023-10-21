@@ -4,57 +4,59 @@ import Button from 'react-bootstrap/esm/Button';
 import { useFirebase } from '../23_Context/Firebase';
 import Form from 'react-bootstrap/Form';
 
-function DetailsPage() {
+const BookDetailPage = () => {
     const params = useParams();
     const firebase = useFirebase();
+  
+    const [qty, setQty] = useState(1);
+  
     const [data, setData] = useState(null);
     const [url, setURL] = useState(null);
-    const [qty, setQty] = useState(1);
-
+  
+    console.log(data);
+  
     useEffect(() => {
-        // Fetch book details when the component mounts
-        firebase.getBookById(params.bookId).then((value) => {
-            setData(value.data());
-        })
-    }, [params.bookId,firebase]);
-
+      firebase.getBookById(params.bookId).then((value) => setData(value.data()));
+    }, []);
+  
     useEffect(() => {
-        if (data) {
-            const imageURL = data.imageURL;
-            firebase.getImageURL(imageURL).then((url) => {
-                setURL(url);
-            })
-        }
-    }, [data,firebase]); 
-
-    if (data == null) {
-        return (
-            <h1>Loading...</h1>
-        );
-    }
-
+      if (data) {
+        const imageURL = data.imageURL;
+        firebase.getImageURL(imageURL).then((url) => setURL(url));
+      }
+    }, [data]);
+  
     const placeOrder = async () => {
-        const result= await firebase.placeOrder(params.bookId, qty); 
-        console.log(result);
+      const result = await firebase.placeOrder(params.bookId, qty);
+      console.log("Order Placed", result);
     };
-
+  
+    if (data == null) return <h1>Loading...</h1>;
+  
     return (
-        <div className="container mt-5">
-            <h1>{data.name}</h1>
-            <img src={url} width="500px" style={{ borderRadius: "10px" }} alt="Book Cover" />
-            <h1>Details</h1>
-            <p>Price: Rs.{data.price}</p>
-            <p>ISBN Number: {data.isbn} </p>
-            <p>Owner Details</p>
-            <p>Name: {data.displayName} </p>
-            <p>Email: {data.userEmail} </p>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Quantity</Form.Label>
-                <Form.Control onChange={(e) => setQty(e.target.value)} type="number" placeholder="Enter Qty" />
-            </Form.Group>
-            <Button onClick={placeOrder} variant='success'>Buy Now</Button>
-        </div>
+      <div className="container mt-5">
+        <h1>{data.name}</h1>
+        <img src={url} width="50%" style={{ borderRadius: "10px" }} />
+        <h1>Details</h1>
+        <p>Price: Rs. {data.price}</p>
+        <p>ISBN Number. {data.isbn}</p>
+        <h1>Owner Details</h1>
+        <p>Name: {data.displayName}</p>
+        <p>Email: {data.userEmail}</p>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Qty</Form.Label>
+          <Form.Control
+            onChange={(e) => setQty(e.target.value)}
+            value={qty}
+            type="Number"
+            placeholder="Enter Qty"
+          />
+        </Form.Group>
+        <Button onClick={placeOrder} variant="success">
+          Buy Now
+        </Button>
+      </div>
     );
-}
-
-export default DetailsPage;
+  };
+  
+export default BookDetailPage;
