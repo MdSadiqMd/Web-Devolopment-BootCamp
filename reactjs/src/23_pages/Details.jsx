@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Button from 'react-bootstrap/esm/Button';
 import { useFirebase } from '../23_Context/Firebase';
+import Form from 'react-bootstrap/Form'
 import { useEffect } from 'react';
 
 function detailsPage() {
@@ -9,6 +10,7 @@ function detailsPage() {
     const firebase=useFirebase();
     const [data,setData]=useState(null);
     const [url,setURL]=useState(null);
+    const [qty,setQty]=useState(1);
 
     useEffect(()=>{
         firebase.getBookById(params.bookId).then((value)=>{
@@ -38,6 +40,10 @@ function detailsPage() {
         <p>Owner Details</p>
         <p>Name: {data.displayName} </p>
         <p>Email: {data.userEmail} </p>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Quantity</Form.Label>
+          <Form.Control onChange={(e) => setQty(e.target.value)} type="Number" placeholder="Enter Qty" />
+        </Form.Group>
         <Button variant='success'>Buy Now</Button>
     </div>
   )

@@ -82,6 +82,17 @@ export const FirebaseProvider = (props) => {
     return getDownloadURL(ref(storage,path));
   }
 
+  const placeOrder=async(bookId,qty)=>{
+    const collectionRef=collection(firestore,'books',bookId,'order');
+    const result=await addDoc(collectionRef,{
+      userID:user.uid,
+      userEmail:user.email,
+      displayName:user.displayName,
+      photoURL:user.photoURL,
+      qty,
+    });
+  }
+
   const firebaseFunctions = {
     isLoggedIn,
     signinWithGoogle,
@@ -91,6 +102,7 @@ export const FirebaseProvider = (props) => {
     listAllBooks,
     getImageURL,
     getBookById,
+    placeOrder,
   };
 
   return (
