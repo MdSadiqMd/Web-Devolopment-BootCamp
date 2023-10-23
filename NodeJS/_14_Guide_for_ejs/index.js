@@ -1,7 +1,7 @@
 // There are Some Steps to be followed When Working with ejs
 // 1. ejs install --> npm i ejs
 // 2. Configure ejs --> app.set("view engine","ejs")
-// 3. Create Folder with name "views"
+// 3. Create Folder with name "views" (go to line 15 for possible occuring errors)
 // 4. Create ejs Files in "views" Folder
 // 5. and use render function in the main file and write the name of "ejs" file without .ejs  
 
