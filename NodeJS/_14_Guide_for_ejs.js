@@ -9,7 +9,7 @@ const express = require("express");
 const app = express();
 
 app.set("view engine", "ejs");
-app.set("views","/_12_views"); // Set the "views" directory
+app.set("views", "C:/Users/Sadiq/Desktop/Web-Development-BootCamp/_14_views"); 
 
 app.get("/", function (req, res) {
   res.render("index");
