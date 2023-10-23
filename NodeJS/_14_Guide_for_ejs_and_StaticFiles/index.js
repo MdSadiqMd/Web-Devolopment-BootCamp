@@ -16,13 +16,15 @@ const path = require("path");
 
 app.set("view engine", "ejs");
 // Configuring Express Static
-app.use(express.static("./public"));
+//app.use(express.static("./public"));
+//As we are giving the public folder and index.js in same folder (_14_Guide_for_ejs) so we need to give customised path here ; remember in path "/"
+app.use(express.static(path.join("C:/Users/Sadiq/Desktop/Web-Devolopment-BootCamp/NodeJS/_14_Guide_for_ejs_and_StaticFiles","public")));
 
 app.get("/", function (req, res) {
-  // As we are giving the views folder and index.js in same folder (_14_Guide_for_ejs) so we need to give customised path here ; remember in path "/"
-  res.render(path.join("C:/Users/Sadiq/Desktop/Web-Devolopment-BootCamp/NodeJS/_14_Guide_for_ejs_and_StaticFiles/views/index.ejs"),{PORT:8000}); //The Variable PORT Given here acts as an prop in react as ejs converts the variable value while rendering // Remember in path we need to give ".ejs"
   // If we are giving the views folder and index.js in different directory then we just write this line
   //res.render("index");
+  // As we are giving the views folder and index.js in same folder (_14_Guide_for_ejs) so we need to give customised path here ; remember in path "/"
+  res.render(path.join("C:/Users/Sadiq/Desktop/Web-Devolopment-BootCamp/NodeJS/_14_Guide_for_ejs_and_StaticFiles/views/index.ejs"),{PORT:8000}); //The Variable PORT Given here acts as an prop in react as ejs converts the variable value while rendering // Remember in path we need to give ".ejs"
 });
 
 app.listen(8000);
