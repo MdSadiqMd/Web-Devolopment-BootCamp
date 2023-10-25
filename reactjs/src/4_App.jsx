@@ -1,5 +1,5 @@
 // This useState Particular hook is used to Change the value of a variable in N different places in a website
-import React, { useState } from "react"; // Here, we are importing useState hook
+import React, { useRef, useState } from "react"; // Here, we are importing useState hook
 
 function App() {
   const [counter, setCounter] = useState(5); // Here, we use the useState hook which returns two values in the array form one the variable and the other the variable updation
@@ -38,6 +38,8 @@ function App() {
     }
   };
 
+  const inputRef=useRef(null);
+  const [data,setData]=useState([]);
   return (
     <div>
       <h1>Hello World</h1>
@@ -45,6 +47,9 @@ function App() {
       <button onClick={handleAddValue}>Add Value {counter} </button>
       <br />
       <button onClick={handleRemoveValue}>Remove Value {counter} </button>
+      <input type="text" ref={inputRef} />
+      <button onClick={()=>setData(...data,inputRef.current.value)}>Add</button>
+      <h2>{data}</h2>
     </div>
   );
 }
