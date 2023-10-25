@@ -38,20 +38,27 @@ function App() {
     }
   };
 
-  const inputRef=useRef(null);
-  const [data,setData]=useState([]);
   return (
     <div>
       <h1>Hello World</h1>
       <h2>Counter Value : {counter}</h2>
       <button onClick={handleAddValue}>Add Value {counter} </button>
       <br />
-      <button onClick={handleRemoveValue}>Remove Value {counter} </button>
-      <input type="text" ref={inputRef} />
-      <button onClick={()=>setData(...data,inputRef.current.value)}>Add</button>
-      <h2>{data}</h2>
+      <button onClick={handleRemoveValue}>Remove Value {counter} </button> 
     </div>
   );
+
+  // useRef hook --> Usually used to manipulate the Inputs sort of things using Reference
+  /*
+  const inputRef=useRef(null);
+  const [data,setData]=useState([]);
+  return(
+    <div>
+      <input type="text" ref={inputRef} />
+      <button onClick={()=>setData(...data,inputRef.current.value)}>Add</button> here we pass the variable and the value need to be passed in the variable 
+      <h2>{data}</h2>
+    </div>
+  );*/
 }
 
 export default App;
