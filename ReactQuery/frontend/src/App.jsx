@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Products from './Products'
+import product from './Product'
 
 const App = () => {
   return (
