@@ -1,16 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import {QueryClient} from '@tanstack/react-query'
 
 const App = () => {
   return (
-    <>
-      <h1>React Query</h1>
-      <div>
-        <Link to='/'>Home</Link>
-        <Link to='/products'>Products</Link>
-      </div>
-    </>
-  );
+    <div>App</div>
+  )
 }
 
-export default App;
+export default App
