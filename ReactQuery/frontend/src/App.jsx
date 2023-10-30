@@ -1,14 +1,13 @@
 import React from 'react'
-import {} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const App = () => {
   return (
     <>
       <h1>React Query</h1>
       <div>
-        <h1>Loading</h1>?(
-
-        )
+        <Link to='/'>Home</Link>
+        <Link to='/products'>Products</Link>
       </div>
     </>
   )
