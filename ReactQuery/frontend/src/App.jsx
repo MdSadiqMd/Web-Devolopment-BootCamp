@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Products from './Products'; // Assuming this is the correct import path for your Products component
-import Product from './Product'; // Assuming this is the correct import path for your Product component
 
 const App = () => {
   return (
