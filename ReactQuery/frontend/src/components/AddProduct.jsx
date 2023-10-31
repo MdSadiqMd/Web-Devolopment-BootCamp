@@ -14,8 +14,9 @@ const AddProduct = () => {
     return response.data;
   };
 
+  // Initialing ReactQuery
   const { data: product } = useQuery(['product', productId], fetchProduct); 
-
+  // Initialing Mutation --> Part of React Query Usually used for PUT and PATCH
   const mutation = useMutation((newProduct) => {
     return axios.put(`https://dummyjson.com/products/${productId}`, newProduct); 
   });

@@ -13,9 +13,9 @@ const fetchProducts = async () => {
 
 const Products = () => {
   // Initializing React Query
-  const { isLoading, error, data: products } = useQuery(['products'], fetchProducts, {
-    staleTime: 10000,
-    client: queryClient, 
+  const { isLoading, error, data: products } = useQuery(['products'], fetchProducts, { // Initialing the Array of "Variable" and Fetching Function
+    staleTime: 10000, // The time that memory need to be stored in Cache
+    client: queryClient, // Initialize the Query Client
   });
 
   if (isLoading) {

@@ -14,7 +14,7 @@ ReactDOM.render(
       <Router>
         <App />
       </Router>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <ReactQueryDevtools initialIsOpen={false} /> {/*This line will initialize the React Query Dev tool in the Website */}
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')
