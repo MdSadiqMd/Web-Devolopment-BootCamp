@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 
 const queryClient = new QueryClient();
-
+// Need to create an Intance of queryClient and Pass it on to the App With Browser Router
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
