@@ -1,25 +1,9 @@
-import { useState } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from 'react'
 
-import Demo from "./Demo";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-    },
-  },
-});
-
-function App() {
-  const [showDemo, setShowDemo] = useState(true);
-
+const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <button onClick={() => setShowDemo(!showDemo)}>Toggle Demo</button>
-      {showDemo && <Demo />}
-    </QueryClientProvider>
-  );
+    <div>App</div>
+  )
 }
 
-export default App;
+export default App
