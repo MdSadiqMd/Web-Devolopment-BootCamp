@@ -42,6 +42,7 @@
       {
         "marquee": "off"
       }
-    ]
+    ],
+    "typescript-config/is-valid": "off"
   }
 }

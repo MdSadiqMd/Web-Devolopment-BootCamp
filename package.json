@@ -1,8 +1,10 @@
 {
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.7",
     "ejs": "^3.1.9",
     "jsx": "^0.9.89",
     "mongoose": "^7.5.2",
+    "react-redux": "^8.1.3",
     "react-router": "^6.17.0",
     "shortid": "^2.2.16"
   },

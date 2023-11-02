@@ -1,16 +1,15 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const myApi=createApi({
-    reducerPath:"api",
-    baseQuery:fetchBaseQuery({
-        baseUrl:"http://localhost:3000/"
+const myApi = createApi({
+  reducerPath: "api",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:3000/",
+  }),
+  endpoints: (builder) => ({
+    getPosts: builder.query<Post[], void>({
+      query: () => 'posts',
     }),
-    endpoints:(builder)=>({
-        // getPosts is basically we specify a route
-        getPosts:builder.query<string,string>({ // Both Strings represents one the data type and one is query type
-            query:()=> "posts"
-        }),
-    })
-})
+  }),
+});
 
-export const {useGetPostsQuery}=myApi
+export const { useGetPostsQuery } = myApi;
