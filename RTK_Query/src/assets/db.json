@@ -1,0 +1,22 @@
+{
+    "posts":[
+        {
+            "title":"A",
+            "body":"lorem ipsum",
+            "iserId":"1",
+            "id":"1"
+        },
+        {
+            "title":"B",
+            "body":"lorem ipsum",
+            "iserId":"2",
+            "id":"2"
+        },
+        {
+            "title":"C",
+            "body":"lorem ipsum",
+            "iserId":"3",
+            "id":"3"
+        }
+    ]
+}
