@@ -18,6 +18,7 @@ const App = () => {
 
   const submitHandler = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    // we have set the Objects of API types in vite-env.d.ts file
     const post: Post = {
       title,
       body,
