@@ -1,4 +1,4 @@
-const PostsCard=({post}:{post:Post})=>{
+const PostsCard=({post}:{post:Post})=>{ // Set the type of post
     return(
         <div>
             <h4>{post.title}</h4>

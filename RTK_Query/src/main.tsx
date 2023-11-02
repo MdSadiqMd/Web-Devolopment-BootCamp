@@ -14,7 +14,7 @@ ReactDOM.render(
 );
 
 /*
-Without React Redux
+Without React Redux and with Redux toolkit
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { myApi } from './redux/api'; 
 ReactDOM.render(
