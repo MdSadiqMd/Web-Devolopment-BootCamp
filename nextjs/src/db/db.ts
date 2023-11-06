@@ -5,7 +5,22 @@
 // Go to Database --> Connect --> Compass Copy the URL
 // Got to .env File and setup the Configurations
 
+import { error } from "console";
 import mongoose from "mongoose";
 export async function connect() {
-    
+    try {
+        mongoose.connect(process.env.MONGO_URL!) // The "!" at last represent that it's my responsibility that MONGO_URL will be available all the time
+        const connection=mongoose.connection;
+
+        connection.on('connected',()=>{
+            console.log('Mongo DB Connected Succesfully');
+        })
+
+        connection.on('error',(err)=>{
+            console.log("Error Occured Connecting to MongoDB "+err);
+            process.exit();
+        })
+    } catch (error) {
+        console.log("Error"+error)
+    }
 }
