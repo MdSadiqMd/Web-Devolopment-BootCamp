@@ -4,3 +4,8 @@
 // Go to Database Access --> Add Databse User --> Password --> Add Sample name and Password --> Select Role (read and write to any database) --> Add user
 // Go to Database --> Connect --> Compass Copy the URL
 // Got to .env File and setup the Configurations
+
+import mongoose from "mongoose";
+export async function connect() {
+    
+}
