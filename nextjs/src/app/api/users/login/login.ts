@@ -26,12 +26,23 @@ export async function POST(request:NextRequest){
 
         // create token data
         const tokenData={
-            id:user._id, // in mongoDB Databse it is saved as _id
+            id:user._id, // In mongoDB Databse it is saved as _id
             username:user.username,
             email:user.email,
         }
 
         // create token
+        const token=await jwt.sign(tokenData,process.env.TOKEN_SECRET!,{expiresIn:"1h"});
+
+        const response=NextResponse.json({
+            message:"Login Succesfull",
+            success:true,
+        })
+        response.cookies.set("token",token,{
+            httpOnly:true,
+        })
+        return response;
+
     } catch(error:any){
         return NextResponse.json({error:error.message},{status:500});
     }
