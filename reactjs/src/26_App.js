@@ -1,29 +1,43 @@
-// App.js
-import React, { useState } from 'react';
-import Comments from './26_Components/comments/comment';
-import './26_App.css';
-import { commentData } from './26_Data/commentData';
-import useCommentHook from './useCommentHook';
+import { useState } from "react";
+import Comment from "./components/Comment";
+import useNode from "./hooks/useNode";
+import "./26_App.css";
 
+const comments = {
+  id: 1,
+  items: [],
+};
 const App = () => {
-  const [comments, setComments] = useState(commentData);
-  const { addComment, deleteComment } = useCommentHook();
+  const [commentsData, setCommentsData] = useState(comments);
 
-  const handleAddComments = (commentId, comment) => {
-    const updatedTree = addComment(comments, commentId, comment);
-    setComments(updatedTree);
+  const { insertNode, editNode, deleteNode } = useNode();
+
+  const handleInsertNode = (folderId, item) => {
+    const finalStructure = insertNode(commentsData, folderId, item);
+    setCommentsData(finalStructure);
   };
 
-  const handleCommentDelete = (commentId) => {
-    const updatedTree = deleteComment(comments, commentId);
-    setComments(updatedTree);
+  const handleEditNode = (folderId, value) => {
+    const finalStructure = editNode(commentsData, folderId, value);
+    setCommentsData(finalStructure);
+  };
+
+  const handleDeleteNode = (folderId) => {
+    const finalStructure = deleteNode(commentsData, folderId);
+    const temp = { ...finalStructure };
+    setCommentsData(temp);
   };
 
   return (
-    <div>
-      <Comments comment={comments} handleAddComments={handleAddComments} handleCommentDelete={handleCommentDelete} />
+    <div className="App">
+      <Comment
+        handleInsertNode={handleInsertNode}
+        handleEditNode={handleEditNode}
+        handleDeleteNode={handleDeleteNode}
+        comment={commentsData}
+      />
     </div>
   );
-}
+};
 
 export default App;

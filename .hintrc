@@ -43,6 +43,14 @@
         "marquee": "off"
       }
     ],
-    "typescript-config/is-valid": "off"
+    "typescript-config/is-valid": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "width: fit-content"
+        ]
+      }
+    ]
   }
 }
