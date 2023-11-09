@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Action from "./Action";
-import { ReactComponent as DownArrow } from "../assets/down-arrow.svg";
-import { ReactComponent as UpArrow } from "../assets/up-arrow.svg";
+import { ReactComponent as DownArrow } from "../26_assets/down-arrow.svg";
+import { ReactComponent as UpArrow } from "../26_assets/up-arrow.svg";
 
 const Comment = ({
   handleInsertNode,

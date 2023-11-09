@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Comment from "./26_Components/comments/comment";
+import Comment from "./26_Components/Comment";
 import useNode from "./26_Hooks/useNode";
 import "./26_App.css";
 
