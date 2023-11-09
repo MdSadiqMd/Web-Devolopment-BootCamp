@@ -1,52 +1,162 @@
-import React, { useState } from 'react';
-import './comment.css';
+import { useState, useRef, useEffect } from "react";
+import Action from "./Action";
+import { ReactComponent as DownArrow } from "../assets/down-arrow.svg";
+import { ReactComponent as UpArrow } from "../assets/up-arrow.svg";
 
-const Comment = ({ comment, handleAddComments, handleCommentDelete }) => {
+const Comment = ({
+  handleInsertNode,
+  handleEditNode,
+  handleDeleteNode,
+  comment,
+}) => {
+  const [input, setInput] = useState("");
+  const [editMode, setEditMode] = useState(false);
   const [showInput, setShowInput] = useState(false);
-  const [commentBody, setCommentBody] = useState("");
+  const [expand, setExpand] = useState(false);
+  const inputRef = useRef(null);
 
-  const handleAdd = () => {
-    let newComment = {
-      id: Date.now(),
-      text: commentBody,
-      replies: [],
-    };
-    handleAddComments(comment.id, newComment);
-    setShowInput(false);
-  }
+  useEffect(() => {
+    inputRef?.current?.focus();
+  }, [editMode]);
+
+  const handleNewComment = () => {
+    setExpand(!expand);
+    setShowInput(true);
+  };
+
+  const onAddComment = () => {
+    if (editMode) {
+      handleEditNode(comment.id, inputRef?.current?.innerText);
+    } else {
+      setExpand(true);
+      handleInsertNode(comment.id, input);
+      setShowInput(false);
+      setInput("");
+    }
+
+    if (editMode) setEditMode(false);
+  };
 
   const handleDelete = () => {
-    handleCommentDelete(comment.id);
-  }
+    handleDeleteNode(comment.id);
+  };
 
   return (
     <div>
-      <div className={`${comment.text} && comment-container`}>
-        <h3>{comment.text}</h3>
-        {showInput ? <input type='text' autoFocus onChange={(e) => setCommentBody(e.target.value)} /> : null}
-        <div>
-          {showInput ? (
-            <div>
-              <button onClick={handleAdd}>Add</button>
-              <button onClick={() => setShowInput(false)}>Cancel</button>
+      <div className={comment.id === 1 ? "inputContainer" : "commentContainer"}>
+        {comment.id === 1 ? (
+          <>
+            <input
+              type="text"
+              className="inputContainer__input first_input"
+              autoFocus
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="type..."
+            />
+
+            <Action
+              className="reply comment"
+              type="COMMENT"
+              handleClick={onAddComment}
+            />
+          </>
+        ) : (
+          <>
+            <span
+              contentEditable={editMode}
+              suppressContentEditableWarning={editMode}
+              ref={inputRef}
+              style={{ wordWrap: "break-word" }}
+            >
+              {comment.name}
+            </span>
+
+            <div style={{ display: "flex", marginTop: "5px" }}>
+              {editMode ? (
+                <>
+                  <Action
+                    className="reply"
+                    type="SAVE"
+                    handleClick={onAddComment}
+                  />
+                  <Action
+                    className="reply"
+                    type="CANCEL"
+                    handleClick={() => {
+                      if (inputRef.current)
+                        inputRef.current.innerText = comment.name;
+                      setEditMode(false);
+                    }}
+                  />
+                </>
+              ) : (
+                <>
+                  <Action
+                    className="reply"
+                    type={
+                      <>
+                        {expand ? (
+                          <UpArrow width="10px" height="10px" />
+                        ) : (
+                          <DownArrow width="10px" height="10px" />
+                        )}{" "}
+                        REPLY
+                      </>
+                    }
+                    handleClick={handleNewComment}
+                  />
+                  <Action
+                    className="reply"
+                    type="EDIT"
+                    handleClick={() => {
+                      setEditMode(true);
+                    }}
+                  />
+                  <Action
+                    className="reply"
+                    type="DELETE"
+                    handleClick={handleDelete}
+                  />
+                </>
+              )}
             </div>
-          ) : (
-            <div>
-              <button onClick={() => setShowInput(true)}>Reply</button>
-              <button onClick={handleDelete}>Delete</button>
-            </div>
-          )}
-        </div>
+          </>
+        )}
       </div>
-      <div style={{ paddingLeft: 25 }}>
-        {comment.replies && comment.replies.map((ele) => (
-          <Comment
-            key={ele.id}
-            comment={ele}
-            handleAddComments={handleAddComments}
-            handleCommentDelete={handleCommentDelete}
-          />
-        ))}
+
+      <div style={{ display: expand ? "block" : "none", paddingLeft: 25 }}>
+        {showInput && (
+          <div className="inputContainer">
+            <input
+              type="text"
+              className="inputContainer__input"
+              autoFocus
+              onChange={(e) => setInput(e.target.value)}
+            />
+            <Action className="reply" type="REPLY" handleClick={onAddComment} />
+            <Action
+              className="reply"
+              type="CANCEL"
+              handleClick={() => {
+                setShowInput(false);
+                if (!comment?.items?.length) setExpand(false);
+              }}
+            />
+          </div>
+        )}
+
+        {comment?.items?.map((cmnt) => {
+          return (
+            <Comment
+              key={cmnt.id}
+              handleInsertNode={handleInsertNode}
+              handleEditNode={handleEditNode}
+              handleDeleteNode={handleDeleteNode}
+              comment={cmnt}
+            />
+          );
+        })}
       </div>
     </div>
   );
