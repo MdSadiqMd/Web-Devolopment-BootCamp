@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Comment from "./components/Comment";
-import useNode from "./hooks/useNode";
+import Comment from "./26_Components/comments/comment";
+import useNode from "./26_Hooks/useNode";
 import "./26_App.css";
 
 const comments = {
