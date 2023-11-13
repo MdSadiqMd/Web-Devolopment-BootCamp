@@ -1,11 +1,12 @@
 import React from 'react'
 import Mycard from './Mycard'
+import './imagecorousel.css'
 
 const Imagecorousel = () => {
   return (
     <div className='product-corousel'>
-        <button className='pre-btn'>&lt;</button>
-        <button className='next-btn'>&gt;</button>
+        <button className='pre-btn'><p>&lt;</p></button>
+        <button className='next-btn'><p>&gt;</p></button>
 
         <div className='product-container'>
             <Mycard cardno='1'/>
