@@ -3,6 +3,7 @@ import Mycard from './Mycard'
 import './imagecorousel.css'
 
 const Imagecorousel = () => {
+    // Scrolling Logic
     let cards=document.querySelector('.product-container');
     const btnprev=()=>{
         let width=cards.clientWidth;
