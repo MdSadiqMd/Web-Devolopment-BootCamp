@@ -3,10 +3,19 @@ import Mycard from './Mycard'
 import './imagecorousel.css'
 
 const Imagecorousel = () => {
+    let cards=document.querySelector('.product-container');
+    const btnprev=()=>{
+        let width=cards.clientWidth;
+        cards.scrollLeft=cards.scrollLeft-width;
+    }
+    const btnnext=()=>{
+        let width=cards.clientWidth;
+        cards.scrollLeft=cards.scrollLeft+width;
+    }
   return (
     <div className='product-corousel'>
-        <button className='pre-btn'><p>&lt;</p></button>
-        <button className='next-btn'><p>&gt;</p></button>
+        <button className='pre-btn' onClick={btnprev}><p>&lt;</p></button>
+        <button className='next-btn' onClick={btnnext}><p>&gt;</p></button>
 
         <div className='product-container'>
             <Mycard cardno='1'/>
