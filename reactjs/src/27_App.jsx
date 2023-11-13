@@ -1,8 +1,11 @@
 import React from 'react'
+import Imagecorousel from './27_Components/imagecorousel'
 
 const App = () => {
   return (
-    <div>App</div>
+    <div className="App">
+        <Imagecorousel />
+    </div>
   )
 }
 
