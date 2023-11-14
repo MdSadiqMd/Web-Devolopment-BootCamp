@@ -41,7 +41,7 @@ const Home = () => {
   useEffect(() => {
     window.addEventListener("scroll", handelInfiniteScroll);
     return () => window.removeEventListener("scroll", handelInfiniteScroll);
-  }, []);
+  }, [page]);
 
   return (
     <>
