@@ -21,7 +21,9 @@ const App = () => {
     fetchProducts();
   }, []);
 
-  
+  const setPageHandler=(selectedPage)=>{
+    setpage(selectedPage);
+  }
 
   return (
     <div>
@@ -37,11 +39,11 @@ const App = () => {
       )}
       {products.length>0 && (
         <div>
-            <span>Prev</span>
+            <span onClick={()=>setpage(page-1)}>Prev</span>
             {[...Array(products.length/10)].map((_,i)=>{
-                return <span onClick={()=>setPageHandler()} key={i}>{i+1}</span>
+                return <span onClick={()=>setPageHandler(i+1)} key={i}>{i+1}</span>
             })}
-            <span>Next</span>
+            <span onClick={()=>setpage(page+1)}>Next</span>
         </div>
       )}
     </div>
