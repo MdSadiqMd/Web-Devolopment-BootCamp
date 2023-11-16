@@ -1,4 +1,3 @@
-// Folder.js
 import React, { useState } from "react";
 
 const Folder = ({ explorer }) => {
@@ -6,13 +5,13 @@ const Folder = ({ explorer }) => {
 
   if (explorer.isFolder) {
     return (
-      <div className="mt-2.5 ml-2.5">
-        <div onClick={() => setExpand(!expand)} className='onhover:"cursor-pointer"'>
+      <div className={`mt-2.5 ml-2.5 ${explorer.id === "1" ? "cursor-pointer" : ""}`}>
+        <div onClick={() => setExpand(!expand)} className={explorer.id === "1" ? "cursor-pointer" : ""}>
           <span>📁{explorer.name}</span>
         </div>
 
-        <div className={`ml-5 ${expand ? "block" : "hidden"} ${explorer.items.length > 0 ? "cursor-pointer" : ""}`}>
-          {/*This loop will recursively call the Folder Structure and render it */} 
+        <div className={`ml-5 ${expand ? "block" : "hidden"}`}>
+          {/* This loop will recursively call the Folder Structure and render it */}
           {explorer.items.map((exp) => (
             <Folder explorer={exp} key={exp.id} />
           ))}
@@ -21,8 +20,8 @@ const Folder = ({ explorer }) => {
     );
   } else {
     return (
-        <span className='flex-col'>📄{explorer.name}</span>
-    )
+      <span className='flex-col'>📄{explorer.name}</span>
+    );
   }
 };
 
