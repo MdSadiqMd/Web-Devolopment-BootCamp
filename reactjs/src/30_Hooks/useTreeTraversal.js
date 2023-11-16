@@ -1,15 +1,23 @@
+import { useState } from "react";
+
 const useTreeTraversal = () => {
-  function insertNode(tree,folderId,item,isFolder) {
-    if(tree.id===folderId && tree.isFolder){
-        tree.item.unshift({ // unshift add in first where push add at the last
-            id:new Date().getTime(),
-            name:item,
-            isFolder,
-            items:[]
-        });
+  function insertNode(tree, folderId, item, isFolder) {
+    if (tree.id === folderId && tree.isFolder) {
+      tree.items.unshift({
+        id: new Date().getTime(),
+        name: item,
+        isFolder,
+        items: [],
+      });
+    } else {
+      // Recursive search for the correct folderId
+      tree.items.forEach((child) => {
+        insertNode(child, folderId, item, isFolder);
+      });
     }
   }
-  return {insertNode}
+
+  return { insertNode };
 };
 
-export default useTreeTraversal
+export default useTreeTraversal;
