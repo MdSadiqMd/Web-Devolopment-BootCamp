@@ -4,15 +4,22 @@ const Folder = ({ explorer }) => {
   const [expand, setExpand] = useState(false);
   const [showInput,setShowInput]=useState({
     visible:false,
-    isFolder:null,
+    isFolder
   });
 
   const stopPropagation=(e)=>{
     e.stopPropagation(); // This line disables the parent div onClick function
+    setExpand(true);
     setShowInput({
         visible:true,
         isFolder:false,
     })
+  }
+
+  const onAddFolder=(e)=>{
+    if(e.keyCode===13 && e.target.value){
+        setShowInput({...showInput,visible:false});
+    }
   }
 
   if (explorer.isFolder) {
@@ -31,7 +38,9 @@ const Folder = ({ explorer }) => {
             showInput.visible && (
                 <div>
                     <span> {showInput.isFolder? "📁" : "📄"} </span>
-                    <input autoFocus onBlur={()=>setShowInput({...showInput,visible:false})} />
+                    <input autoFocus
+                     onBlur={()=>setShowInput({...showInput,visible:false})}
+                     onKeyDown={onAddFolder} /> {/*onKeyDown is when the enter get Pressed */}
                 </div>
             )
           }
