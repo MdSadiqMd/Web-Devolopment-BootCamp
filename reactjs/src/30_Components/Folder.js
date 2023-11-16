@@ -1,26 +1,10 @@
 import React, { useState } from "react";
-import { useTreeTraversal } from "../30_Hooks/useTreeTraversal"
 
 const Folder = ({ explorer }) => {
-  const [explorerData, setExplorerData] = useState(false);
-
-  // Dynamic Rendering
-  const {insertNode}=useTreeTraversal();
-  const handleInsertNode=(folderId,item,isFolder)=>{
-    const finalTree=insertNode(explorerData,folderId,item,isFolder)
-    setExplorerData(finalTree)
-  }
-
-  return(
-    <div>
-        <Folder handleInsertNode={handleInsertNode} explorer={explorerData} />
-    </div>
-  )
-
-  // The UI rendering with respect to Dummy Data
-  /*const [showInput,setShowInput]=useState({
+  const [expand, setExpand] = useState(false);
+  const [showInput,setShowInput]=useState({
     visible:false,
-    isFolder
+    isFolder:false,
   });
 
   const stopPropagation=(e)=>{
@@ -57,12 +41,12 @@ const Folder = ({ explorer }) => {
                     <input autoFocus
                      onBlur={()=>setShowInput({...showInput,visible:false})}
                      onKeyDown={onAddFolder} /> {/*onKeyDown is when the enter get Pressed */}
-            /*    </div>
+                </div>
             )
           }
 
           {/* This loop will recursively call the Folder Structure and render it */}
-          /*{explorer.items.map((exp) => (
+          {explorer.items.map((exp) => (
             <Folder explorer={exp} key={exp.id} />
           ))}
         </div>
@@ -72,7 +56,7 @@ const Folder = ({ explorer }) => {
     return (
       <span className='flex-col'>📄{explorer.name}</span>
     );
-  }*/
+  }
 };
 
 export default Folder;

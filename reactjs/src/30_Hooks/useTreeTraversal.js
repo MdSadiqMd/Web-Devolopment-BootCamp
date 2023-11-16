@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const useTreeTraversal = () => {
   function insertNode(tree, folderId, item, isFolder) {
     if (tree.id === folderId && tree.isFolder) {
@@ -9,6 +7,7 @@ const useTreeTraversal = () => {
         isFolder,
         items: [],
       });
+      return tree;
     } else {
       // Recursive search for the correct folderId
       tree.items.forEach((child) => {
