@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Folder from './30_Components/Folder';
 
 const App = () => {
     // Dummy Data
@@ -72,8 +73,13 @@ const App = () => {
           }
         ]
     };
+
+    const [explorerData,setExplorerData]=useState(explorer);
+
   return (
-    <div>App</div>
+    <div>
+        <Folder explorer={explorerData} />
+    </div>
   )
 }
 
