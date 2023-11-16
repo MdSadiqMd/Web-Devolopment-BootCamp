@@ -1,29 +1,30 @@
-const useTraverseTree = () => {
-  // Add a file or folder in tree
-  // Can be optimised using Dynamic Programming
-  const insertNode = function (tree, folderId, item, isFolder) {
-    if (tree.id === folderId && tree.isFolder) {
-      tree.items.unshift({
-        id:new Date().getTime(),
-        name: item,
-        isFolder: isFolder,
-        items: []
-      });
+import { useState } from "react";
 
+const useTraverseTree = () => {
+  const insertNode = (tree, parentId, newNode) => {
+    if (tree.id === parentId) {
+      tree.items.unshift(newNode);
       return tree;
     }
 
-    let latestNode = [];
-    latestNode = tree.items.map((ob) => {
-      return insertNode(ob, folderId, item, isFolder);
-    });
-
-    return { ...tree, items: latestNode };
+    const updatedItems = tree.items.map((item) => insertNode(item, parentId, newNode));
+    return { ...tree, items: updatedItems };
   };
 
-  const deleteNode = () => {}; // Do it Yourself
+  const deleteNode = (tree, nodeId) => {
+    const updatedItems = tree.items.filter((item) => item.id !== nodeId);
+    return { ...tree, items: updatedItems };
+  };
 
-  const renameNode = () => {}; // Do it Yourself
+  const renameNode = (tree, nodeId, newName) => {
+    const updatedItems = tree.items.map((item) => {
+      if (item.id === nodeId) {
+        return { ...item, name: newName };
+      }
+      return renameNode(item, nodeId, newName);
+    });
+    return { ...tree, items: updatedItems };
+  };
 
   return { insertNode, deleteNode, renameNode };
 };
