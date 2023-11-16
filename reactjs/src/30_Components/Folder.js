@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useTraverseTree from "../30_Hooks/useTraverseTree";
+import useTraverseTree from "../30_Hooks/useTreeTraversal.js";
 
 function Folder({ handleInsertNode, handleDeleteNode, handleRenameNode, explorer }) {
   const { insertNode, deleteNode, renameNode } = useTraverseTree();
