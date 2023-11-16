@@ -1,62 +1,96 @@
 import React, { useState } from "react";
+import useTraverseTree from "../30_Hooks/useTraverseTree";
 
-const Folder = ({ explorer }) => {
+function Folder({ handleInsertNode, handleDeleteNode, handleRenameNode, explorer }) {
+  const { insertNode, deleteNode, renameNode } = useTraverseTree();
   const [expand, setExpand] = useState(false);
-  const [showInput,setShowInput]=useState({
-    visible:false,
-    isFolder:false,
+  const [showInput, setShowInput] = useState({
+    visible: false,
+    isFolder: false,
+    value: "",
   });
 
-  const stopPropagation=(e)=>{
-    e.stopPropagation(); // This line disables the parent div onClick function
+  const handleNewFolder = (e, isFolder) => {
+    e.stopPropagation();
     setExpand(true);
     setShowInput({
-        visible:true,
-        isFolder:false,
-    })
-  }
+      visible: true,
+      isFolder,
+      value: "",
+    });
+  };
 
-  const onAddFolder=(e)=>{
-    if(e.keyCode===13 && e.target.value){
-        setShowInput({...showInput,visible:false});
+  const onAddNode = (e) => {
+    if (e.keyCode === 13 && e.target.value) {
+      const newNode = {
+        id: new Date().getTime(),
+        name: e.target.value,
+        isFolder: showInput.isFolder,
+        items: [],
+      };
+
+      if (showInput.isFolder) {
+        handleInsertNode(explorer.id, newNode);
+        setExpand(true); // Automatically expand when adding a new folder
+      } else {
+        handleInsertNode(explorer.id, newNode);
+      }
+
+      setShowInput({ ...showInput, visible: false, value: "" });
     }
-  }
+  };
 
-  if (explorer.isFolder) {
-    return (
-      <div className={`mt-2.5 ml-2.5 ${explorer.id === "1" ? "cursor-pointer" : ""}`}>
-        <div onClick={() => setExpand(!expand)} className={explorer.id === "1" ? "cursor-pointer" : ""}>
-          <span>📁{explorer.name}</span>
-          <div>
-            <button onClick={(e)=>{stopPropagation(e)}}>📂+</button>
-            <button onClick={(e)=>{stopPropagation(e)}}>📃+</button>
-          </div>
-        </div>
+  const onDeleteNode = () => {
+    handleDeleteNode(explorer.id);
+  };
 
-        <div className={`ml-5 ${expand ? "block" : "hidden"}`}>
-          {
-            showInput.visible && (
-                <div>
-                    <span> {showInput.isFolder? "📁" : "📄"} </span>
-                    <input autoFocus
-                     onBlur={()=>setShowInput({...showInput,visible:false})}
-                     onKeyDown={onAddFolder} /> {/*onKeyDown is when the enter get Pressed */}
-                </div>
-            )
-          }
+  const onRenameNode = () => {
+    if (showInput.value) {
+      handleRenameNode(explorer.id, showInput.value);
+      setShowInput({ ...showInput, visible: false, value: "" });
+    }
+  };
 
-          {/* This loop will recursively call the Folder Structure and render it */}
-          {explorer.items.map((exp) => (
-            <Folder explorer={exp} key={exp.id} />
-          ))}
+  return (
+    <div style={{ marginTop: 5 }}>
+      <div onClick={() => setExpand(!expand)} className={explorer.isFolder ? "folder" : "file"}>
+        <span>{explorer.isFolder ? "📁" : "📄"} {explorer.name}</span>
+        <div>
+          <button onClick={(e) => handleNewFolder(e, true)}>Folder +</button>
+          <button onClick={(e) => handleNewFolder(e, false)}>File +</button>
+          <button onClick={onDeleteNode}>Delete</button>
+          <button onClick={onRenameNode}>Rename</button>
         </div>
       </div>
-    );
-  } else {
-    return (
-      <span className='flex-col'>📄{explorer.name}</span>
-    );
-  }
-};
+
+      <div style={{ display: expand ? "block" : "none", paddingLeft: 25 }}>
+        {showInput.visible && (
+          <div className="inputContainer">
+            <span>{showInput.isFolder ? "📁" : "📄"}</span>
+            <input
+              type="text"
+              className="inputContainer__input"
+              autoFocus
+              value={showInput.value}
+              onChange={(e) => setShowInput({ ...showInput, value: e.target.value })}
+              onKeyDown={onAddNode}
+              onBlur={() => setShowInput({ ...showInput, visible: false, value: "" })}
+            />
+          </div>
+        )}
+
+        {explorer.items.map((exp) => (
+          <Folder
+            key={exp.id}
+            handleInsertNode={handleInsertNode}
+            handleDeleteNode={handleDeleteNode}
+            handleRenameNode={handleRenameNode}
+            explorer={exp}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default Folder;
