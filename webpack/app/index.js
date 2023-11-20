@@ -1,3 +1,5 @@
+// webpack.config.js has a lot of configuration that neded to be done 
+// Other than this folder if you are working on the other webpack project configure the webpack.config.jsgit st
 // webpack is a bundler which converts our code to the Browser understandable format 
 // here is the javacript code that we have written in out IDE run these two commands for output
 // npm run build --> This will craete a dist folder which contains the bundle files that are been sent to the browser for rendering
