@@ -51,6 +51,12 @@
           "width: fit-content"
         ]
       }
+    ],
+    "axe/language": [
+      "default",
+      {
+        "html-has-lang": "off"
+      }
     ]
   }
 }
