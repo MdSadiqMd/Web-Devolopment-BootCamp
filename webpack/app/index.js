@@ -4,4 +4,4 @@
 // npm run start --> This will start the webpack server
 const arr=["a","b","c","d","e"];
 console.log(arr);
-export default arr;
+export default arr; // This "line" is ES6 syntax thus will change accordingly in the bundler with respect to the browser compatability
