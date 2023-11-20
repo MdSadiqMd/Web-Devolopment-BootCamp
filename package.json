@@ -4,6 +4,7 @@
     "axios": "^1.6.0",
     "bcryptjs": "^2.4.3",
     "ejs": "^3.1.9",
+    "immer": "^10.0.3",
     "jsonwebtoken": "^9.0.2",
     "jsx": "^0.9.89",
     "mongoose": "^7.6.4",
@@ -15,5 +16,6 @@
   },
   "devDependencies": {
     "react-scripts": "^5.0.1"
-  }
+  },
+  "type": "module"
 }
