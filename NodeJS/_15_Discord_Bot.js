@@ -17,7 +17,14 @@ const client=new Client({
 });
 
 client.on("messageCreate",(message)=>{
-    console.log(message.content);
+    if(message.author.bot){
+        return;
+    }
+    else{
+        message.reply({
+            content:"Hi from Bot"
+        });
+    }
 });
 
 client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GTUTAK.lY9ew2fWdeIjqdglOKLJWTA4LFdxILtSYYGxzg'); // Token that we have copied
