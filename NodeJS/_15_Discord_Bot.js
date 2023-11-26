@@ -6,7 +6,7 @@
 // At last of the Page you find URL paste it in new tab and authorize it 
 // Again go to Bot and click on Rest Token > Copy it and enable all under privileged gateways
 
-const {Client,GatewayIntentBits, Message} =require("discord.js");
+const {REST,Routes,Client,GatewayIntentBits, Message} =require("discord.js");
 
 const client=new Client({
     intents: [
@@ -27,4 +27,6 @@ client.on("messageCreate",(message)=>{
     }
 });
 
-client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GNeTMc.guhy5bedwu4wQBpq2D5q4XXdkId0zaDBwuLffY'); // Token that we have copiedMTE3ODI5MTY2NDU3NDQ5Mjc1Mg
+client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GNeTMc.guhy5bedwu4wQBpq2D5q4XXdkId0zaDBwuLffY'); // Token that we have copied
+
+// Performing Commands using Discord Bot
