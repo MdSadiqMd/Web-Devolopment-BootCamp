@@ -30,3 +30,11 @@ client.on("messageCreate",(message)=>{
 client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GNeTMc.guhy5bedwu4wQBpq2D5q4XXdkId0zaDBwuLffY'); // Token that we have copied
 
 // Performing Commands using Discord Bot
+const commands=[
+    {
+        name:"ping",
+        description:"Replies with Pong!",
+    },
+];
+
+const rest=new REST ({version:"10"}).setToken();
