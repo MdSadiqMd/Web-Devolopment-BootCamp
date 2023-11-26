@@ -6,45 +6,71 @@
 // At last of the Page you find URL paste it in new tab and authorize it 
 // Again go to Bot and click on Rest Token > Copy it and enable all under privileged gateways
 
-const {REST,Routes,Client,GatewayIntentBits, Message} =require("discord.js");
+const { REST, Routes, Client, GatewayIntentBits } = require("discord.js");
 
-const client=new Client({
+const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
-    ] // intends means what permisions we are giving (Hover to go to documentation)
+        GatewayIntentBits.MessageContent,
+    ],
 });
 
-client.on("messageCreate",(message)=>{
-    if(message.author.bot){
+client.on("messageCreate", (message) => {
+    if (message.author.bot) {
         return;
-    }
-    else{
+    } else {
         message.reply({
-            content:"Hi from Bot"
+            content: "Hi from Bot"
         });
     }
 });
 
-client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GbQ_La.KECfR7R_1wFh6cGPjdV4svhA9NLYnwBgz9nrCE'); // Token that we have copied
+client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GOggqc.MouXIY1ohmM9PSN2wmKwIgyQAI7J9bKKi9gRcg')
+    .catch(error => {
+        console.error('Error during login:', error);
+    });
 
 // Performing Commands using Discord Bot
-const commands=[
+const commands = [
     {
-        name:"ping",
-        description:"Replies with Pong!",
+        name: "/ping",
+        description: "Replies with Pong!",
     },
 ];
 
-const rest=new REST ({version:"10"}).setToken("MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GbQ_La.KECfR7R_1wFh6cGPjdV4svhA9NLYnwBgz9nrCE");
+const rest = new REST({ version: "v10" }).setToken("MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GOggqc.MouXIY1ohmM9PSN2wmKwIgyQAI7J9bKKi9gRcg");
 
-(async()=>{
+(async () => {
     try {
-        await rest.put(Routes.applicationCommand("1178291664574492752"),{ // get client ID from OAuth > General
-            body:commands
-        })
+        await rest.put(
+            Routes.applicationGuildCommands("1178291664574492752", "MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GOggqc.MouXIY1ohmM9PSN2wmKwIgyQAI7J9bKKi9gRcg"),
+            {
+                body: commands,
+            }
+        );
+        
+        console.log("Successfully registered application commands.");
     } catch (error) {
         console.error(error);
     }
-})
+})();
+
+client.on("interactionCreate", (interaction) => {
+    console.log(`Received interaction: ${interaction.type}`);
+    
+    if (!interaction.isCommand()) {
+        console.log(`Ignoring non-command interaction.`);
+        return;
+    }
+
+    const { commandName } = interaction;
+
+    console.log(`Received interaction for command: ${commandName}`);
+
+    if (commandName === "ping") {
+        console.log(`Executing /ping command`);
+        interaction.reply("Pong!");
+    }
+});
+
