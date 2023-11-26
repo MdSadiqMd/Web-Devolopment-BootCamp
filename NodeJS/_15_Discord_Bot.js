@@ -27,7 +27,7 @@ client.on("messageCreate",(message)=>{
     }
 });
 
-client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GNeTMc.guhy5bedwu4wQBpq2D5q4XXdkId0zaDBwuLffY'); // Token that we have copied
+client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GbQ_La.KECfR7R_1wFh6cGPjdV4svhA9NLYnwBgz9nrCE'); // Token that we have copied
 
 // Performing Commands using Discord Bot
 const commands=[
@@ -37,4 +37,14 @@ const commands=[
     },
 ];
 
-const rest=new REST ({version:"10"}).setToken();
+const rest=new REST ({version:"10"}).setToken("MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GbQ_La.KECfR7R_1wFh6cGPjdV4svhA9NLYnwBgz9nrCE");
+
+(async()=>{
+    try {
+        await rest.put(Routes.applicationCommand("1178291664574492752"),{ // get client ID from OAuth > General
+            body:commands
+        })
+    } catch (error) {
+        console.error(error);
+    }
+})
