@@ -27,4 +27,4 @@ client.on("messageCreate",(message)=>{
     }
 });
 
-client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GTUTAK.lY9ew2fWdeIjqdglOKLJWTA4LFdxILtSYYGxzg'); // Token that we have copied
+client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GNeTMc.guhy5bedwu4wQBpq2D5q4XXdkId0zaDBwuLffY'); // Token that we have copiedMTE3ODI5MTY2NDU3NDQ5Mjc1Mg
