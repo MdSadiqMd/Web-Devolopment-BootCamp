@@ -5,6 +5,7 @@
 // OAuth --> URL Generator --> Bot and Administrator
 // At last of the Page you find URL paste it in new tab and authorize it 
 // Again go to Bot and click on Rest Token > Copy it and enable all under privileged gateways
+// ***When we commit the code to github the Guild_ID will get's depricated need to re-generate it 
 
 const { REST, Routes, Client, GatewayIntentBits } = require("discord.js");
 
