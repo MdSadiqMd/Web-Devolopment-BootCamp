@@ -44,7 +44,7 @@ const rest = new REST({ version: "v10" }).setToken("MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.G
 (async () => {
     try {
         await rest.put(
-            Routes.applicationGuildCommands("1178291664574492752", "MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GOggqc.MouXIY1ohmM9PSN2wmKwIgyQAI7J9bKKi9gRcg"),
+            Routes.applicationGuildCommands("1178291664574492752", "1178291200701255690"), // Client ID (it is in OAuth > General) , GUILD_ID (right click on server and copy server ID)
             {
                 body: commands,
             }
