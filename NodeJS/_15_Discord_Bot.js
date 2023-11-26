@@ -26,7 +26,7 @@ client.on("messageCreate", (message) => {
     }
 });
 
-client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GOggqc.MouXIY1ohmM9PSN2wmKwIgyQAI7J9bKKi9gRcg')
+client.login('MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GAYYLm.5G7U1IUXwwmdB7uv6RlOMKYEAkrOOovMpazBTk')
     .catch(error => {
         console.error('Error during login:', error);
     });
@@ -39,7 +39,7 @@ const commands = [
     },
 ];
 
-const rest = new REST({ version: "v10" }).setToken("MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GOggqc.MouXIY1ohmM9PSN2wmKwIgyQAI7J9bKKi9gRcg");
+const rest = new REST({ version: "v10" }).setToken("MTE3ODI5MTY2NDU3NDQ5Mjc1Mg.GAYYLm.5G7U1IUXwwmdB7uv6RlOMKYEAkrOOovMpazBTk");
 
 (async () => {
     try {
