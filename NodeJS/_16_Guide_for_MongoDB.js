@@ -77,3 +77,10 @@ async function update(id) {
   }
 }
 update("6590213997be3814b5d535a4");
+
+// Deleting Data in Database
+async function Delete(id){
+    const deleted=await User.findByIdAndDelete(id);
+    console.log(deleted);
+}
+Delete('659023b143bffcc6a32968ff') // If it is already deleted (running for the second time) or the id is not present in the databse then it will return Null
