@@ -7,10 +7,15 @@ mongoose
 
 // Schema
 const user = new mongoose.Schema({
-  name: String,
-  creator: String,
+  name: { type: String, required: true, minlength: 2, maxlength: 20 },
+  creator: { type: String, required: true, enum: ["Allah", "Al-Aqir"] }, // If the values doesn't match with the enum then it will throw error
   publishedDate: { type: Date, default: Date.now() },
-  isPublished: Boolean,
+  isPublished: {
+    type: Boolean,
+    required: function () {
+      return this.publishedDate;
+    },
+  }, // We can also pass the function for required specifications returning true or false
 });
 
 // Model --> Model is basically an object and Schema is a class
@@ -79,8 +84,8 @@ async function update(id) {
 update("6590213997be3814b5d535a4");
 
 // Deleting Data in Database
-async function Delete(id){
-    const deleted=await User.findByIdAndDelete(id);
-    console.log(deleted);
+async function Delete(id) {
+  const deleted = await User.findByIdAndDelete(id);
+  console.log(deleted);
 }
-Delete('659023b143bffcc6a32968ff') // If it is already deleted (running for the second time) or the id is not present in the databse then it will return Null
+Delete("659023b143bffcc6a32968ff"); // If it is already deleted (running for the second time) or the id is not present in the databse then it will return Null
