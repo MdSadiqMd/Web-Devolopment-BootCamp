@@ -59,7 +59,21 @@ async function createUser() {
 // createUser();
 
 // Querying the documents
+// can also write funtion and call it but for fun just using IIFE
 (async () => {
-  const query = await User.find({ name: "Sadiq" }).select({name:1}); // we have given 1 for name because we only need to find in that one document only
+  const query = await User.find({ name: "Sadiq" }).select({ name: 1 }); // we have given 1 for name because we only need to find in that one document only
   console.log(query);
 })();
+
+// Updating data in database
+async function update(id) {
+  let update = await User.findById(id);
+  if (!update) {
+    return;
+  } else {
+    update.name = "Md.Sadiq";
+    const updated = await update.save();
+    console.log(updated);
+  }
+}
+update("6590213997be3814b5d535a4");
