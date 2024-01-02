@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>This Keyword</h1>
-</body>
-<script>
+    <button onclick="alert(this)">this in DOM</button> <!--[object HTMLButtonElement] -> this with DOM refers the HTML elemnt it is working on-->
+  </body>
+  <script>
     // "use strict"; // This line enables strict mode
 
-    // this keyword in global scope 
-    console.log(this); // prints window object 
+    // this keyword in global scope
+    console.log(this); // prints window object
     // *** this keyword usually holds globalObject but in global space globalObject is window object
 
-    // *** what is the value of this in function --> The value of this keyword in a function is "undefined" but as javascript has "this substitution" so the value of this in function will be window Object in "non-strict" mode 
+    // *** what is the value of this in function --> The value of this keyword in a function is "undefined" but as javascript has "this substitution" so the value of this in function will be window Object in "non-strict" mode
     // The same phenomenon in strict mode it is undefined
-    function x(){
-        console.log(this);
+    function x() {
+      console.log(this);
     }
     x();
     window.x();
@@ -29,15 +30,33 @@
 
     // this keyword in Object's Method
     // *** First let us understand difference between function and method --> when you make a function a part of an object then it is known as method
-    const obj={
-        a:10,
-        b: function(){
-            console.log(this);
-        },
+    const obj = {
+      a: 10,
+      b: function () {
+        console.log(this);
+      },
     };
     // b(); --> Reference error --> It cannot reference object directly
     obj.b(); // *** This will return the object itself --> this keyword in an method which is inside an object refers to object itself
 
+    // this keyword in arrow function --> *** The this in arrow function will always print "value of enclosing lexical context" --> This is because the arrow function doexn't provide it's own this keyword binding
+    const obj1 = {
+      a: 20,
+      b: () => {
+        console.log(this);
+      },
+    };
+    obj1.b(); // this will print window object as the enclosing lexical scope value of the this keyword which is window Object
     
-</script>
+    const obj2 = {
+      a: 30,
+      b: function () {
+        const y=()=>{
+            console.log(this);
+        };
+        y();
+      },
+    };
+    obj2.b(); // this will print window object as the enclosing lexical scope value of the this keyword which is the "function object itself"
+  </script>
 </html>
