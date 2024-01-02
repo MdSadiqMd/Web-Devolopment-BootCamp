@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This Keyword</h1>
+</body>
+<script>
+    // "use strict"; // This line enables strict mode
+
+    // this keyword in global scope 
+    console.log(this); // prints window object 
+    // *** this keyword usually holds globalObject but in global space globalObject is window object
+
+    // *** what is the value of this in function --> The value of this keyword in a function is "undefined" but as javascript has "this substitution" so the value of this in function will be window Object in "non-strict" mode 
+    // The same phenomenon in strict mode it is undefined
+    function x(){
+        console.log(this);
+    }
+    x();
+    window.x();
+    // In strict mode --> if we call x(); --> returns undefined
+    // In strict mode --> if we call window.x(); --> returns window Object
+    // In non-strict mode --> if we call x(); --> returns window Object
+    // In non-strict mode --> if we call window.x(); --> returns window Object
+
+    // this keyword in Object's Method
+    // *** First let us understand difference between function and method --> when you make a function a part of an object then it is known as method
+    const obj={
+        a:10,
+        b: function(){
+            console.log(this);
+        },
+    };
+    // b(); --> Reference error --> It cannot reference object directly
+    obj.b(); // *** This will return the object itself --> this keyword in an method which is inside an object refers to object itself
+
+    
+</script>
+</html>
