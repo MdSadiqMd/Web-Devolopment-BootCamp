@@ -7,8 +7,9 @@ async function retryApiRequest<T>(
 ): Promise<T> {
   let retries: number = 0;
 
-  const delay = (ms: number): Promise<void> =>
-    new Promise((resolve) => setTimeout(resolve, ms));
+  const delay = (ms: number): Promise<void> => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
 
   const exponentialBackoff = async (): Promise<void> => {
     const delayTime: number = baseDelay * Math.pow(2, retries);
