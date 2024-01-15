@@ -17,7 +17,8 @@ async function retryApiRequest<T>(
   };
 
   const addJitter = async (ms: any): Promise<void> => {
-    const randomJitter: number = Math.random() * 0.2 - 0.1; // Random jitter between -0.1 and 0.1
+    // Random jitter between -0.1 and 0.1
+    const randomJitter: number = Math.random() * 0.2 - 0.1; 
     const jitteredDelay: number = ms + ms * randomJitter;
     await delay(jitteredDelay);
   };
@@ -30,11 +31,9 @@ async function retryApiRequest<T>(
       const axiosError: AxiosError = error as AxiosError;
 
       if (!axiosError.response) {
-        // Network error, retry
         retries++;
         await addJitter(await exponentialBackoff());
       } else {
-        // Non-retryable error, throw
         throw error;
       }
     }
@@ -47,7 +46,6 @@ async function retryApiRequest<T>(
 const apiUrl: string = "https://api.example.com/data";
 
 const apiCall = async (): Promise<AxiosResponse<any>> => {
-  // Make your API request using axios
   return axios.get(apiUrl);
 };
 
