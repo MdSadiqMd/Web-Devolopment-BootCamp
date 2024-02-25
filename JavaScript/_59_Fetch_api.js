@@ -1,5 +1,4 @@
-// Create a URL for the API you want to fetch data from
-const apiUrl = "https://api.example.com/data";
+const apiUrl = "https://dummyjson.com/products";
 
 // Create an options object to customize the fetch request
 const fetchOptions = {
@@ -17,22 +16,16 @@ const fetchOptions = {
   // body: JSON.stringify(data), // Request body data for POST or PUT requests
 };
 
-// Perform the fetch request using the URL and options
 fetch(apiUrl, fetchOptions)
   .then((response) => {
-    // Handle the response - Convert to JSON
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
     return response.json();
   })
   .then((data) => {
-    // Handle the JSON data
     console.log("Data from the API:", data);
   })
   .catch((error) => {
-    // Handle errors
     console.error("Fetch error:", error);
   });
-// You can also use async/await for asynchronous fetch operations.
-
