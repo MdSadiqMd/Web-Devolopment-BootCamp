@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // Example - 1 --> Appending 100 <p></p> tags in the body
+    let t1 = performance.now();
+    for (let i = 0; i <= 100; i++) {
+      let para = document.createElement("p");
+      para.textContent = i;
+      document.body.appendChild(para);
+    }
+    let t2 = performance.now();
+    console.log(t2 - t1);
+
+
+  </script>
+</html>
