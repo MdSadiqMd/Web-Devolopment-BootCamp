@@ -17,6 +17,16 @@
     let t2 = performance.now();
     console.log(t2 - t1);
 
-
+    // Example - 2 --> Appending 100 <p></p> tags in the <div></div> which is inside the body
+    let t3 = performance.now();
+    let mydiv = document.createElement("div");
+    for (let i = 0; i <= 100; i++) {
+      let para = document.createElement("p");
+      para.textContent = i;
+      mydiv.appendChild(para);
+    }
+    document.body.appendChild(mydiv);
+    let t4 = performance.now();
+    console.log(t4 - t3);
   </script>
 </html>
