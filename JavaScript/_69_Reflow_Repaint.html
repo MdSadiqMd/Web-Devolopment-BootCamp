@@ -7,6 +7,14 @@
   </head>
   <body></body>
   <script>
+    // Reflow --> Caluclating the position of the element that need to be rendered on the browser ( CPU Intensive Task )
+    // Repaint --> Process of displaying / Drawing on the screen pixel by pixel ( Less CPU Intensive Task )
+    // In the below two examples the Example 1 is slower than Example 2 but there is more div in the Example 2 how can it be slower
+    // In the first example we are rendering 100 <p></p> tags on the screen so we need to do 100 reflows and 100 repaints on the screen
+    // In the second example we create a <div> first before closing it we embed 100 <p></p> tags and here the reflow won't occur before closing the </div> before still the elements are not added into the DOM so it takes One Reflow and One Repaint
+    // Thus the Example 2 is faster than Example 1 thus it takes less Reflow and less Repaints
+    // The Best practise is to keep all the elements in the fragment <></>
+
     // Example - 1 --> Appending 100 <p></p> tags in the body
     let t1 = performance.now();
     for (let i = 0; i <= 100; i++) {
